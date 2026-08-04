@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE InputProfile>
+<InputProfile xmlns="http://www.qlcplus.org/InputProfile">
+ <Creator>
+  <Name>Q Light Controller Plus</Name>
+  <Version>4.13.1</Version>
+  <Author>Branson Matheson</Author>
+ </Creator>
+ <Manufacturer>OpenDeck</Manufacturer>
+ <Model>PMJ_BLACK_1</Model>
+ <Type>MIDI</Type>
+ <Channel Number="128">
+  <Name>Button 1</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="32949">
+  <Name>Button 2</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="32934">
+  <Name>Button 3</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="32936">
+  <Name>Button 4</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="32938">
+  <Name>Button 5</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="32940">
+  <Name>Button 6</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="32942">
+  <Name>Button 7</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="135">
+  <Name>Button 8</Name>
+  <Type>Button</Type>
+  <Feedback LowerValue="0" UpperValue="127"/>
+ </Channel>
+ <Channel Number="32944">
+  <Name>Button 9</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="32946">
+  <Name>Button 10</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="32921">
+  <Name>Button 11</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="32923">
+  <Name>Button 12</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="32925">
+  <Name>Button 13</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="32927">
+  <Name>Button 14</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="32929">
+  <Name>Button 15</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="143">
+  <Name>Button 16</Name>
+  <Type>Button</Type>
+  <Feedback LowerValue="0" UpperValue="127"/>
+ </Channel>
+ <Channel Number="32931">
+  <Name>Button 17</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="32933">
+  <Name>Button 18</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="32908">
+  <Name>Button 19</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="32910">
+  <Name>Button 20</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="32912">
+  <Name>Button 21</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="32914">
+  <Name>Button 22</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="32916">
+  <Name>Button 23</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="151">
+  <Name>Button 24</Name>
+  <Type>Button</Type>
+  <Feedback LowerValue="0" UpperValue="127"/>
+ </Channel>
+ <Channel Number="32918">
+  <Name>Button 25</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="32920">
+  <Name>Button 26</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="32897">
+  <Name>Button 27</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="32899">
+  <Name>Button 28</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="32901">
+  <Name>Button 29</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="32903">
+  <Name>Button 30</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="32905">
+  <Name>Button 31</Name>
+  <Type>Button</Type>
+ </Channel>
+ <Channel Number="159">
+  <Name>Button 32</Name>
+  <Type>Button</Type>
+  <Feedback LowerValue="0" UpperValue="127"/>
+ </Channel>
+ <Channel Number="32768">
+  <Name>Analog 1</Name>
+  <Type>Slider</Type>
+ </Channel>
+ <Channel Number="32769">
+  <Name>Analog 2</Name>
+  <Type>Slider</Type>
+ </Channel>
+ <Channel Number="32770">
+  <Name>Analog 3</Name>
+  <Type>Slider</Type>
+ </Channel>
+ <Channel Number="32771">
+  <Name>Analog 4</Name>
+  <Type>Slider</Type>
+ </Channel>
+ <Channel Number="32772">
+  <Name>Analog 5</Name>
+  <Type>Slider</Type>
+ </Channel>
+ <Channel Number="32773">
+  <Name>Analog 6</Name>
+  <Type>Slider</Type>
+ </Channel>
+ <Channel Number="32774">
+  <Name>Analog 7</Name>
+  <Type>Slider</Type>
+ </Channel>
+ <Channel Number="32775">
+  <Name>Analog 8</Name>
+  <Type>Slider</Type>
+ </Channel>
+ <Channel Number="32776">
+  <Name>Analog 9</Name>
+  <Type>Slider</Type>
+ </Channel>
+ <Channel Number="32777">
+  <Name>Analog 10</Name>
+  <Type>Slider</Type>
+ </Channel>
+ <Channel Number="32778">
+  <Name>Analog 11</Name>
+  <Type>Slider</Type>
+ </Channel>
+</InputProfile>

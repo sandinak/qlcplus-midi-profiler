@@ -1,0 +1,752 @@
+{
+  "manufacturer": "OpenDeck",
+  "model": "PMJ_BLACK_1",
+  "input_port": "OpenDeck | PMJ_BLACK_1",
+  "output_port": "OpenDeck | PMJ_BLACK_1",
+  "controls": [
+    {
+      "name": "Button 1",
+      "kind": "note",
+      "channel": 0,
+      "number": 0,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 2",
+      "kind": "note",
+      "channel": 8,
+      "number": 53,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 3",
+      "kind": "note",
+      "channel": 8,
+      "number": 38,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 4",
+      "kind": "note",
+      "channel": 8,
+      "number": 40,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 5",
+      "kind": "note",
+      "channel": 8,
+      "number": 42,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 6",
+      "kind": "note",
+      "channel": 8,
+      "number": 44,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 7",
+      "kind": "note",
+      "channel": 8,
+      "number": 46,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 8",
+      "kind": "note",
+      "channel": 0,
+      "number": 7,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 7,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "LED 7"
+    },
+    {
+      "name": "Button 9",
+      "kind": "note",
+      "channel": 8,
+      "number": 48,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 10",
+      "kind": "note",
+      "channel": 8,
+      "number": 50,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 11",
+      "kind": "note",
+      "channel": 8,
+      "number": 25,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 12",
+      "kind": "note",
+      "channel": 8,
+      "number": 27,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 13",
+      "kind": "note",
+      "channel": 8,
+      "number": 29,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 14",
+      "kind": "note",
+      "channel": 8,
+      "number": 31,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 15",
+      "kind": "note",
+      "channel": 8,
+      "number": 33,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 16",
+      "kind": "note",
+      "channel": 0,
+      "number": 15,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 15,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "LED 15"
+    },
+    {
+      "name": "Button 17",
+      "kind": "note",
+      "channel": 8,
+      "number": 35,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 18",
+      "kind": "note",
+      "channel": 8,
+      "number": 37,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 19",
+      "kind": "note",
+      "channel": 8,
+      "number": 12,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 20",
+      "kind": "note",
+      "channel": 8,
+      "number": 14,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 21",
+      "kind": "note",
+      "channel": 8,
+      "number": 16,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 22",
+      "kind": "note",
+      "channel": 8,
+      "number": 18,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 23",
+      "kind": "note",
+      "channel": 8,
+      "number": 20,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 24",
+      "kind": "note",
+      "channel": 0,
+      "number": 23,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 23,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "LED 23"
+    },
+    {
+      "name": "Button 25",
+      "kind": "note",
+      "channel": 8,
+      "number": 22,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 26",
+      "kind": "note",
+      "channel": 8,
+      "number": 24,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 27",
+      "kind": "note",
+      "channel": 8,
+      "number": 1,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 28",
+      "kind": "note",
+      "channel": 8,
+      "number": 3,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 29",
+      "kind": "note",
+      "channel": 8,
+      "number": 5,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 30",
+      "kind": "note",
+      "channel": 8,
+      "number": 7,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 31",
+      "kind": "note",
+      "channel": 8,
+      "number": 9,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button 32",
+      "kind": "note",
+      "channel": 0,
+      "number": 31,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 31,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "LED 31"
+    },
+    {
+      "name": "Analog 1",
+      "kind": "cc",
+      "channel": 8,
+      "number": 0,
+      "type": "Slider",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Analog 2",
+      "kind": "cc",
+      "channel": 8,
+      "number": 1,
+      "type": "Slider",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Analog 3",
+      "kind": "cc",
+      "channel": 8,
+      "number": 2,
+      "type": "Slider",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Analog 4",
+      "kind": "cc",
+      "channel": 8,
+      "number": 3,
+      "type": "Slider",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Analog 5",
+      "kind": "cc",
+      "channel": 8,
+      "number": 4,
+      "type": "Slider",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Analog 6",
+      "kind": "cc",
+      "channel": 8,
+      "number": 5,
+      "type": "Slider",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Analog 7",
+      "kind": "cc",
+      "channel": 8,
+      "number": 6,
+      "type": "Slider",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Analog 8",
+      "kind": "cc",
+      "channel": 8,
+      "number": 7,
+      "type": "Slider",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Analog 9",
+      "kind": "cc",
+      "channel": 8,
+      "number": 8,
+      "type": "Slider",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Analog 10",
+      "kind": "cc",
+      "channel": 8,
+      "number": 9,
+      "type": "Slider",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Analog 11",
+      "kind": "cc",
+      "channel": 8,
+      "number": 10,
+      "type": "Slider",
+      "values": [],
+      "feedback": null,
+      "note": ""
+    }
+  ],
+  "leds": [
+    {
+      "index": 0,
+      "activation_id": 23,
+      "channel": 8,
+      "activation_value": 0,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 1,
+      "activation_id": 1,
+      "channel": 0,
+      "activation_value": 127,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 2,
+      "activation_id": 2,
+      "channel": 8,
+      "activation_value": 0,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 3,
+      "activation_id": 4,
+      "channel": 8,
+      "activation_value": 0,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 4,
+      "activation_id": 6,
+      "channel": 8,
+      "activation_value": 0,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 5,
+      "activation_id": 8,
+      "channel": 8,
+      "activation_value": 0,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 6,
+      "activation_id": 10,
+      "channel": 8,
+      "activation_value": 0,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 7,
+      "activation_id": 7,
+      "channel": 0,
+      "activation_value": 127,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
+    },
+    {
+      "index": 8,
+      "activation_id": 36,
+      "channel": 8,
+      "activation_value": 0,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 9,
+      "activation_id": 9,
+      "channel": 0,
+      "activation_value": 127,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
+    },
+    {
+      "index": 10,
+      "activation_id": 13,
+      "channel": 8,
+      "activation_value": 0,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 11,
+      "activation_id": 15,
+      "channel": 8,
+      "activation_value": 0,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 12,
+      "activation_id": 17,
+      "channel": 8,
+      "activation_value": 0,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 13,
+      "activation_id": 19,
+      "channel": 8,
+      "activation_value": 0,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 14,
+      "activation_id": 21,
+      "channel": 8,
+      "activation_value": 0,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 15,
+      "activation_id": 15,
+      "channel": 0,
+      "activation_value": 127,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
+    },
+    {
+      "index": 16,
+      "activation_id": 49,
+      "channel": 8,
+      "activation_value": 0,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 17,
+      "activation_id": 0,
+      "channel": 8,
+      "activation_value": 0,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 18,
+      "activation_id": 26,
+      "channel": 8,
+      "activation_value": 0,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 19,
+      "activation_id": 28,
+      "channel": 8,
+      "activation_value": 0,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 20,
+      "activation_id": 30,
+      "channel": 8,
+      "activation_value": 0,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 21,
+      "activation_id": 32,
+      "channel": 8,
+      "activation_value": 0,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 22,
+      "activation_id": 34,
+      "channel": 8,
+      "activation_value": 0,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 23,
+      "activation_id": 23,
+      "channel": 0,
+      "activation_value": 127,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
+    },
+    {
+      "index": 24,
+      "activation_id": 52,
+      "channel": 8,
+      "activation_value": 0,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 25,
+      "activation_id": 11,
+      "channel": 8,
+      "activation_value": 0,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 26,
+      "activation_id": 39,
+      "channel": 8,
+      "activation_value": 0,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 27,
+      "activation_id": 41,
+      "channel": 8,
+      "activation_value": 0,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 28,
+      "activation_id": 43,
+      "channel": 8,
+      "activation_value": 0,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 29,
+      "activation_id": 45,
+      "channel": 8,
+      "activation_value": 0,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 30,
+      "activation_id": 47,
+      "channel": 8,
+      "activation_value": 0,
+      "control_type": 10,
+      "control_type_name": "Static",
+      "midi_driven": false
+    },
+    {
+      "index": 31,
+      "activation_id": 31,
+      "channel": 0,
+      "activation_value": 127,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
+    }
+  ]
+}
