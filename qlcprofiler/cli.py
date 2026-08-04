@@ -79,7 +79,17 @@ def cmd_learn(args) -> int:
     if args.auto:
         learn_auto(port, dmap, port.name, idle_stop=args.idle_stop)
     elif args.relabel:
-        relabel_interactive(port, dmap, port.name)
+        out = None
+        if not args.no_lights:
+            out_name = args.out or dmap.output_port or ports.guess_output_for(args.port)
+            if out_name:
+                out = ports.open_output(out_name)
+                dmap.output_port = out.name
+            else:
+                print("No output port found; naming without LED guidance "
+                      "(pass --out, or --no-lights to silence this).")
+        relabel_interactive(port, dmap, port.name, out=out,
+                            dim=args.dim, bright=args.bright)
     else:
         learn_interactive(port, dmap, port.name)
 
@@ -88,6 +98,40 @@ def cmd_learn(args) -> int:
     print(f"\nSaved {len(dmap.controls)} controls to {out_path}")
     for c in dmap.controls:
         print(f"  {c.name:<24} {c.describe()}")
+    return 0
+
+
+def cmd_lights(args) -> int:
+    """Light the board so the keycaps can be read."""
+    from .flash import light_all
+    from .learn import is_auto_name
+
+    map_path = Path(args.map)
+    if not map_path.exists():
+        print(f"{map_path} not found; run `learn` first.", file=sys.stderr)
+        return 2
+    dmap = DeviceMap.load(map_path)
+    out_name = args.out or dmap.output_port or ports.guess_output_for(args.port or "")
+    if not out_name:
+        print("No output port; pass --out (see `qlc-midi ports`).", file=sys.stderr)
+        return 2
+    out = ports.open_output(out_name)
+
+    level = 0 if args.off else args.level
+    if args.progress and not args.off:
+        todo = [c for c in dmap.controls if is_auto_name(c)]
+        done = [c for c in dmap.controls if not is_auto_name(c)]
+        light_all(out, todo, args.dim)
+        lit = light_all(out, done, level) + sum(1 for c in todo if c.feedback)
+        print(f"Lit {lit} LEDs: bright = named ({len(done)}), "
+              f"dim = still auto-named ({len(todo)}).")
+        return 0
+
+    lit = light_all(out, dmap.controls, level)
+    print(f"{'Cleared' if args.off else 'Lit'} {lit} LED(s)"
+          + ("" if args.off else f" at level {level}") + ".")
+    if not args.off:
+        print("They stay lit until something else drives them (QLC+, or --off).")
     return 0
 
 
@@ -580,12 +624,31 @@ def build_parser() -> argparse.ArgumentParser:
     sp.add_argument("--auto", action="store_true", help="sniff everything, auto-name")
     sp.add_argument("--relabel", action="store_true",
                     help="press-then-name: operate a control, then type its name")
+    sp.add_argument("-o", "--out", default="",
+                    help="relabel: output port, for lighting the board")
+    sp.add_argument("--no-lights", action="store_true",
+                    help="relabel: do not drive the LEDs")
+    sp.add_argument("--dim", type=int, default=20,
+                    help="relabel: brightness for controls still to name")
+    sp.add_argument("--bright", type=int, default=127,
+                    help="relabel: brightness for controls already named")
     sp.add_argument("--idle-stop", type=float, default=0.0,
                     help="auto mode: stop after N seconds of silence")
     sp.add_argument("--manufacturer", default="")
     sp.add_argument("--model", default="")
     sp.add_argument("--overwrite", action="store_true", help="start a fresh map")
     sp.set_defaults(func=cmd_learn)
+
+    sp = sub.add_parser("lights", help="light the board's LEDs so keycaps are readable")
+    sp.add_argument("-m", "--map", default="maps/device.json")
+    sp.add_argument("-p", "--port", default="", help="input port, used to guess output")
+    sp.add_argument("-o", "--out", default="", help="output port name or substring")
+    sp.add_argument("-l", "--level", type=int, default=127, help="brightness 0-127")
+    sp.add_argument("--dim", type=int, default=20, help="brightness for --progress")
+    sp.add_argument("--progress", action="store_true",
+                    help="bright = named, dim = still auto-named")
+    sp.add_argument("--off", action="store_true", help="turn them all off")
+    sp.set_defaults(func=cmd_lights)
 
     sp = sub.add_parser("feedback", help="explore LED feedback")
     sp.add_argument("--mode", choices=["echo", "scan", "flash", "colors"], default="echo")

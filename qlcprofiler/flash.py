@@ -25,6 +25,26 @@ def _send(out, kind: str, ch: int, num: int, val: int) -> None:
         raise ValueError(f"cannot flash message kind {kind!r}")
 
 
+def set_level(out, ctl, level: int) -> None:
+    """Drive one control's LED to a brightness, using its feedback address."""
+    fb = ctl.feedback
+    if not fb:
+        return
+    _send(out, fb.get("kind", ctl.kind), fb.get("channel", ctl.channel),
+          fb.get("number", ctl.number), level)
+
+
+def light_all(out, controls, level: int, delay: float = 0.004) -> int:
+    """Set every LED-backed control to one brightness.  Returns how many."""
+    count = 0
+    for ctl in controls:
+        if ctl.feedback:
+            set_level(out, ctl, level)
+            count += 1
+            time.sleep(delay)  # a long burst can outrun a slow USB endpoint
+    return count
+
+
 class Flasher:
     """Blinks one address until stopped, then leaves it off."""
 

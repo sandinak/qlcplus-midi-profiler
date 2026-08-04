@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import contextlib
 import json
+import re
 import time
 from collections import Counter, defaultdict
 from dataclasses import dataclass, field, asdict
@@ -195,17 +197,47 @@ def learn_interactive(port, dmap: DeviceMap, port_name: str) -> DeviceMap:
     return dmap
 
 
-def relabel_interactive(port, dmap: DeviceMap, port_name: str) -> DeviceMap:
+_AUTO_NAME = re.compile(r"^(Analog|Button|Encoder|Slider|Knob) \d+$|^Button \(LED \d+\)$")
+
+
+def is_auto_name(ctl: Control) -> bool:
+    """True if the control still carries a generated name rather than a real one."""
+    if _AUTO_NAME.match(ctl.name):
+        return True
+    number = "" if ctl.kind in ("cat", "pb") else f" {ctl.number}"
+    return ctl.name == f"{ctl.kind.upper()}{number} ch{ctl.channel + 1}"
+
+
+def relabel_interactive(port, dmap: DeviceMap, port_name: str, out=None,
+                        dim: int = 20, bright: int = 127) -> DeviceMap:
     """Press-then-name, for putting real names on an already-complete map.
 
     The reverse of `learn_interactive`, and the better order once every address
     is known: you are standing at the board, so touching the control first and
     naming it second means never having to work out what to call something you
     have not touched yet.
+
+    Given an output port, the board becomes the progress display.  Unlit keycaps
+    are unreadable, so everything is lit dim to start; the control being named
+    blinks, and named ones stay bright.  What is left to do is then visible on
+    the hardware instead of having to be tracked in your head.
     """
+    from .flash import Flasher, set_level
+
     dmap.input_port = dmap.input_port or port_name
     existing = dmap.by_key()
     named = 0
+
+    def level_for(ctl: Control) -> int:
+        return dim if is_auto_name(ctl) else bright
+
+    lit = [c for c in dmap.controls if c.feedback]
+    if out and lit:
+        for ctl in lit:
+            set_level(out, ctl, level_for(ctl))
+        done = sum(1 for c in lit if not is_auto_name(c))
+        print(f"\nLit {len(lit)} LEDs: bright = already named ({done}), dim = to do.")
+
     print(
         f"\nRelabelling {len(dmap.controls)} controls.\n"
         "Operate a control, then type its name.  Blank keeps the current name.\n"
@@ -231,18 +263,32 @@ def relabel_interactive(port, dmap: DeviceMap, port_name: str) -> DeviceMap:
                 existing[key] = ctl
                 print(f"  (new) {ctl.describe()}")
 
-            lit = "  [has LED]" if ctl.feedback else ""
+            has_led = "  [has LED]" if ctl.feedback else "  [no LED]"
+            prompt = f"  {ctl.describe()}{has_led}\n  name [{ctl.name}]: "
+            blinker = (
+                Flasher(out, ctl.kind, ctl.feedback["channel"], ctl.feedback["number"],
+                        bright, 0.22)
+                if out and ctl.feedback
+                else contextlib.nullcontext()
+            )
             try:
-                name = input(f"  {ctl.describe()}{lit}\n  name [{ctl.name}]: ").strip()
+                with blinker:
+                    name = input(prompt).strip()
             except EOFError:
                 break
             if name:
                 ctl.name = name
                 _mark_observed(ctl)
                 named += 1
+            if out and ctl.feedback:
+                set_level(out, ctl, level_for(ctl))
             print()
     except KeyboardInterrupt:
         print()
+    if out and lit:
+        # Leave the board readable rather than dark on the way out.
+        for ctl in lit:
+            set_level(out, ctl, level_for(ctl))
     print(f"Named {named} control(s).")
     return dmap
 
