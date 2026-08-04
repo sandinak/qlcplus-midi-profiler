@@ -229,11 +229,69 @@ def test_to_device_map_channel_base():
         "leds": {"activation_id": [53, 7], "channel": [9, 1],
                  "control_type": [10, 6], "activation_value": [0, 127]},
     }
-    dmap = to_device_map(dump, DeviceMap())
+    # Switch slots are phantom-heavy, so they are opt-in.
+    check("buttons excluded by default",
+          [c.type for c in to_device_map(dump, DeviceMap()).controls], [])
+
+    dmap = to_device_map(dump, DeviceMap(), include_buttons=True)
     check("channels are 0-based", [c.channel for c in dmap.controls], [8, 0])
     # LED 0 is Static so it ignores MIDI; LED 1 is MidiInNoteMultiVal and matches.
     check("static LED not linked", dmap.controls[0].feedback, None)
     check("driven LED linked", dmap.controls[1].feedback["number"], 7)
+
+
+class PagedOpenDeck(FakeOpenDeck):
+    """Splits section reads into 32-value pages, like real firmware does."""
+
+    def _exchange(self, payload):
+        from qlcprofiler.opendeck import STATUS_ACK, SYSEX_ID, WISH_SET
+
+        part, wish, amount = payload[1], payload[2], payload[3]
+        key = f"{payload[4]}/{payload[5]}"
+        if key not in self.tables or wish == WISH_SET:
+            return super()._exchange(payload)
+        if not amount:
+            return super()._exchange(payload)
+        page = self.tables[key][part * 32:(part + 1) * 32]
+        if not page:
+            return SYSEX_ID + [0x08, 0] + payload[2:10]  # part not supported
+        head = SYSEX_ID + [STATUS_ACK, 0] + payload[2:10]
+        for v in page:
+            head += [v >> 7, v & 0x7F]
+        return head
+
+
+def test_paginated_read():
+    from qlcprofiler.opendeck import OpenDeck
+
+    big = list(range(70))  # 3 pages: 32 + 32 + 6
+    fake = PagedOpenDeck({"1/2": big})
+    device = OpenDeck.__new__(OpenDeck)
+    device._exchange = fake._exchange
+    # Reading only part 0 would return 32 values and look complete.
+    check("all pages concatenated", device.read_section(1, 2), big)
+
+    exact = list(range(64))  # 2 full pages, then an empty one
+    fake2 = PagedOpenDeck({"1/2": exact})
+    device2 = OpenDeck.__new__(OpenDeck)
+    device2._exchange = fake2._exchange
+    check("exact page multiple", device2.read_section(1, 2), exact)
+
+
+def test_pair_by_address():
+    from qlcprofiler.opendeck import pair_by_address
+
+    dump = {"leds": {"activation_id": [99, 53, 7], "channel": [9, 9, 1],
+                     "control_type": [6, 6, 6], "activation_value": [0, 0, 0]}}
+    dmap = DeviceMap(controls=[
+        Control("Pad A", "note", 8, 53, "Button"),   # matches LED 1
+        Control("Pad B", "note", 0, 7, "Button"),    # matches LED 2
+        Control("Pad C", "note", 8, 41, "Button"),   # no LED listens
+        Control("Fader", "cc", 8, 53, "Slider"),     # right number, wrong kind
+    ])
+    pairs = pair_by_address(dump, dmap)
+    check("matched two", pairs, {1: 0, 2: 1})
+    check("cc not matched to note LED", 3 in pairs.values(), False)
 
 
 if __name__ == "__main__":
@@ -241,7 +299,8 @@ if __name__ == "__main__":
                test_collision_detected, test_dominant_key,
                test_read_write_roundtrip, test_restore_only_writes_differences,
                test_align_leds_plan, test_align_rejects_undrivable_kind,
-               test_to_device_map_channel_base):
+               test_to_device_map_channel_base, test_paginated_read,
+               test_pair_by_address):
         print(f"\n-- {fn.__name__}")
         fn()
     print(f"\n{failures} failure(s)")

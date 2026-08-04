@@ -139,15 +139,30 @@ class OpenDeck:
 
     # -- config reads ------------------------------------------------------
 
-    def read_section(self, block: int, section: int) -> list[int] | None:
-        """Every value in one section, or None if the firmware lacks it."""
-        reply = self._exchange(
-            [STATUS_REQUEST, 0x00, WISH_GET, AMOUNT_ALL, block, section, 0, 0, 0, 0]
-        )
-        if reply[3] != STATUS_ACK:
-            return None
-        raw = reply[_VALUES_AT:]
-        return [(raw[i] << 7) | raw[i + 1] for i in range(0, len(raw) - 1, 2)]
+    def read_section(self, block: int, section: int, max_parts: int = 32) -> list[int] | None:
+        """Every value in one section, or None if the firmware lacks it.
+
+        A section larger than one SysEx reply is paginated into "parts".  Only
+        asking for part 0 silently returns the first page and looks like a
+        complete answer, so walk parts until the device refuses or hands back a
+        short page.  A 203-switch board answers part 0 with 32 values and looks
+        like a 32-switch board if you stop there.
+        """
+        values: list[int] = []
+        for part in range(max_parts):
+            reply = self._exchange(
+                [STATUS_REQUEST, part, WISH_GET, AMOUNT_ALL, block, section, 0, 0, 0, 0]
+            )
+            if reply[3] != STATUS_ACK:
+                break
+            raw = reply[_VALUES_AT:]
+            page = [(raw[i] << 7) | raw[i + 1] for i in range(0, len(raw) - 1, 2)]
+            if not page:
+                break
+            values.extend(page)
+            if len(page) < 32:  # short page means this was the last one
+                break
+        return values or None
 
     def read_single(self, block: int, section: int, index: int) -> int | None:
         reply = self._exchange(
@@ -267,16 +282,50 @@ def _column(table: dict, name: str, index: int, default=0):
     return values[index]
 
 
-def to_device_map(dump: dict, dmap):
+def pair_by_address(dump: dict, dmap) -> dict[int, int]:
+    """Match controls to LED indices that already listen on the same address.
+
+    A well-built board points each LED at the note its own button sends, which
+    means the pairing can be computed instead of discovered by hand.  Returns
+    {LED index -> index into dmap.controls}.  Use `identify` when the addresses
+    do not line up and the physical layout has to be observed.
+    """
+    leds = dump.get("leds", {})
+    index_of: dict[tuple[int, int], int] = {}
+    for i in range(len(leds.get("activation_id", []))):
+        address = (
+            _column(leds, "activation_id", i),
+            max(_column(leds, "channel", i, 1) - 1, 0),
+        )
+        index_of.setdefault(address, i)  # first LED wins on duplicate addresses
+
+    pairs: dict[int, int] = {}
+    for control_index, ctl in enumerate(dmap.controls):
+        if ctl.kind != "note":
+            continue
+        led_index = index_of.get((ctl.number, ctl.channel))
+        if led_index is not None and led_index not in pairs:
+            pairs[led_index] = control_index
+    return pairs
+
+
+def to_device_map(dump: dict, dmap, include_buttons: bool = False):
     """Turn a raw dump into controls + LED records on an existing DeviceMap.
 
     OpenDeck stores MIDI channels 1-based; everything downstream is 0-based.
+
+    Switch entries are left out by default.  The database defines every slot the
+    firmware supports - 203 on one board tested - with unpopulated slots holding
+    default values that are indistinguishable from real ones.  Emitting them all
+    buries the controls that exist in phantoms, so `learn` is the honest source
+    for buttons.  Analog and LED blocks carry enable flags and control types, so
+    those are reported.
     """
     from .learn import Control
 
     controls: list[Control] = []
 
-    buttons = dump.get("buttons", {})
+    buttons = dump.get("buttons", {}) if include_buttons else {}
     count = len(buttons.get("midi_id", []))
     for i in range(count):
         message = _column(buttons, "message", i)
@@ -454,10 +503,18 @@ def summarize(dump: dict, dmap) -> str:
         f"Controls: {len(dmap.controls)}  ("
         + ", ".join(f"{n} {k}" for k, n in sorted(kinds.items()))
         + ")",
-        f"LEDs: {len(leds)} total, {len(driven)} driven by incoming MIDI, "
+        f"LEDs: {len(leds)} slots, {len(driven)} driven by incoming MIDI, "
         f"{len(leds) - len(driven)} local/static",
-        f"Buttons with usable QLC+ feedback: {len(linked)}",
+        f"Controls with usable QLC+ feedback: {len(linked)}",
     ]
+    switches = len(dump.get("buttons", {}).get("midi_id", []))
+    if switches and not any(c.type == "Button" for c in dmap.controls):
+        lines.append(
+            f"\nThe firmware defines {switches} switch slots, most of them unpopulated\n"
+            "defaults that look identical to real controls.  Buttons are therefore\n"
+            "not guessed from the config - run `learn` and press them:\n"
+            "  qlc-midi learn <port> -m <map> --auto"
+        )
     if leds and not linked:
         lines.append(
             "\nNo button's LED listens on that button's own note/channel, so QLC+\n"

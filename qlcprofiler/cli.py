@@ -212,7 +212,7 @@ def cmd_od_dump(args) -> int:
         input_port=inp.name,
         output_port=out.name,
     )
-    to_device_map(dump, dmap)
+    to_device_map(dump, dmap, include_buttons=args.include_buttons)
     for record in dmap.leds:
         if record["index"] in prior_pairs:
             record["button"] = prior_pairs[record["index"]]
@@ -351,21 +351,38 @@ def cmd_od_enable_leds(args) -> int:
     od, inp, _ = _open_opendeck(args)
     od.connect()
 
+    from .opendeck import BLOCK_LED, LED_CONTROL_TYPE, pair_by_address
+
     map_path = Path(args.map)
-    if args.paired_only:
-        if not map_path.exists():
-            print(f"{map_path} not found; run `opendeck identify` first.", file=sys.stderr)
-            return 2
-        saved = DeviceMap.load(map_path)
+    saved = DeviceMap.load(map_path) if map_path.exists() else DeviceMap()
+
+    if args.all:
+        indices = list(range(len(od.read_section(BLOCK_LED, LED_CONTROL_TYPE) or [])))
+        print(f"Targeting all {len(indices)} LED slots.")
+    elif args.paired_only:
         indices = [r["index"] for r in saved.leds if r.get("button")]
         if not indices:
-            print("No paired LEDs in the map; run `opendeck identify` first.",
+            print("No LEDs paired by `identify` in this map.", file=sys.stderr)
+            return 2
+        print(f"Targeting {len(indices)} LED(s) paired by `identify`.")
+    else:
+        # Default: LEDs already listening on an address some control sends.
+        # Lighting a slot no control drives just wastes writes.
+        if not saved.controls:
+            print(f"{map_path} has no controls; run `learn` first, or use --all.",
                   file=sys.stderr)
             return 2
-    else:
-        from .opendeck import BLOCK_LED, LED_CONTROL_TYPE
-
-        indices = list(range(len(od.read_section(BLOCK_LED, LED_CONTROL_TYPE) or [])))
+        pairs = pair_by_address(od.dump(), saved)
+        indices = sorted(pairs)
+        if not indices:
+            print(
+                "No LED listens on an address any learned control sends.\n"
+                "Run `opendeck identify` to pair them physically, then\n"
+                "`opendeck align`, or pass --all.",
+                file=sys.stderr,
+            )
+            return 2
+        print(f"Targeting {len(indices)} LED(s) whose address matches a learned control.")
 
     plan = enable_leds(od, indices, dry_run=True)
     if not plan["changed"]:
@@ -600,6 +617,8 @@ def build_parser() -> argparse.ArgumentParser:
     sp.add_argument("--manufacturer", default="")
     sp.add_argument("--model", default="")
     sp.add_argument("--raw", action="store_true", help="also dump raw config tables")
+    sp.add_argument("--include-buttons", action="store_true",
+                    help="also emit a control per switch slot (mostly phantoms)")
     sp.set_defaults(func=cmd_od_dump)
 
     sp = od_common(odsub.add_parser("backup", help="snapshot the whole config to JSON"))
@@ -630,6 +649,8 @@ def build_parser() -> argparse.ArgumentParser:
     sp.add_argument("-m", "--map", default="maps/device.json")
     sp.add_argument("--paired-only", action="store_true",
                     help="only LEDs paired to a button by `identify`")
+    sp.add_argument("--all", action="store_true",
+                    help="every LED slot the firmware exposes, matched or not")
     sp.add_argument("--dry-run", action="store_true", help="show the plan, write nothing")
     sp.add_argument("-y", "--yes", action="store_true", help="skip confirmation")
     sp.set_defaults(func=cmd_od_enable_leds)
