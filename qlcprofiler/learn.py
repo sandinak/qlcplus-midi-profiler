@@ -195,6 +195,58 @@ def learn_interactive(port, dmap: DeviceMap, port_name: str) -> DeviceMap:
     return dmap
 
 
+def relabel_interactive(port, dmap: DeviceMap, port_name: str) -> DeviceMap:
+    """Press-then-name, for putting real names on an already-complete map.
+
+    The reverse of `learn_interactive`, and the better order once every address
+    is known: you are standing at the board, so touching the control first and
+    naming it second means never having to work out what to call something you
+    have not touched yet.
+    """
+    dmap.input_port = dmap.input_port or port_name
+    existing = dmap.by_key()
+    named = 0
+    print(
+        f"\nRelabelling {len(dmap.controls)} controls.\n"
+        "Operate a control, then type its name.  Blank keeps the current name.\n"
+        "Ctrl-C when finished.\n"
+    )
+    try:
+        while True:
+            _drain(port)
+            events = collect_burst(port, timeout=3600.0)
+            if not events:
+                continue
+            key = dominant_key(events)
+            matching = [e for e in events if e.key == key]
+            ctl = existing.get(key)
+            if ctl is None:
+                kind, ch, num = key
+                ctl = Control(
+                    name=f"{kind.upper()} {num} ch{ch + 1}",
+                    kind=kind, channel=ch, number=num,
+                    type=classify(matching),
+                )
+                dmap.controls.append(ctl)
+                existing[key] = ctl
+                print(f"  (new) {ctl.describe()}")
+
+            lit = "  [has LED]" if ctl.feedback else ""
+            try:
+                name = input(f"  {ctl.describe()}{lit}\n  name [{ctl.name}]: ").strip()
+            except EOFError:
+                break
+            if name:
+                ctl.name = name
+                _mark_observed(ctl)
+                named += 1
+            print()
+    except KeyboardInterrupt:
+        print()
+    print(f"Named {named} control(s).")
+    return dmap
+
+
 def learn_auto(port, dmap: DeviceMap, port_name: str, idle_stop: float = 0.0) -> DeviceMap:
     """Sniff everything, registering controls as they first appear.
 

@@ -12,7 +12,7 @@ from pathlib import Path
 from . import feedback as fb
 from . import ports
 from .events import from_mido, qlc_channel
-from .learn import DeviceMap, learn_auto, learn_interactive
+from .learn import DeviceMap, learn_auto, learn_interactive, relabel_interactive
 from .profile import (
     build_qxi,
     build_qxm,
@@ -78,6 +78,8 @@ def cmd_learn(args) -> int:
 
     if args.auto:
         learn_auto(port, dmap, port.name, idle_stop=args.idle_stop)
+    elif args.relabel:
+        relabel_interactive(port, dmap, port.name)
     else:
         learn_interactive(port, dmap, port.name)
 
@@ -576,6 +578,8 @@ def build_parser() -> argparse.ArgumentParser:
     sp.add_argument("port", help="input port name or substring")
     sp.add_argument("-m", "--map", default="maps/device.json", help="map JSON path")
     sp.add_argument("--auto", action="store_true", help="sniff everything, auto-name")
+    sp.add_argument("--relabel", action="store_true",
+                    help="press-then-name: operate a control, then type its name")
     sp.add_argument("--idle-stop", type=float, default=0.0,
                     help="auto mode: stop after N seconds of silence")
     sp.add_argument("--manufacturer", default="")
