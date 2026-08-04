@@ -29,7 +29,7 @@ python3 -m venv venv
 ### OpenDeck board
 
 ```sh
-./venv/bin/python qlc-midi opendeck OpenDeck -m maps/mydeck.json --raw
+./venv/bin/python qlc-midi opendeck dump OpenDeck -m maps/mydeck.json --raw
 ./venv/bin/python qlc-midi generate -m maps/mydeck.json --install
 ```
 
@@ -61,8 +61,12 @@ maps to, which is handy when a binding in QLC+ is not firing.
 | `ports` | List MIDI inputs and outputs |
 | `monitor PORT` | Print incoming MIDI with QLC+ channel numbers |
 | `learn PORT` | Build a control map (`--auto` to sniff everything at once) |
-| `opendeck PORT` | Read an OpenDeck board's config over SysEx |
-| `feedback` | Probe LED feedback (`--mode echo\|scan\|colors`) |
+| `opendeck dump` | Read an OpenDeck board's config over SysEx |
+| `opendeck backup` | Snapshot the entire config to JSON |
+| `opendeck restore` | Write a backup back to the device |
+| `opendeck identify` | Flash each LED, pair it with the button you press |
+| `opendeck align` | Point each LED at its own button's note |
+| `feedback` | Probe LED feedback (`--mode echo\|scan\|flash\|colors`) |
 | `generate` | Write the `.qxi` (`--install` to drop it in QLC+'s profile dir) |
 | `template` | Write a `.qxm` MIDI template carrying init SysEx |
 
@@ -124,14 +128,85 @@ If the LEDs answer on different addresses than the buttons report, there are
 three ways out, in order of preference:
 
 1. **Reconfigure the controller** so each LED's activation note matches its
-   button's note and channel. On OpenDeck this is a SysEx write to the LED
-   block; the OpenDeck web configurator does it too. Afterwards QLC+ feedback
-   works natively.
+   button's note and channel. On OpenDeck, `opendeck align` does exactly this —
+   see below. Afterwards QLC+ feedback works natively.
 2. **Send init SysEx** if the device has a mode that aligns them — put it in a
    `.qxm` template via `qlc-midi template` and select it in the QLC+ MIDI
    plugin.
 3. **Translate in the middle** with a small MIDI bridge. Most flexible, but it
    is another process to keep running.
+
+### Which LEDs are even addressable?
+
+A board can look dead to MIDI simply because its outputs are configured as
+`Static` or `Local` — they ignore incoming MIDI no matter what you send.
+`feedback --mode flash` walks an address space and blinks each address, which
+is far easier to spot than a steady light on a board that already has LEDs on:
+
+```sh
+./venv/bin/python qlc-midi feedback --mode flash --out OpenDeck \
+    --kind note --channels 1 --first 0 --last 63
+```
+
+If nothing blinks anywhere, the outputs are not MIDI-driven yet — on OpenDeck,
+`opendeck identify` fixes that as part of its run.
+
+### Pairing LEDs to buttons on OpenDeck
+
+`opendeck identify` answers the question the config alone cannot: which LED sits
+under which button. Nothing in the device's database says so, and LED index *i*
+is not reliably button *i*.
+
+```sh
+./venv/bin/python qlc-midi opendeck identify OpenDeck -m maps/mydeck.json
+```
+
+It backs up the config, temporarily makes every LED respond to note *i* on MIDI
+channel 1 so all of them are discoverable, then blinks them one at a time. You
+press the button under the blinking one and the pairing is recorded — observed,
+not assumed. Enter skips an LED that does not light. The original config is
+restored at the end unless you pass `--keep`.
+
+Then apply the alignment:
+
+```sh
+./venv/bin/python qlc-midi opendeck align OpenDeck -m maps/mydeck.json --dry-run
+./venv/bin/python qlc-midi opendeck align OpenDeck -m maps/mydeck.json
+```
+
+For each paired LED this writes activation note, MIDI channel, activation value
+and control type (`MidiInNoteMultiVal`, so velocity drives brightness). It
+re-reads the device afterwards and updates the map, so `generate` then emits
+`<Feedback>` for every button that really works.
+
+`--assume-index-order` skips `identify` and assumes LED *i* belongs to control
+*i*. Quick, and wrong on plenty of boards — verify with `identify` if the result
+looks scrambled.
+
+## Undo and redo
+
+Every command that writes to the device takes a full config backup first, into
+`backups/`, without being asked. A backup is a complete snapshot of every
+section the firmware will hand over, so restoring one puts the board back
+exactly as it was:
+
+```sh
+# undo: put the board back
+./venv/bin/python qlc-midi opendeck restore OpenDeck -f backups/mydeck-20260804-162202.json
+```
+
+`restore` diffs against the live device first and writes only what actually
+differs, showing you the list before touching anything. `--dry-run` shows the
+diff and stops.
+
+Redo works because `restore` also snapshots the *current* state before it
+overwrites it, as `...-pre-restore-<timestamp>.json`. So undoing an alignment
+leaves you a backup of the aligned state; restore that one to get it back.
+Backups are ordinary JSON — keep the ones that matter and delete the rest.
+
+```sh
+./venv/bin/python qlc-midi opendeck backup OpenDeck -f backups/factory.json
+```
 
 ## Control classification
 

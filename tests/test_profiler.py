@@ -110,9 +110,138 @@ def test_dominant_key():
     check("empty burst", dominant_key([]), None)
 
 
+class FakeOpenDeck:
+    """An in-memory OpenDeck that speaks the real SysEx encoding.
+
+    Exercises the actual request builders and reply parsers, so a change to the
+    wire format breaks these tests rather than only breaking on hardware.
+    """
+
+    def __init__(self, tables):
+        self.tables = {k: list(v) for k, v in tables.items()}
+        self.writes = []
+
+    def _exchange(self, payload):
+        from qlcprofiler.opendeck import STATUS_ACK, SYSEX_ID, WISH_SET
+
+        wish, amount, block, section = payload[2], payload[3], payload[4], payload[5]
+        index = (payload[6] << 7) | payload[7]
+        value = (payload[8] << 7) | payload[9]
+        key = f"{block}/{section}"
+        if key not in self.tables:
+            return SYSEX_ID + [0x07, 0] + payload[2:10]  # section not supported
+        table = self.tables[key]
+        head = SYSEX_ID + [STATUS_ACK, 0] + payload[2:10]
+
+        if wish == WISH_SET:
+            if index >= len(table):
+                return SYSEX_ID + [0x09, 0] + payload[2:10]  # index out of range
+            table[index] = value
+            self.writes.append((block, section, index, value))
+            return head
+        values = table if amount else [table[index]]
+        for v in values:
+            head += [v >> 7, v & 0x7F]
+        return head
+
+
+def _fake(tables):
+    from qlcprofiler.opendeck import OpenDeck
+
+    fake = FakeOpenDeck(tables)
+    device = OpenDeck.__new__(OpenDeck)
+    device._exchange = fake._exchange
+    device.connect = lambda: None
+    return device, fake
+
+
+def test_read_write_roundtrip():
+    device, fake = _fake({"4/3": [23, 1, 2, 4], "1/2": [0, 53, 38, 40]})
+    check("read_section", device.read_section(4, 3), [23, 1, 2, 4])
+    check("read_single", device.read_single(1, 2, 1), 53)
+    check("unsupported section", device.read_section(9, 9), None)
+    device.write_checked(4, 3, 2, 77)
+    check("write lands", fake.tables["4/3"], [23, 1, 77, 4])
+    # 14-bit values must survive the 7-bit split.
+    device.write_checked(4, 3, 0, 16000)
+    check("14-bit write", device.read_single(4, 3, 0), 16000)
+
+
+def test_restore_only_writes_differences():
+    device, fake = _fake({"4/3": [23, 1, 2, 4]})
+    backup = {"4/3": [23, 9, 2, 8]}
+
+    plan = device.restore_all(backup, dry_run=True)
+    check("dry run finds 2 diffs", len(plan["changed"]), 2)
+    check("dry run writes nothing", fake.writes, [])
+
+    result = device.restore_all(backup)
+    check("restore writes 2", len(result["changed"]), 2)
+    check("restore skips 2", result["unchanged"], 2)
+    check("device now matches", fake.tables["4/3"], [23, 9, 2, 8])
+
+    again = device.restore_all(backup, dry_run=True)
+    check("restore is idempotent", again["changed"], [])
+
+
+def test_align_leds_plan():
+    from qlcprofiler.opendeck import (
+        BLOCK_LED, LED_ACTIVATION_ID, LED_CHANNEL, LED_CONTROL_TYPE, align_leds,
+    )
+
+    device, fake = _fake({
+        f"{BLOCK_LED}/{LED_CONTROL_TYPE}": [10, 10],
+        f"{BLOCK_LED}/{LED_ACTIVATION_ID}": [99, 99],
+        f"{BLOCK_LED}/{LED_CHANNEL}": [1, 1],
+        f"{BLOCK_LED}/6": [0, 0],
+    })
+    dmap = DeviceMap(controls=[
+        Control("Pad A", "note", 8, 53, "Button"),   # MIDI channel 9
+        Control("Fader", "cc", 8, 7, "Slider"),
+    ])
+
+    plan = align_leds(device, dmap, {0: 0}, dry_run=True)
+    check("plan has 1 LED", len(plan["planned"]), 1)
+    check("dry run writes nothing", fake.writes, [])
+
+    align_leds(device, dmap, {0: 0, 1: 1})
+    check("LED 0 note", fake.tables[f"{BLOCK_LED}/{LED_ACTIVATION_ID}"][0], 53)
+    # OpenDeck stores channels 1-based, so 0-based 8 must land as 9.
+    check("LED 0 channel", fake.tables[f"{BLOCK_LED}/{LED_CHANNEL}"][0], 9)
+    check("LED 0 note type", fake.tables[f"{BLOCK_LED}/{LED_CONTROL_TYPE}"][0], 6)
+    check("LED 1 cc type", fake.tables[f"{BLOCK_LED}/{LED_CONTROL_TYPE}"][1], 8)
+
+
+def test_align_rejects_undrivable_kind():
+    from qlcprofiler.opendeck import BLOCK_LED, LED_ACTIVATION_ID, align_leds
+
+    device, _ = _fake({f"{BLOCK_LED}/{LED_ACTIVATION_ID}": [0]})
+    dmap = DeviceMap(controls=[Control("Wheel", "pb", 0, 0, "Slider")])
+    result = align_leds(device, dmap, {0: 0})
+    check("pitch bend refused", len(result["failed"]), 1)
+
+
+def test_to_device_map_channel_base():
+    from qlcprofiler.opendeck import to_device_map
+
+    dump = {
+        "buttons": {"message": [0, 0], "midi_id": [53, 7], "channel": [9, 1]},
+        "leds": {"activation_id": [53, 7], "channel": [9, 1],
+                 "control_type": [10, 6], "activation_value": [0, 127]},
+    }
+    dmap = to_device_map(dump, DeviceMap())
+    check("channels are 0-based", [c.channel for c in dmap.controls], [8, 0])
+    # LED 0 is Static so it ignores MIDI; LED 1 is MidiInNoteMultiVal and matches.
+    check("static LED not linked", dmap.controls[0].feedback, None)
+    check("driven LED linked", dmap.controls[1].feedback["number"], 7)
+
+
 if __name__ == "__main__":
     for fn in (test_classify, test_encoding, test_channel_mode, test_qxi,
-               test_collision_detected, test_dominant_key):
+               test_collision_detected, test_dominant_key,
+               test_read_write_roundtrip, test_restore_only_writes_differences,
+               test_align_leds_plan, test_align_rejects_undrivable_kind,
+               test_to_device_map_channel_base):
         print(f"\n-- {fn.__name__}")
         fn()
     print(f"\n{failures} failure(s)")

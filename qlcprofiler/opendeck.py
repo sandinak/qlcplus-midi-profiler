@@ -30,6 +30,7 @@ STATUS_REQUEST = 0x00
 STATUS_ACK = 0x01
 
 WISH_GET = 0x00
+WISH_SET = 0x01
 AMOUNT_SINGLE = 0x00
 AMOUNT_ALL = 0x01
 
@@ -148,6 +149,33 @@ class OpenDeck:
         raw = reply[_VALUES_AT:]
         return [(raw[i] << 7) | raw[i + 1] for i in range(0, len(raw) - 1, 2)]
 
+    def read_single(self, block: int, section: int, index: int) -> int | None:
+        reply = self._exchange(
+            [STATUS_REQUEST, 0x00, WISH_GET, AMOUNT_SINGLE, block, section,
+             index >> 7, index & 0x7F, 0, 0]
+        )
+        if reply[3] != STATUS_ACK or len(reply) < _VALUES_AT + 2:
+            return None
+        return (reply[_VALUES_AT] << 7) | reply[_VALUES_AT + 1]
+
+    def write_single(self, block: int, section: int, index: int, value: int) -> int:
+        """Write one value.  Returns the device's status byte (1 = ack)."""
+        if not 0 <= value <= 0x3FFF:
+            raise ValueError(f"value {value} out of 14-bit range")
+        reply = self._exchange(
+            [STATUS_REQUEST, 0x00, WISH_SET, AMOUNT_SINGLE, block, section,
+             index >> 7, index & 0x7F, value >> 7, value & 0x7F]
+        )
+        return reply[3]
+
+    def write_checked(self, block: int, section: int, index: int, value: int) -> None:
+        status = self.write_single(block, section, index, value)
+        if status != STATUS_ACK:
+            raise OpenDeckError(
+                f"write block {block} section {section} index {index} = {value}: "
+                f"{STATUS_NAMES.get(status, status)}"
+            )
+
     def read_block(self, block: int, sections: dict[str, int]) -> dict[str, list[int]]:
         out = {}
         for name, section in sections.items():
@@ -181,6 +209,55 @@ class OpenDeck:
                 "activation_value": LED_ACTIVATION_VALUE, "channel": LED_CHANNEL,
             }),
         }
+
+
+    # -- whole-config backup and restore -----------------------------------
+
+    def dump_all(self, max_block: int = 6, max_section: int = 15) -> dict[str, list[int]]:
+        """Every section the firmware answers, keyed "block/section".
+
+        Sections a firmware does not implement answer with an error and are
+        left out, so the backup only ever contains values the device agreed to
+        hand over.
+        """
+        self.connect()
+        tables: dict[str, list[int]] = {}
+        for block in range(max_block + 1):
+            for section in range(max_section + 1):
+                values = self.read_section(block, section)
+                if values:
+                    tables[f"{block}/{section}"] = values
+        return tables
+
+    def restore_all(self, tables: dict[str, list[int]], dry_run: bool = False) -> dict:
+        """Write a backup back to the device, skipping values already correct.
+
+        Read-only sections reject writes; those are collected and reported
+        rather than aborting the restore, since a partial config is still worth
+        recovering.
+        """
+        self.connect()
+        changed, failed, skipped = [], [], 0
+        for key, values in sorted(tables.items()):
+            block, section = (int(x) for x in key.split("/"))
+            current = self.read_section(block, section)
+            if current is None:
+                failed.append((key, None, "section not readable"))
+                continue
+            for index, want in enumerate(values):
+                if index < len(current) and current[index] == want:
+                    skipped += 1
+                    continue
+                if dry_run:
+                    have = current[index] if index < len(current) else None
+                    changed.append((key, index, have, want))
+                    continue
+                status = self.write_single(block, section, index, want)
+                if status == STATUS_ACK:
+                    changed.append((key, index, current[index], want))
+                else:
+                    failed.append((key, index, STATUS_NAMES.get(status, status)))
+        return {"changed": changed, "failed": failed, "unchanged": skipped}
 
 
 def _column(table: dict, name: str, index: int, default=0):
@@ -274,6 +351,63 @@ def to_device_map(dump: dict, dmap):
     dmap.controls = controls
     dmap.leds = led_records
     return dmap
+
+
+LED_CONTROL_TYPE_FOR_KIND = {
+    "note": 6,  # MidiInNoteMultiVal - incoming velocity drives brightness
+    "cc": 8,  # MidiInCcMultiVal
+}
+
+
+def set_led_identity(od: OpenDeck, count: int, channel: int = 1) -> int:
+    """Temporarily make LED *i* respond to note *i* on one MIDI channel.
+
+    This is what makes an unknown board's LEDs discoverable: as shipped, most
+    outputs may be Static or Local and ignore incoming MIDI entirely, so
+    nothing lights no matter what you send.  Back up before calling this.
+    """
+    applied = 0
+    for i in range(count):
+        try:
+            od.write_checked(BLOCK_LED, LED_CONTROL_TYPE, i, LED_CONTROL_TYPE_FOR_KIND["note"])
+            od.write_checked(BLOCK_LED, LED_ACTIVATION_ID, i, i)
+            od.write_checked(BLOCK_LED, LED_CHANNEL, i, channel)
+            od.write_checked(BLOCK_LED, LED_ACTIVATION_VALUE, i, 127)
+            applied += 1
+        except OpenDeckError as exc:
+            print(f"  LED {i}: {exc}")
+    return applied
+
+
+def align_leds(od: OpenDeck, dmap, pairing: dict[int, int], dry_run: bool = False) -> dict:
+    """Point each LED at its own button's note and MIDI channel.
+
+    `pairing` maps LED index -> index into dmap.controls.  Afterwards QLC+ can
+    light the button, because feedback goes back out on the same address the
+    button reports on.
+    """
+    planned, failed = [], []
+    for led_index, control_index in sorted(pairing.items()):
+        ctl = dmap.controls[control_index]
+        ctype = LED_CONTROL_TYPE_FOR_KIND.get(ctl.kind)
+        if ctype is None:
+            failed.append((led_index, f"cannot drive an LED from {ctl.kind}"))
+            continue
+        writes = [
+            (LED_CONTROL_TYPE, ctype),
+            (LED_ACTIVATION_ID, ctl.number),
+            (LED_CHANNEL, ctl.channel + 1),  # OpenDeck stores channels 1-based
+            (LED_ACTIVATION_VALUE, 127),
+        ]
+        planned.append((led_index, ctl.name, ctl.number, ctl.channel + 1))
+        if dry_run:
+            continue
+        try:
+            for section, value in writes:
+                od.write_checked(BLOCK_LED, section, led_index, value)
+        except OpenDeckError as exc:
+            failed.append((led_index, str(exc)))
+    return {"planned": planned, "failed": failed}
 
 
 def summarize(dump: dict, dmap) -> str:
