@@ -9,135 +9,128 @@
  <Manufacturer>OpenDeck</Manufacturer>
  <Model>PMJ_BLACK_1</Model>
  <Type>MIDI</Type>
- <Channel Number="128">
-  <Name>Button 1</Name>
-  <Type>Button</Type>
- </Channel>
- <Channel Number="32949">
-  <Name>Button 2</Name>
-  <Type>Button</Type>
- </Channel>
- <Channel Number="32934">
-  <Name>Button 3</Name>
-  <Type>Button</Type>
- </Channel>
- <Channel Number="32936">
-  <Name>Button 4</Name>
-  <Type>Button</Type>
- </Channel>
- <Channel Number="32938">
-  <Name>Button 5</Name>
-  <Type>Button</Type>
- </Channel>
- <Channel Number="32940">
-  <Name>Button 6</Name>
-  <Type>Button</Type>
- </Channel>
- <Channel Number="32942">
-  <Name>Button 7</Name>
-  <Type>Button</Type>
- </Channel>
- <Channel Number="135">
-  <Name>Button 8</Name>
+ <Channel Number="32919">
+  <Name>Button (LED 0)</Name>
   <Type>Button</Type>
   <Feedback LowerValue="0" UpperValue="127"/>
  </Channel>
- <Channel Number="32944">
-  <Name>Button 9</Name>
-  <Type>Button</Type>
- </Channel>
- <Channel Number="32946">
-  <Name>Button 10</Name>
-  <Type>Button</Type>
- </Channel>
- <Channel Number="32921">
-  <Name>Button 11</Name>
-  <Type>Button</Type>
- </Channel>
- <Channel Number="32923">
-  <Name>Button 12</Name>
-  <Type>Button</Type>
- </Channel>
- <Channel Number="32925">
-  <Name>Button 13</Name>
-  <Type>Button</Type>
- </Channel>
- <Channel Number="32927">
-  <Name>Button 14</Name>
-  <Type>Button</Type>
- </Channel>
- <Channel Number="32929">
-  <Name>Button 15</Name>
-  <Type>Button</Type>
- </Channel>
- <Channel Number="143">
-  <Name>Button 16</Name>
+ <Channel Number="32898">
+  <Name>Button (LED 2)</Name>
   <Type>Button</Type>
   <Feedback LowerValue="0" UpperValue="127"/>
  </Channel>
- <Channel Number="32931">
-  <Name>Button 17</Name>
-  <Type>Button</Type>
- </Channel>
- <Channel Number="32933">
-  <Name>Button 18</Name>
-  <Type>Button</Type>
- </Channel>
- <Channel Number="32908">
-  <Name>Button 19</Name>
-  <Type>Button</Type>
- </Channel>
- <Channel Number="32910">
-  <Name>Button 20</Name>
-  <Type>Button</Type>
- </Channel>
- <Channel Number="32912">
-  <Name>Button 21</Name>
-  <Type>Button</Type>
- </Channel>
- <Channel Number="32914">
-  <Name>Button 22</Name>
-  <Type>Button</Type>
- </Channel>
- <Channel Number="32916">
-  <Name>Button 23</Name>
-  <Type>Button</Type>
- </Channel>
- <Channel Number="151">
-  <Name>Button 24</Name>
+ <Channel Number="32900">
+  <Name>Button (LED 3)</Name>
   <Type>Button</Type>
   <Feedback LowerValue="0" UpperValue="127"/>
  </Channel>
- <Channel Number="32918">
-  <Name>Button 25</Name>
+ <Channel Number="32902">
+  <Name>Button (LED 4)</Name>
   <Type>Button</Type>
+  <Feedback LowerValue="0" UpperValue="127"/>
  </Channel>
- <Channel Number="32920">
-  <Name>Button 26</Name>
+ <Channel Number="32904">
+  <Name>Button (LED 5)</Name>
   <Type>Button</Type>
+  <Feedback LowerValue="0" UpperValue="127"/>
  </Channel>
- <Channel Number="32897">
-  <Name>Button 27</Name>
+ <Channel Number="32906">
+  <Name>Button (LED 6)</Name>
   <Type>Button</Type>
+  <Feedback LowerValue="0" UpperValue="127"/>
  </Channel>
- <Channel Number="32899">
-  <Name>Button 28</Name>
+ <Channel Number="32932">
+  <Name>Button (LED 8)</Name>
   <Type>Button</Type>
+  <Feedback LowerValue="0" UpperValue="127"/>
  </Channel>
- <Channel Number="32901">
-  <Name>Button 29</Name>
+ <Channel Number="32909">
+  <Name>Button (LED 10)</Name>
   <Type>Button</Type>
+  <Feedback LowerValue="0" UpperValue="127"/>
  </Channel>
- <Channel Number="32903">
-  <Name>Button 30</Name>
+ <Channel Number="32911">
+  <Name>Button (LED 11)</Name>
   <Type>Button</Type>
+  <Feedback LowerValue="0" UpperValue="127"/>
  </Channel>
- <Channel Number="32905">
-  <Name>Button 31</Name>
+ <Channel Number="32913">
+  <Name>Button (LED 12)</Name>
   <Type>Button</Type>
+  <Feedback LowerValue="0" UpperValue="127"/>
  </Channel>
- <Channel Number="159">
-  <Name>Button 32</Name>
+ <Channel Number="32915">
+  <Name>Button (LED 13)</Name>
+  <Type>Button</Type>
+  <Feedback LowerValue="0" UpperValue="127"/>
+ </Channel>
+ <Channel Number="32917">
+  <Name>Button (LED 14)</Name>
+  <Type>Button</Type>
+  <Feedback LowerValue="0" UpperValue="127"/>
+ </Channel>
+ <Channel Number="32945">
+  <Name>Button (LED 16)</Name>
+  <Type>Button</Type>
+  <Feedback LowerValue="0" UpperValue="127"/>
+ </Channel>
+ <Channel Number="32922">
+  <Name>Button (LED 18)</Name>
+  <Type>Button</Type>
+  <Feedback LowerValue="0" UpperValue="127"/>
+ </Channel>
+ <Channel Number="32924">
+  <Name>Button (LED 19)</Name>
+  <Type>Button</Type>
+  <Feedback LowerValue="0" UpperValue="127"/>
+ </Channel>
+ <Channel Number="32926">
+  <Name>Button (LED 20)</Name>
+  <Type>Button</Type>
+  <Feedback LowerValue="0" UpperValue="127"/>
+ </Channel>
+ <Channel Number="32928">
+  <Name>Button (LED 21)</Name>
+  <Type>Button</Type>
+  <Feedback LowerValue="0" UpperValue="127"/>
+ </Channel>
+ <Channel Number="32930">
+  <Name>Button (LED 22)</Name>
+  <Type>Button</Type>
+  <Feedback LowerValue="0" UpperValue="127"/>
+ </Channel>
+ <Channel Number="32948">
+  <Name>Button (LED 24)</Name>
+  <Type>Button</Type>
+  <Feedback LowerValue="0" UpperValue="127"/>
+ </Channel>
+ <Channel Number="32907">
+  <Name>Button (LED 25)</Name>
+  <Type>Button</Type>
+  <Feedback LowerValue="0" UpperValue="127"/>
+ </Channel>
+ <Channel Number="32935">
+  <Name>Button (LED 26)</Name>
+  <Type>Button</Type>
+  <Feedback LowerValue="0" UpperValue="127"/>
+ </Channel>
+ <Channel Number="32937">
+  <Name>Button (LED 27)</Name>
+  <Type>Button</Type>
+  <Feedback LowerValue="0" UpperValue="127"/>
+ </Channel>
+ <Channel Number="32939">
+  <Name>Button (LED 28)</Name>
+  <Type>Button</Type>
+  <Feedback LowerValue="0" UpperValue="127"/>
+ </Channel>
+ <Channel Number="32941">
+  <Name>Button (LED 29)</Name>
+  <Type>Button</Type>
+  <Feedback LowerValue="0" UpperValue="127"/>
+ </Channel>
+ <Channel Number="32943">
+  <Name>Button (LED 30)</Name>
   <Type>Button</Type>
   <Feedback LowerValue="0" UpperValue="127"/>
  </Channel>

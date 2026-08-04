@@ -5,348 +5,404 @@
   "output_port": "OpenDeck | PMJ_BLACK_1",
   "controls": [
     {
-      "name": "Button 1",
-      "kind": "note",
-      "channel": 0,
-      "number": 0,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 2",
+      "name": "Button (LED 0)",
       "kind": "note",
       "channel": 8,
-      "number": 53,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 3",
-      "kind": "note",
-      "channel": 8,
-      "number": 38,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 4",
-      "kind": "note",
-      "channel": 8,
-      "number": 40,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 5",
-      "kind": "note",
-      "channel": 8,
-      "number": 42,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 6",
-      "kind": "note",
-      "channel": 8,
-      "number": 44,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 7",
-      "kind": "note",
-      "channel": 8,
-      "number": 46,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 8",
-      "kind": "note",
-      "channel": 0,
-      "number": 7,
-      "type": "Button",
-      "values": [],
-      "feedback": {
-        "kind": "note",
-        "channel": 0,
-        "number": 7,
-        "lower": 0,
-        "upper": 127
-      },
-      "note": "LED 7"
-    },
-    {
-      "name": "Button 9",
-      "kind": "note",
-      "channel": 8,
-      "number": 48,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 10",
-      "kind": "note",
-      "channel": 8,
-      "number": 50,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 11",
-      "kind": "note",
-      "channel": 8,
-      "number": 25,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 12",
-      "kind": "note",
-      "channel": 8,
-      "number": 27,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 13",
-      "kind": "note",
-      "channel": 8,
-      "number": 29,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 14",
-      "kind": "note",
-      "channel": 8,
-      "number": 31,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 15",
-      "kind": "note",
-      "channel": 8,
-      "number": 33,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 16",
-      "kind": "note",
-      "channel": 0,
-      "number": 15,
-      "type": "Button",
-      "values": [],
-      "feedback": {
-        "kind": "note",
-        "channel": 0,
-        "number": 15,
-        "lower": 0,
-        "upper": 127
-      },
-      "note": "LED 15"
-    },
-    {
-      "name": "Button 17",
-      "kind": "note",
-      "channel": 8,
-      "number": 35,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 18",
-      "kind": "note",
-      "channel": 8,
-      "number": 37,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 19",
-      "kind": "note",
-      "channel": 8,
-      "number": 12,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 20",
-      "kind": "note",
-      "channel": 8,
-      "number": 14,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 21",
-      "kind": "note",
-      "channel": 8,
-      "number": 16,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 22",
-      "kind": "note",
-      "channel": 8,
-      "number": 18,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 23",
-      "kind": "note",
-      "channel": 8,
-      "number": 20,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 24",
-      "kind": "note",
-      "channel": 0,
       "number": 23,
       "type": "Button",
       "values": [],
       "feedback": {
         "kind": "note",
-        "channel": 0,
+        "channel": 8,
         "number": 23,
         "lower": 0,
         "upper": 127
       },
-      "note": "LED 23"
+      "note": "observed press while LED 0 was flashing"
     },
     {
-      "name": "Button 25",
+      "name": "Button (LED 2)",
       "kind": "note",
       "channel": 8,
-      "number": 22,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 26",
-      "kind": "note",
-      "channel": 8,
-      "number": 24,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 27",
-      "kind": "note",
-      "channel": 8,
-      "number": 1,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 28",
-      "kind": "note",
-      "channel": 8,
-      "number": 3,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 29",
-      "kind": "note",
-      "channel": 8,
-      "number": 5,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 30",
-      "kind": "note",
-      "channel": 8,
-      "number": 7,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 31",
-      "kind": "note",
-      "channel": 8,
-      "number": 9,
-      "type": "Button",
-      "values": [],
-      "feedback": null,
-      "note": ""
-    },
-    {
-      "name": "Button 32",
-      "kind": "note",
-      "channel": 0,
-      "number": 31,
+      "number": 2,
       "type": "Button",
       "values": [],
       "feedback": {
         "kind": "note",
-        "channel": 0,
-        "number": 31,
+        "channel": 8,
+        "number": 2,
         "lower": 0,
         "upper": 127
       },
-      "note": "LED 31"
+      "note": "observed press while LED 2 was flashing"
+    },
+    {
+      "name": "Button (LED 3)",
+      "kind": "note",
+      "channel": 8,
+      "number": 4,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 4,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 3 was flashing"
+    },
+    {
+      "name": "Button (LED 4)",
+      "kind": "note",
+      "channel": 8,
+      "number": 6,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 6,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 4 was flashing"
+    },
+    {
+      "name": "Button (LED 5)",
+      "kind": "note",
+      "channel": 8,
+      "number": 8,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 8,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 5 was flashing"
+    },
+    {
+      "name": "Button (LED 6)",
+      "kind": "note",
+      "channel": 8,
+      "number": 10,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 10,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 6 was flashing"
+    },
+    {
+      "name": "Button (LED 8)",
+      "kind": "note",
+      "channel": 8,
+      "number": 36,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 36,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 8 was flashing"
+    },
+    {
+      "name": "Button (LED 10)",
+      "kind": "note",
+      "channel": 8,
+      "number": 13,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 13,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 10 was flashing"
+    },
+    {
+      "name": "Button (LED 11)",
+      "kind": "note",
+      "channel": 8,
+      "number": 15,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 15,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 11 was flashing"
+    },
+    {
+      "name": "Button (LED 12)",
+      "kind": "note",
+      "channel": 8,
+      "number": 17,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 17,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 12 was flashing"
+    },
+    {
+      "name": "Button (LED 13)",
+      "kind": "note",
+      "channel": 8,
+      "number": 19,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 19,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 13 was flashing"
+    },
+    {
+      "name": "Button (LED 14)",
+      "kind": "note",
+      "channel": 8,
+      "number": 21,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 21,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 14 was flashing"
+    },
+    {
+      "name": "Button (LED 16)",
+      "kind": "note",
+      "channel": 8,
+      "number": 49,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 49,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 16 was flashing"
+    },
+    {
+      "name": "Button (LED 18)",
+      "kind": "note",
+      "channel": 8,
+      "number": 26,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 26,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 18 was flashing"
+    },
+    {
+      "name": "Button (LED 19)",
+      "kind": "note",
+      "channel": 8,
+      "number": 28,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 28,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 19 was flashing"
+    },
+    {
+      "name": "Button (LED 20)",
+      "kind": "note",
+      "channel": 8,
+      "number": 30,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 30,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 20 was flashing"
+    },
+    {
+      "name": "Button (LED 21)",
+      "kind": "note",
+      "channel": 8,
+      "number": 32,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 32,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 21 was flashing"
+    },
+    {
+      "name": "Button (LED 22)",
+      "kind": "note",
+      "channel": 8,
+      "number": 34,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 34,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 22 was flashing"
+    },
+    {
+      "name": "Button (LED 24)",
+      "kind": "note",
+      "channel": 8,
+      "number": 52,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 52,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 24 was flashing"
+    },
+    {
+      "name": "Button (LED 25)",
+      "kind": "note",
+      "channel": 8,
+      "number": 11,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 11,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 25 was flashing"
+    },
+    {
+      "name": "Button (LED 26)",
+      "kind": "note",
+      "channel": 8,
+      "number": 39,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 39,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 26 was flashing"
+    },
+    {
+      "name": "Button (LED 27)",
+      "kind": "note",
+      "channel": 8,
+      "number": 41,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 41,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 27 was flashing"
+    },
+    {
+      "name": "Button (LED 28)",
+      "kind": "note",
+      "channel": 8,
+      "number": 43,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 43,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 28 was flashing"
+    },
+    {
+      "name": "Button (LED 29)",
+      "kind": "note",
+      "channel": 8,
+      "number": 45,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 45,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 29 was flashing"
+    },
+    {
+      "name": "Button (LED 30)",
+      "kind": "note",
+      "channel": 8,
+      "number": 47,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 47,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 30 was flashing"
     },
     {
       "name": "Analog 1",
@@ -356,7 +412,7 @@
       "type": "Slider",
       "values": [],
       "feedback": null,
-      "note": ""
+      "note": "from config dump, NOT yet confirmed by moving it"
     },
     {
       "name": "Analog 2",
@@ -366,7 +422,7 @@
       "type": "Slider",
       "values": [],
       "feedback": null,
-      "note": ""
+      "note": "from config dump, NOT yet confirmed by moving it"
     },
     {
       "name": "Analog 3",
@@ -376,7 +432,7 @@
       "type": "Slider",
       "values": [],
       "feedback": null,
-      "note": ""
+      "note": "from config dump, NOT yet confirmed by moving it"
     },
     {
       "name": "Analog 4",
@@ -386,7 +442,7 @@
       "type": "Slider",
       "values": [],
       "feedback": null,
-      "note": ""
+      "note": "from config dump, NOT yet confirmed by moving it"
     },
     {
       "name": "Analog 5",
@@ -396,7 +452,7 @@
       "type": "Slider",
       "values": [],
       "feedback": null,
-      "note": ""
+      "note": "from config dump, NOT yet confirmed by moving it"
     },
     {
       "name": "Analog 6",
@@ -406,7 +462,7 @@
       "type": "Slider",
       "values": [],
       "feedback": null,
-      "note": ""
+      "note": "from config dump, NOT yet confirmed by moving it"
     },
     {
       "name": "Analog 7",
@@ -416,7 +472,7 @@
       "type": "Slider",
       "values": [],
       "feedback": null,
-      "note": ""
+      "note": "from config dump, NOT yet confirmed by moving it"
     },
     {
       "name": "Analog 8",
@@ -426,7 +482,7 @@
       "type": "Slider",
       "values": [],
       "feedback": null,
-      "note": ""
+      "note": "from config dump, NOT yet confirmed by moving it"
     },
     {
       "name": "Analog 9",
@@ -436,7 +492,7 @@
       "type": "Slider",
       "values": [],
       "feedback": null,
-      "note": ""
+      "note": "from config dump, NOT yet confirmed by moving it"
     },
     {
       "name": "Analog 10",
@@ -446,7 +502,7 @@
       "type": "Slider",
       "values": [],
       "feedback": null,
-      "note": ""
+      "note": "from config dump, NOT yet confirmed by moving it"
     },
     {
       "name": "Analog 11",
@@ -456,7 +512,7 @@
       "type": "Slider",
       "values": [],
       "feedback": null,
-      "note": ""
+      "note": "from config dump, NOT yet confirmed by moving it"
     }
   ],
   "leds": [
@@ -464,289 +520,357 @@
       "index": 0,
       "activation_id": 23,
       "channel": 8,
-      "activation_value": 0,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": {
+        "kind": "note",
+        "channel": 8,
+        "number": 23
+      }
     },
     {
       "index": 1,
       "activation_id": 1,
       "channel": 0,
-      "activation_value": 127,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": null
     },
     {
       "index": 2,
       "activation_id": 2,
       "channel": 8,
-      "activation_value": 0,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": {
+        "kind": "note",
+        "channel": 8,
+        "number": 2
+      }
     },
     {
       "index": 3,
       "activation_id": 4,
       "channel": 8,
-      "activation_value": 0,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": {
+        "kind": "note",
+        "channel": 8,
+        "number": 4
+      }
     },
     {
       "index": 4,
       "activation_id": 6,
       "channel": 8,
-      "activation_value": 0,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": {
+        "kind": "note",
+        "channel": 8,
+        "number": 6
+      }
     },
     {
       "index": 5,
       "activation_id": 8,
       "channel": 8,
-      "activation_value": 0,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": {
+        "kind": "note",
+        "channel": 8,
+        "number": 8
+      }
     },
     {
       "index": 6,
       "activation_id": 10,
       "channel": 8,
-      "activation_value": 0,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": {
+        "kind": "note",
+        "channel": 8,
+        "number": 10
+      }
     },
     {
       "index": 7,
       "activation_id": 7,
       "channel": 0,
-      "activation_value": 127,
       "control_type": 6,
-      "control_type_name": "MidiInNoteMultiVal",
-      "midi_driven": true
+      "midi_driven": true,
+      "button": null
     },
     {
       "index": 8,
       "activation_id": 36,
       "channel": 8,
-      "activation_value": 0,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": {
+        "kind": "note",
+        "channel": 8,
+        "number": 36
+      }
     },
     {
       "index": 9,
       "activation_id": 9,
       "channel": 0,
-      "activation_value": 127,
       "control_type": 6,
-      "control_type_name": "MidiInNoteMultiVal",
-      "midi_driven": true
+      "midi_driven": true,
+      "button": null
     },
     {
       "index": 10,
       "activation_id": 13,
       "channel": 8,
-      "activation_value": 0,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": {
+        "kind": "note",
+        "channel": 8,
+        "number": 13
+      }
     },
     {
       "index": 11,
       "activation_id": 15,
       "channel": 8,
-      "activation_value": 0,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": {
+        "kind": "note",
+        "channel": 8,
+        "number": 15
+      }
     },
     {
       "index": 12,
       "activation_id": 17,
       "channel": 8,
-      "activation_value": 0,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": {
+        "kind": "note",
+        "channel": 8,
+        "number": 17
+      }
     },
     {
       "index": 13,
       "activation_id": 19,
       "channel": 8,
-      "activation_value": 0,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": {
+        "kind": "note",
+        "channel": 8,
+        "number": 19
+      }
     },
     {
       "index": 14,
       "activation_id": 21,
       "channel": 8,
-      "activation_value": 0,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": {
+        "kind": "note",
+        "channel": 8,
+        "number": 21
+      }
     },
     {
       "index": 15,
       "activation_id": 15,
       "channel": 0,
-      "activation_value": 127,
       "control_type": 6,
-      "control_type_name": "MidiInNoteMultiVal",
-      "midi_driven": true
+      "midi_driven": true,
+      "button": null
     },
     {
       "index": 16,
       "activation_id": 49,
       "channel": 8,
-      "activation_value": 0,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": {
+        "kind": "note",
+        "channel": 8,
+        "number": 49
+      }
     },
     {
       "index": 17,
       "activation_id": 0,
       "channel": 8,
-      "activation_value": 0,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": null
     },
     {
       "index": 18,
       "activation_id": 26,
       "channel": 8,
-      "activation_value": 0,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": {
+        "kind": "note",
+        "channel": 8,
+        "number": 26
+      }
     },
     {
       "index": 19,
       "activation_id": 28,
       "channel": 8,
-      "activation_value": 0,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": {
+        "kind": "note",
+        "channel": 8,
+        "number": 28
+      }
     },
     {
       "index": 20,
       "activation_id": 30,
       "channel": 8,
-      "activation_value": 0,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": {
+        "kind": "note",
+        "channel": 8,
+        "number": 30
+      }
     },
     {
       "index": 21,
       "activation_id": 32,
       "channel": 8,
-      "activation_value": 0,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": {
+        "kind": "note",
+        "channel": 8,
+        "number": 32
+      }
     },
     {
       "index": 22,
       "activation_id": 34,
       "channel": 8,
-      "activation_value": 0,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": {
+        "kind": "note",
+        "channel": 8,
+        "number": 34
+      }
     },
     {
       "index": 23,
       "activation_id": 23,
       "channel": 0,
-      "activation_value": 127,
       "control_type": 6,
-      "control_type_name": "MidiInNoteMultiVal",
-      "midi_driven": true
+      "midi_driven": true,
+      "button": null
     },
     {
       "index": 24,
       "activation_id": 52,
       "channel": 8,
-      "activation_value": 0,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": {
+        "kind": "note",
+        "channel": 8,
+        "number": 52
+      }
     },
     {
       "index": 25,
       "activation_id": 11,
       "channel": 8,
-      "activation_value": 0,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": {
+        "kind": "note",
+        "channel": 8,
+        "number": 11
+      }
     },
     {
       "index": 26,
       "activation_id": 39,
       "channel": 8,
-      "activation_value": 0,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": {
+        "kind": "note",
+        "channel": 8,
+        "number": 39
+      }
     },
     {
       "index": 27,
       "activation_id": 41,
       "channel": 8,
-      "activation_value": 0,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": {
+        "kind": "note",
+        "channel": 8,
+        "number": 41
+      }
     },
     {
       "index": 28,
       "activation_id": 43,
       "channel": 8,
-      "activation_value": 0,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": {
+        "kind": "note",
+        "channel": 8,
+        "number": 43
+      }
     },
     {
       "index": 29,
       "activation_id": 45,
       "channel": 8,
-      "activation_value": 0,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": {
+        "kind": "note",
+        "channel": 8,
+        "number": 45
+      }
     },
     {
       "index": 30,
       "activation_id": 47,
       "channel": 8,
-      "activation_value": 0,
       "control_type": 10,
-      "control_type_name": "Static",
-      "midi_driven": false
+      "midi_driven": false,
+      "button": {
+        "kind": "note",
+        "channel": 8,
+        "number": 47
+      }
     },
     {
       "index": 31,
       "activation_id": 31,
       "channel": 0,
-      "activation_value": 127,
       "control_type": 6,
-      "control_type_name": "MidiInNoteMultiVal",
-      "midi_driven": true
+      "midi_driven": true,
+      "button": null
     }
   ]
 }

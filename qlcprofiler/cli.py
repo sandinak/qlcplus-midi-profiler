@@ -337,6 +337,56 @@ def cmd_od_identify(args) -> int:
     return 0
 
 
+def cmd_od_enable_leds(args) -> int:
+    from .opendeck import LED_CONTROL_TYPES, enable_leds
+
+    od, inp, _ = _open_opendeck(args)
+    od.connect()
+
+    map_path = Path(args.map)
+    if args.paired_only:
+        if not map_path.exists():
+            print(f"{map_path} not found; run `opendeck identify` first.", file=sys.stderr)
+            return 2
+        saved = DeviceMap.load(map_path)
+        indices = [r["index"] for r in saved.leds if r.get("button")]
+        if not indices:
+            print("No paired LEDs in the map; run `opendeck identify` first.",
+                  file=sys.stderr)
+            return 2
+    else:
+        from .opendeck import BLOCK_LED, LED_CONTROL_TYPE
+
+        indices = list(range(len(od.read_section(BLOCK_LED, LED_CONTROL_TYPE) or [])))
+
+    plan = enable_leds(od, indices, dry_run=True)
+    if not plan["changed"]:
+        print(f"All {len(indices)} LED(s) already respond to incoming MIDI.")
+        return 0
+
+    print(f"Will make {len(plan['changed'])} of {len(indices)} LED(s) MIDI-driven "
+          "(activation notes and channels are left untouched):")
+    for i, was, now in plan["changed"][:40]:
+        print(f"  LED {i:>2}: {LED_CONTROL_TYPES.get(was, was)} -> "
+              f"{LED_CONTROL_TYPES.get(now, now)}")
+    if len(plan["changed"]) > 40:
+        print(f"  ... and {len(plan['changed']) - 40} more")
+
+    if args.dry_run:
+        print("\nDry run - nothing written.")
+        return 0
+    if not _confirm(f"\nWrite {len(plan['changed'])} value(s)?", args.yes):
+        print("Aborted.")
+        return 1
+
+    _auto_backup(od, _device_label(inp) + "-pre-enable-leds")
+    result = enable_leds(od, indices)
+    print(f"\nEnabled {len(result['changed']) - len(result['failed'])} LED(s).")
+    for i, why in result["failed"]:
+        print(f"  LED {i} failed: {why}")
+    return 1 if result["failed"] else 0
+
+
 def cmd_od_align(args) -> int:
     from .opendeck import align_leds, to_device_map
 
@@ -541,6 +591,16 @@ def build_parser() -> argparse.ArgumentParser:
                     help="seconds to wait per LED before moving on")
     sp.add_argument("-y", "--yes", action="store_true", help="skip confirmation")
     sp.set_defaults(func=cmd_od_identify)
+
+    sp = od_common(odsub.add_parser(
+        "enable-leds",
+        help="make LEDs respond to incoming MIDI, without changing their notes"))
+    sp.add_argument("-m", "--map", default="maps/device.json")
+    sp.add_argument("--paired-only", action="store_true",
+                    help="only LEDs paired to a button by `identify`")
+    sp.add_argument("--dry-run", action="store_true", help="show the plan, write nothing")
+    sp.add_argument("-y", "--yes", action="store_true", help="skip confirmation")
+    sp.set_defaults(func=cmd_od_enable_leds)
 
     sp = od_common(odsub.add_parser(
         "align", help="point each LED at its own button's note so QLC+ can light it"))

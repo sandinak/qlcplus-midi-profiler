@@ -289,6 +289,11 @@ def to_device_map(dump: dict, dmap):
             channel=max(_column(buttons, "channel", i, 1) - 1, 0),
             number=_column(buttons, "midi_id", i),
             type="Button",
+            # Section numbering is not identical across OpenDeck builds.  On at
+            # least one board the block-1 note table did not match the notes the
+            # buttons actually sent, so treat this as a starting point and
+            # confirm it with `learn` or `identify` before trusting it.
+            note="unconfirmed: from config block 1",
         ))
 
     encoders = dump.get("encoders", {})
@@ -379,6 +384,33 @@ def set_led_identity(od: OpenDeck, count: int, channel: int = 1) -> int:
     return applied
 
 
+def enable_leds(od: OpenDeck, indices: list[int], dry_run: bool = False) -> dict:
+    """Make LEDs MIDI-driven without changing which note they listen for.
+
+    The common case on a well-built board: the activation notes are already
+    correct, but the outputs are set to `Static` or `Local` so they ignore
+    incoming MIDI.  Only the control type needs changing - which is far less
+    invasive than rewriting addresses, and cannot scramble a working layout.
+    """
+    current = od.read_section(BLOCK_LED, LED_CONTROL_TYPE) or []
+    changed, failed = [], []
+    for i in indices:
+        if i >= len(current):
+            failed.append((i, "index beyond LED count"))
+            continue
+        if current[i] in LED_MIDI_DRIVEN:
+            continue
+        changed.append((i, current[i], LED_CONTROL_TYPE_FOR_KIND["note"]))
+        if dry_run:
+            continue
+        try:
+            od.write_checked(BLOCK_LED, LED_CONTROL_TYPE, i,
+                             LED_CONTROL_TYPE_FOR_KIND["note"])
+        except OpenDeckError as exc:
+            failed.append((i, str(exc)))
+    return {"changed": changed, "failed": failed}
+
+
 def align_leds(od: OpenDeck, dmap, pairing: dict[int, int], dry_run: bool = False) -> dict:
     """Point each LED at its own button's note and MIDI channel.
 
@@ -430,5 +462,13 @@ def summarize(dump: dict, dmap) -> str:
         lines.append(
             "\nNo button's LED listens on that button's own note/channel, so QLC+\n"
             "cannot light them as-is.  See README 'Making feedback work'."
+        )
+    if any(c.note == "unconfirmed: from config block 1" for c in dmap.controls):
+        lines.append(
+            "\nButton addresses above come from the config block and are NOT yet\n"
+            "confirmed against what the buttons actually send.  Block and section\n"
+            "numbering varies between OpenDeck builds - on at least one board this\n"
+            "table was wrong.  Confirm with `learn` (press them) or `identify`\n"
+            "before generating a profile you intend to rely on."
         )
     return "\n".join(lines)
