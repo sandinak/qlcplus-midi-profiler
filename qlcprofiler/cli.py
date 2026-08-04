@@ -300,12 +300,20 @@ def cmd_od_identify(args) -> int:
         print("Aborted; nothing written.")
         return 1
 
+    targets = args.indices if args.indices else list(range(led_count))
+    bad = [i for i in targets if i >= led_count]
+    if bad:
+        print(f"LED index out of range: {bad} (device has {led_count})", file=sys.stderr)
+        return 2
+
     backup = _auto_backup(od, _device_label(inp) + "-pre-identify")
     applied = set_led_identity(od, led_count, channel=1)
     print(f"Set {applied}/{led_count} LEDs to identity mapping.\n")
 
-    addresses = [("note", 0, i) for i in range(led_count)]
-    pairs = flash_and_pair(inp, out, addresses, timeout=args.timeout)
+    addresses = [("note", 0, i) for i in targets]
+    found = flash_and_pair(inp, out, addresses, timeout=args.timeout)
+    # flash_and_pair keys by position in `addresses`; map back to LED index.
+    pairs = {targets[pos]: pressed for pos, pressed in found.items()}
 
     by_address = {(c.kind, c.channel, c.number): i for i, c in enumerate(dmap.controls)}
     map_path = Path(args.map)
@@ -322,8 +330,8 @@ def cmd_od_identify(args) -> int:
     map_path.parent.mkdir(parents=True, exist_ok=True)
     saved.save(map_path)
 
-    unlit = led_count - len(pairs)
-    print(f"\nPaired {len(pairs)}/{led_count} LEDs; {unlit} did not light or were skipped.")
+    unlit = len(targets) - len(pairs)
+    print(f"\nPaired {len(pairs)}/{len(targets)} LEDs; {unlit} did not light or were skipped.")
     print(f"Saved pairing to {map_path}")
 
     if args.keep:
@@ -589,6 +597,8 @@ def build_parser() -> argparse.ArgumentParser:
                     help="leave the identity mapping in place instead of restoring")
     sp.add_argument("--timeout", type=float, default=30.0,
                     help="seconds to wait per LED before moving on")
+    sp.add_argument("--indices", type=int, nargs="+",
+                    help="only these LED indices, to redo the ones that were missed")
     sp.add_argument("-y", "--yes", action="store_true", help="skip confirmation")
     sp.set_defaults(func=cmd_od_identify)
 

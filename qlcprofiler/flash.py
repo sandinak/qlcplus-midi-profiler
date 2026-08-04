@@ -111,7 +111,7 @@ def flash_and_pair(inp, out, addresses: list[tuple[str, int, int]],
     try:
         for i, (kind, ch, num) in enumerate(addresses):
             _drain(inp)
-            label = f"[{i + 1}/{len(addresses)}] LED {i} ({kind} {num} ch{ch + 1})"
+            label = f"[{i + 1}/{len(addresses)}] {kind} {num} ch{ch + 1}"
             print(f"{label} ... ", end="", flush=True)
             found = None
             with Flasher(out, kind, ch, num, on_value, period):
