@@ -66,6 +66,7 @@ maps to, which is handy when a binding in QLC+ is not firing.
 | `opendeck restore` | Write a backup back to the device |
 | `opendeck identify` | Flash each LED, pair it with the button you press |
 | `opendeck align` | Point each LED at its own button's note |
+| `lights` | Light the board so the keycaps can be read (`--progress`, `--off`) |
 | `feedback` | Probe LED feedback (`--mode echo\|scan\|flash\|colors`) |
 | `generate` | Write the `.qxi` (`--install` to drop it in QLC+'s profile dir) |
 | `template` | Write a `.qxm` MIDI template carrying init SysEx |
@@ -182,6 +183,29 @@ re-reads the device afterwards and updates the map, so `generate` then emits
 `--assume-index-order` skips `identify` and assumes LED *i* belongs to control
 *i*. Quick, and wrong on plenty of boards — verify with `identify` if the result
 looks scrambled.
+
+## OpenDeck LED values are not just brightness
+
+An OpenDeck output reads **blink speed and brightness out of the same 7-bit
+value** (`io/outputs/instance/impl/mapper.cpp`):
+
+```
+value < 16                -> steady
+otherwise (value % 16) / 4 -> 0: 1000ms   1: 500ms   2: 250ms   3: steady
+```
+
+Brightness is the value scaled across 0–127, independently. So a value picked
+purely for brightness can set the LED blinking — `20` is not "dim", it is
+half-brightness pulsing twice a second. Only every fourth band holds steady:
+
+| Steady levels | 15 | 31 | 47 | 63 | 79 | 95 | 111 | 127 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+
+`lights` and `learn --relabel` encode brightness through this automatically for
+maps whose manufacturer is OpenDeck, and `--pulse slow|medium|fast` asks for a
+blink on purpose rather than by accident. `--raw-levels` sends the byte
+untouched, which is what other manufacturers need. `generate --idle-level`
+warns when the level you chose would leave the board pulsing.
 
 ## Undo and redo
 

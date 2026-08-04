@@ -209,7 +209,8 @@ def is_auto_name(ctl: Control) -> bool:
 
 
 def relabel_interactive(port, dmap: DeviceMap, port_name: str, out=None,
-                        dim: int = 20, bright: int = 127) -> DeviceMap:
+                        dim: int = 20, bright: int = 127,
+                        encode=None) -> DeviceMap:
     """Press-then-name, for putting real names on an already-complete map.
 
     The reverse of `learn_interactive`, and the better order once every address
@@ -228,8 +229,15 @@ def relabel_interactive(port, dmap: DeviceMap, port_name: str, out=None,
     existing = dmap.by_key()
     named = 0
 
+    # With an encoder, the device does the blinking itself and we send one
+    # message instead of driving a thread that toggles the LED forever.
+    device_pulse = encode is not None
+    dim_value = encode(dim, "steady") if encode else dim
+    bright_value = encode(bright, "steady") if encode else bright
+    active_value = encode(bright, "fast") if encode else bright
+
     def level_for(ctl: Control) -> int:
-        return dim if is_auto_name(ctl) else bright
+        return dim_value if is_auto_name(ctl) else bright_value
 
     lit = [c for c in dmap.controls if c.feedback]
     if out and lit:
@@ -265,12 +273,14 @@ def relabel_interactive(port, dmap: DeviceMap, port_name: str, out=None,
 
             has_led = "  [has LED]" if ctl.feedback else "  [no LED]"
             prompt = f"  {ctl.describe()}{has_led}\n  name [{ctl.name}]: "
-            blinker = (
-                Flasher(out, ctl.kind, ctl.feedback["channel"], ctl.feedback["number"],
-                        bright, 0.22)
-                if out and ctl.feedback
-                else contextlib.nullcontext()
-            )
+            if out and ctl.feedback and device_pulse:
+                set_level(out, ctl, active_value)
+                blinker = contextlib.nullcontext()
+            elif out and ctl.feedback:
+                blinker = Flasher(out, ctl.kind, ctl.feedback["channel"],
+                                  ctl.feedback["number"], bright, 0.22)
+            else:
+                blinker = contextlib.nullcontext()
             try:
                 with blinker:
                     name = input(prompt).strip()

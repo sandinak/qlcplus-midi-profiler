@@ -25,6 +25,39 @@ def _send(out, kind: str, ch: int, num: int, val: int) -> None:
         raise ValueError(f"cannot flash message kind {kind!r}")
 
 
+# OpenDeck packs blink speed and brightness into one 7-bit value
+# (io/outputs/instance/impl/mapper.cpp):
+#
+#   value < 16              -> steady
+#   otherwise (value % 16) // 4 selects the pulse speed:
+#       0 -> 1000ms   1 -> 500ms   2 -> 250ms   3 -> steady
+#
+# and brightness is the value scaled across 0..127 independently.  So a plain
+# "dim" value like 20 is not dim - it is half-brightness blinking twice a
+# second, because 20 % 16 // 4 == 1.  Only every fourth band is steady.
+PULSE_OFFSETS = {"slow": 0, "medium": 4, "fast": 8, "steady": 12}
+
+# The eight steady brightness steps, one per 16-value band.
+STEADY_LEVELS = [15, 31, 47, 63, 79, 95, 111, 127]
+
+
+def opendeck_value(level: int, pulse: str = "steady") -> int:
+    """Encode a brightness plus pulse behaviour into one OpenDeck LED value."""
+    if pulse not in PULSE_OFFSETS:
+        raise ValueError(f"unknown pulse {pulse!r}; use {sorted(PULSE_OFFSETS)}")
+    level = max(0, min(127, level))
+    if level == 0:
+        return 0
+    band = level // 16
+    if pulse == "steady":
+        # The lowest band is steady whatever its offset, so it can pass through
+        # and keep the fine brightness control that the banding otherwise costs.
+        return level if band == 0 else band * 16 + 15
+    if band == 0:
+        band = 1  # pulsing needs a value of at least 16
+    return band * 16 + PULSE_OFFSETS[pulse] + 3
+
+
 def set_level(out, ctl, level: int) -> None:
     """Drive one control's LED to a brightness, using its feedback address."""
     fb = ctl.feedback

@@ -294,13 +294,50 @@ def test_pair_by_address():
     check("cc not matched to note LED", 3 in pairs.values(), False)
 
 
+def _decode_pulse(value):
+    """Mirror of OpenDeck's mapper.cpp, to check the encoder against."""
+    if value < 16:
+        return "steady"
+    return ["slow", "medium", "fast", "steady"][(value % 16) // 4]
+
+
+def test_opendeck_led_encoding():
+    from qlcprofiler.flash import STEADY_LEVELS, opendeck_value
+
+    # The bug: a value picked purely for brightness can select a blink speed.
+    check("raw 20 blinks", _decode_pulse(20), "medium")
+    check("raw 40 blinks", _decode_pulse(40), "fast")
+
+    for level in range(0, 128):
+        value = opendeck_value(level, "steady")
+        if _decode_pulse(value) != "steady":
+            check(f"steady at level {level}", _decode_pulse(value), "steady")
+            break
+    else:
+        check("every steady level is steady", True, True)
+
+    for pulse in ("slow", "medium", "fast"):
+        bad = [lvl for lvl in range(1, 128)
+               if _decode_pulse(opendeck_value(lvl, pulse)) != pulse]
+        check(f"{pulse} always {pulse}", bad, [])
+
+    check("zero stays off", opendeck_value(0, "steady"), 0)
+    check("full stays full", opendeck_value(127, "steady"), 127)
+    check("steady ladder is steady",
+          [_decode_pulse(v) for v in STEADY_LEVELS], ["steady"] * 8)
+    # Brightness must still track the request, not collapse to one value.
+    ladder = [opendeck_value(lvl, "steady") for lvl in (0, 20, 60, 100, 127)]
+    check("brightness still increases", ladder == sorted(ladder), True)
+    check("distinct brightness steps", len(set(ladder)), 5)
+
+
 if __name__ == "__main__":
     for fn in (test_classify, test_encoding, test_channel_mode, test_qxi,
                test_collision_detected, test_dominant_key,
                test_read_write_roundtrip, test_restore_only_writes_differences,
                test_align_leds_plan, test_align_rejects_undrivable_kind,
                test_to_device_map_channel_base, test_paginated_read,
-               test_pair_by_address):
+               test_pair_by_address, test_opendeck_led_encoding):
         print(f"\n-- {fn.__name__}")
         fn()
     print(f"\n{failures} failure(s)")

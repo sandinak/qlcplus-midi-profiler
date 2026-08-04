@@ -89,7 +89,8 @@ def cmd_learn(args) -> int:
                 print("No output port found; naming without LED guidance "
                       "(pass --out, or --no-lights to silence this).")
         relabel_interactive(port, dmap, port.name, out=out,
-                            dim=args.dim, bright=args.bright)
+                            dim=args.dim, bright=args.bright,
+                            encode=_led_encoder(dmap, args.raw_levels))
     else:
         learn_interactive(port, dmap, port.name)
 
@@ -99,6 +100,20 @@ def cmd_learn(args) -> int:
     for c in dmap.controls:
         print(f"  {c.name:<24} {c.describe()}")
     return 0
+
+
+def _led_encoder(dmap: DeviceMap, raw: bool):
+    """Pick how a brightness becomes an LED value, or None to send it as-is.
+
+    OpenDeck reads pulse speed out of the same byte as brightness, so a value
+    chosen purely for its brightness can set the LED blinking.  Other devices
+    treat the byte as plain velocity and must be left alone.
+    """
+    if raw or not dmap.manufacturer.lower().startswith("opendeck"):
+        return None
+    from .flash import opendeck_value
+
+    return opendeck_value
 
 
 def cmd_lights(args) -> int:
@@ -117,19 +132,31 @@ def cmd_lights(args) -> int:
         return 2
     out = ports.open_output(out_name)
 
-    level = 0 if args.off else args.level
-    if args.progress and not args.off:
+    encode = _led_encoder(dmap, args.raw_levels)
+    pulse = args.pulse
+
+    def value(level: int) -> int:
+        return encode(level, pulse) if encode else level
+
+    if args.off:
+        lit = light_all(out, dmap.controls, 0)
+        print(f"Cleared {lit} LED(s).")
+        return 0
+
+    if args.progress:
         todo = [c for c in dmap.controls if is_auto_name(c)]
         done = [c for c in dmap.controls if not is_auto_name(c)]
-        light_all(out, todo, args.dim)
-        lit = light_all(out, done, level) + sum(1 for c in todo if c.feedback)
+        light_all(out, todo, value(args.dim))
+        lit = light_all(out, done, value(args.level)) + sum(1 for c in todo if c.feedback)
         print(f"Lit {lit} LEDs: bright = named ({len(done)}), "
               f"dim = still auto-named ({len(todo)}).")
         return 0
 
-    lit = light_all(out, dmap.controls, level)
-    print(f"{'Cleared' if args.off else 'Lit'} {lit} LED(s)"
-          + ("" if args.off else f" at level {level}") + ".")
+    lit = light_all(out, dmap.controls, value(args.level))
+    detail = f" at level {args.level}"
+    if encode and value(args.level) != args.level:
+        detail += f" (sent as {value(args.level)}, {pulse})"
+    print(f"Lit {lit} LED(s){detail}.")
     if not args.off:
         print("They stay lit until something else drives them (QLC+, or --off).")
     return 0
@@ -570,6 +597,17 @@ def cmd_generate(args) -> int:
     lit = [c for c in dmap.controls if c.feedback]
     if args.idle_level:
         print(f"Idle LED level: {args.idle_level} (LEDs stay lit when the widget is off)")
+        # QLC+ sends this value as the velocity, and on OpenDeck the velocity
+        # also selects a blink speed - so an idle level chosen for brightness
+        # alone can leave the whole board pulsing.
+        if _led_encoder(dmap, raw=False):
+            from .flash import STEADY_LEVELS, opendeck_value
+
+            steady = opendeck_value(args.idle_level, "steady")
+            if steady != args.idle_level:
+                print(f"  warning: {args.idle_level} makes OpenDeck LEDs blink; "
+                      f"{steady} is the nearest steady value")
+                print(f"  steady levels: {', '.join(str(v) for v in STEADY_LEVELS)}")
 
     if args.init_template and lit:
         from .profile import idle_init_message
@@ -632,6 +670,8 @@ def build_parser() -> argparse.ArgumentParser:
                     help="relabel: brightness for controls still to name")
     sp.add_argument("--bright", type=int, default=127,
                     help="relabel: brightness for controls already named")
+    sp.add_argument("--raw-levels", action="store_true",
+                    help="relabel: send brightness bytes as-is (no pulse-safe encoding)")
     sp.add_argument("--idle-stop", type=float, default=0.0,
                     help="auto mode: stop after N seconds of silence")
     sp.add_argument("--manufacturer", default="")
@@ -648,6 +688,10 @@ def build_parser() -> argparse.ArgumentParser:
     sp.add_argument("--progress", action="store_true",
                     help="bright = named, dim = still auto-named")
     sp.add_argument("--off", action="store_true", help="turn them all off")
+    sp.add_argument("--pulse", choices=["steady", "slow", "medium", "fast"],
+                    default="steady", help="OpenDeck: blink instead of holding steady")
+    sp.add_argument("--raw-levels", action="store_true",
+                    help="send brightness bytes as-is, without pulse-safe encoding")
     sp.set_defaults(func=cmd_lights)
 
     sp = sub.add_parser("feedback", help="explore LED feedback")

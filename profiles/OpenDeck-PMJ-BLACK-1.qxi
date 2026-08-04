@@ -72,271 +72,271 @@
  <Channel Number="32896">
   <Name>NOTE 0 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32897">
   <Name>NOTE 1 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32898">
   <Name>Button (LED 2)</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32899">
   <Name>NOTE 3 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32900">
   <Name>Button (LED 3)</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32901">
   <Name>NOTE 5 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32902">
   <Name>Button (LED 4)</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32903">
   <Name>NOTE 7 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32904">
   <Name>Button (LED 5)</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32905">
   <Name>NOTE 9 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32906">
   <Name>Button (LED 6)</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32907">
   <Name>Button (LED 25)</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32908">
   <Name>NOTE 12 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32909">
   <Name>Button (LED 10)</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32910">
   <Name>NOTE 14 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32911">
   <Name>Button (LED 11)</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32912">
   <Name>NOTE 16 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32913">
   <Name>Button (LED 12)</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32914">
   <Name>NOTE 18 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32915">
   <Name>Button (LED 13)</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32916">
   <Name>NOTE 20 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32917">
   <Name>Button (LED 14)</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32918">
   <Name>NOTE 22 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32919">
   <Name>Button (LED 0)</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32920">
   <Name>NOTE 24 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32921">
   <Name>NOTE 25 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32922">
   <Name>Button (LED 18)</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32923">
   <Name>NOTE 27 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32924">
   <Name>Button (LED 19)</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32925">
   <Name>NOTE 29 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32926">
   <Name>Button (LED 20)</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32927">
   <Name>NOTE 31 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32928">
   <Name>Button (LED 21)</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32929">
   <Name>NOTE 33 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32930">
   <Name>Button (LED 22)</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32931">
   <Name>NOTE 35 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32932">
   <Name>Button (LED 8)</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32933">
   <Name>NOTE 37 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32934">
   <Name>NOTE 38 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32935">
   <Name>Button (LED 26)</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32936">
   <Name>NOTE 40 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32937">
   <Name>Button (LED 27)</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32938">
   <Name>NOTE 42 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32939">
   <Name>Button (LED 28)</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32940">
   <Name>NOTE 44 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32941">
   <Name>Button (LED 29)</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32942">
   <Name>NOTE 46 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32943">
   <Name>Button (LED 30)</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32944">
   <Name>NOTE 48 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32945">
   <Name>Button (LED 16)</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32946">
   <Name>NOTE 50 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32947">
   <Name>NOTE 51 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32948">
   <Name>Button (LED 24)</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32949">
   <Name>NOTE 53 ch9</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="12" UpperValue="127"/>
+  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
 </InputProfile>
