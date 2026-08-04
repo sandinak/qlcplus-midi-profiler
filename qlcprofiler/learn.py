@@ -94,6 +94,16 @@ def classify(events: list[Event]) -> str:
     return "Knob"
 
 
+def _mark_observed(ctl: Control) -> None:
+    """Drop an 'unconfirmed' note once the control has actually been seen.
+
+    Addresses guessed from a device's config carry a warning; hearing the
+    control emit is exactly the confirmation that warning was waiting for.
+    """
+    if "unconfirmed" in ctl.note.lower() or "not yet confirmed" in ctl.note.lower():
+        ctl.note = ""
+
+
 def collect_burst(port, quiet: float = 0.7, timeout: float = 20.0) -> list[Event]:
     """Read events until the control goes quiet, or timeout with nothing."""
     events: list[Event] = []
@@ -169,6 +179,7 @@ def learn_interactive(port, dmap: DeviceMap, port_name: str) -> DeviceMap:
             prior.name = name
             prior.type = ctype
             prior.values = values[:16]
+            _mark_observed(prior)
             continue
 
         ctl = Control(
@@ -229,6 +240,7 @@ def learn_auto(port, dmap: DeviceMap, port_name: str, idle_stop: float = 0.0) ->
         ctl = existing[key]
         ctl.type = classify(evs)
         ctl.values = sorted({e.value for e in evs})[:16]
+        _mark_observed(ctl)
 
     dmap.controls.sort(key=lambda c: (c.channel, c.kind, c.number))
     return dmap

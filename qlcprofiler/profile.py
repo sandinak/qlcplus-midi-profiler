@@ -46,6 +46,7 @@ def build_qxi(
     channel_mode: str = "auto",
     send_note_off: bool | None = None,
     color_table: list[dict] | None = None,
+    idle_level: int = 0,
 ) -> str:
     per_channel = resolve_channel_mode(dmap, channel_mode)
 
@@ -84,8 +85,12 @@ def build_qxi(
             lines.append('  <Movement Sensitivity="1"/>')
         fb = ctl.feedback
         if fb:
+            # A non-zero lower value keeps the LED glowing when the widget is
+            # off, instead of going dark - the on/off contrast becomes
+            # dim-vs-bright.  Only useful where velocity drives brightness.
+            lower = idle_level if idle_level else fb.get("lower", 0)
             attrs = [
-                f'LowerValue={_attr(fb.get("lower", 0))}',
+                f'LowerValue={_attr(lower)}',
                 f'UpperValue={_attr(fb.get("upper", 127))}',
             ]
             # Only pin the feedback MIDI channel when it differs from the input.
@@ -108,8 +113,37 @@ def build_qxi(
     return "\n".join(lines) + "\n"
 
 
+def idle_init_message(dmap: DeviceMap, level: int = 127) -> str:
+    """Hex bytes that light every LED-backed control, for a .qxm InitMessage.
+
+    QLC+ only sends feedback when a widget changes state, so an output that is
+    MIDI-driven sits dark until something happens.  Sending note-ons at connect
+    time gives the board its resting glow back.  QLC+ writes these bytes raw,
+    so plain channel messages work here - it is not restricted to SysEx.
+    """
+    if not 0 <= level <= 127:
+        raise ValueError("level must be 0..127")
+    parts: list[str] = []
+    for ctl in dmap.controls:
+        fb = ctl.feedback
+        if not fb:
+            continue
+        channel = fb.get("channel", ctl.channel)
+        number = fb.get("number", ctl.number)
+        if fb.get("kind", ctl.kind) == "cc":
+            status = 0xB0 | (channel & 0x0F)
+        else:
+            status = 0x90 | (channel & 0x0F)
+        parts += [f"{status:02X}", f"{number:02X}", f"{level:02X}"]
+    return " ".join(parts)
+
+
 def build_qxm(name: str, description: str, init_messages: list[str]) -> str:
-    """A MIDI template: SysEx sent at connect time to unlock LED control."""
+    """A MIDI template: bytes QLC+ sends at connect time.
+
+    QLC+ overwrites rather than appends when it reads multiple InitMessage
+    elements, so everything that must be sent has to live in a single element.
+    """
     lines = [
         "<!DOCTYPE MidiTemplate>",
         "<MidiTemplate>",

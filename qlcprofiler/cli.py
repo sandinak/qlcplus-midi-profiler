@@ -486,6 +486,7 @@ def cmd_generate(args) -> int:
         channel_mode=args.channel_mode,
         send_note_off=send_note_off,
         color_table=colors,
+        idle_level=args.idle_level,
     )
     out_path = Path(args.out) if args.out else Path("profiles") / default_filename(dmap)
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -502,6 +503,27 @@ def cmd_generate(args) -> int:
             f"{min(dmap.midi_channels(), default=0) + 1}"
         )
     )
+
+    lit = [c for c in dmap.controls if c.feedback]
+    if args.idle_level:
+        print(f"Idle LED level: {args.idle_level} (LEDs stay lit when the widget is off)")
+
+    if args.init_template and lit:
+        from .profile import idle_init_message
+
+        level = args.idle_level or 127
+        message = idle_init_message(dmap, level)
+        template = build_qxm(
+            f"{dmap.manufacturer} {dmap.model} idle lights",
+            f"Lights all {len(lit)} mapped LEDs at level {level} on connect, so the "
+            "board is not dark before QLC+ sends its first feedback.",
+            [message],
+        )
+        tpl_path = Path(args.init_template)
+        tpl_path.parent.mkdir(parents=True, exist_ok=True)
+        tpl_path.write_text(template)
+        print(f"Wrote {tpl_path}  ({len(lit)} LEDs lit at level {level})")
+        print("Select it in QLC+: Inputs/Outputs -> the MIDI output -> MIDI template.")
 
     if args.install:
         dest_dir = install_dir()
@@ -627,6 +649,11 @@ def build_parser() -> argparse.ArgumentParser:
     sp.add_argument("--author", default="")
     sp.add_argument("--channel-mode", choices=["auto", "any", "fixed"], default="auto")
     sp.add_argument("--colors", default="", help="colour table JSON from feedback mode")
+    sp.add_argument("--idle-level", type=int, default=0, metavar="N",
+                    help="keep LEDs lit at brightness N (1-127) when the widget "
+                         "is off, instead of dark")
+    sp.add_argument("--init-template", default="", metavar="PATH",
+                    help="also write a .qxm that lights the LEDs on connect")
     sp.add_argument("--note-off", dest="note_off", action="store_true", default=None,
                     help="emit MIDISendNoteOff=True")
     sp.add_argument("--no-note-off", dest="note_off", action="store_false",

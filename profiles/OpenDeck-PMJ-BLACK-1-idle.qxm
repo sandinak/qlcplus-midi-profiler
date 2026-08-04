@@ -1,0 +1,9 @@
+<!DOCTYPE MidiTemplate>
+<MidiTemplate>
+ <Creator>
+  <Author>qlcplus-midi-profiler</Author>
+ </Creator>
+ <Description>Lights all 25 mapped LEDs at level 12 on connect, so the board is not dark before QLC+ sends its first feedback.</Description>
+ <Name>OpenDeck PMJ_BLACK_1 idle lights</Name>
+ <InitMessage>98 02 0C 98 04 0C 98 06 0C 98 08 0C 98 0A 0C 98 0B 0C 98 0D 0C 98 0F 0C 98 11 0C 98 13 0C 98 15 0C 98 17 0C 98 1A 0C 98 1C 0C 98 1E 0C 98 20 0C 98 22 0C 98 24 0C 98 27 0C 98 29 0C 98 2B 0C 98 2D 0C 98 2F 0C 98 31 0C 98 34 0C</InitMessage>
+</MidiTemplate>

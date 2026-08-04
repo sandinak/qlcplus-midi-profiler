@@ -5,20 +5,375 @@
   "output_port": "OpenDeck | PMJ_BLACK_1",
   "controls": [
     {
-      "name": "Button (LED 0)",
+      "name": "Analog 1",
+      "kind": "cc",
+      "channel": 8,
+      "number": 0,
+      "type": "Slider",
+      "values": [
+        0,
+        1,
+        3,
+        5,
+        6,
+        7,
+        9,
+        10,
+        12,
+        14,
+        16,
+        18,
+        20,
+        22,
+        24,
+        25
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Analog 2",
+      "kind": "cc",
+      "channel": 8,
+      "number": 1,
+      "type": "Slider",
+      "values": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        9,
+        11,
+        12,
+        13,
+        15,
+        17,
+        18,
+        20,
+        21
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Analog 3",
+      "kind": "cc",
+      "channel": 8,
+      "number": 2,
+      "type": "Slider",
+      "values": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Analog 4",
+      "kind": "cc",
+      "channel": 8,
+      "number": 3,
+      "type": "Slider",
+      "values": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Analog 5",
+      "kind": "cc",
+      "channel": 8,
+      "number": 4,
+      "type": "Slider",
+      "values": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16,
+        17,
+        19,
+        20
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Analog 6",
+      "kind": "cc",
+      "channel": 8,
+      "number": 5,
+      "type": "Slider",
+      "values": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        15,
+        16,
+        17,
+        19,
+        20
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Analog 7",
+      "kind": "cc",
+      "channel": 8,
+      "number": 6,
+      "type": "Slider",
+      "values": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16,
+        17
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Analog 8",
+      "kind": "cc",
+      "channel": 8,
+      "number": 7,
+      "type": "Slider",
+      "values": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10,
+        12,
+        13,
+        15,
+        16,
+        18,
+        20
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Analog 9",
+      "kind": "cc",
+      "channel": 8,
+      "number": 8,
+      "type": "Slider",
+      "values": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Analog 10",
+      "kind": "cc",
+      "channel": 8,
+      "number": 9,
+      "type": "Slider",
+      "values": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Analog 11",
+      "kind": "cc",
+      "channel": 8,
+      "number": 10,
+      "type": "Slider",
+      "values": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10,
+        12,
+        13,
+        15,
+        17,
+        18,
+        20,
+        22
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "CC 11 ch9",
+      "kind": "cc",
+      "channel": 8,
+      "number": 11,
+      "type": "Button",
+      "values": [
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "CC 12 ch9",
+      "kind": "cc",
+      "channel": 8,
+      "number": 12,
+      "type": "Button",
+      "values": [
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "CC 13 ch9",
+      "kind": "cc",
+      "channel": 8,
+      "number": 13,
+      "type": "Button",
+      "values": [
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "CC 14 ch9",
+      "kind": "cc",
+      "channel": 8,
+      "number": 14,
+      "type": "Button",
+      "values": [
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "NOTE 0 ch9",
       "kind": "note",
       "channel": 8,
-      "number": 23,
+      "number": 0,
       "type": "Button",
-      "values": [],
-      "feedback": {
-        "kind": "note",
-        "channel": 8,
-        "number": 23,
-        "lower": 0,
-        "upper": 127
-      },
-      "note": "observed press while LED 0 was flashing"
+      "values": [
+        0,
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "NOTE 1 ch9",
+      "kind": "note",
+      "channel": 8,
+      "number": 1,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": null,
+      "note": ""
     },
     {
       "name": "Button (LED 2)",
@@ -26,7 +381,10 @@
       "channel": 8,
       "number": 2,
       "type": "Button",
-      "values": [],
+      "values": [
+        0,
+        127
+      ],
       "feedback": {
         "kind": "note",
         "channel": 8,
@@ -37,12 +395,28 @@
       "note": "observed press while LED 2 was flashing"
     },
     {
+      "name": "NOTE 3 ch9",
+      "kind": "note",
+      "channel": 8,
+      "number": 3,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
       "name": "Button (LED 3)",
       "kind": "note",
       "channel": 8,
       "number": 4,
       "type": "Button",
-      "values": [],
+      "values": [
+        0,
+        127
+      ],
       "feedback": {
         "kind": "note",
         "channel": 8,
@@ -53,12 +427,28 @@
       "note": "observed press while LED 3 was flashing"
     },
     {
+      "name": "NOTE 5 ch9",
+      "kind": "note",
+      "channel": 8,
+      "number": 5,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
       "name": "Button (LED 4)",
       "kind": "note",
       "channel": 8,
       "number": 6,
       "type": "Button",
-      "values": [],
+      "values": [
+        0,
+        127
+      ],
       "feedback": {
         "kind": "note",
         "channel": 8,
@@ -69,12 +459,28 @@
       "note": "observed press while LED 4 was flashing"
     },
     {
+      "name": "NOTE 7 ch9",
+      "kind": "note",
+      "channel": 8,
+      "number": 7,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
       "name": "Button (LED 5)",
       "kind": "note",
       "channel": 8,
       "number": 8,
       "type": "Button",
-      "values": [],
+      "values": [
+        0,
+        127
+      ],
       "feedback": {
         "kind": "note",
         "channel": 8,
@@ -85,12 +491,28 @@
       "note": "observed press while LED 5 was flashing"
     },
     {
+      "name": "NOTE 9 ch9",
+      "kind": "note",
+      "channel": 8,
+      "number": 9,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
       "name": "Button (LED 6)",
       "kind": "note",
       "channel": 8,
       "number": 10,
       "type": "Button",
-      "values": [],
+      "values": [
+        0,
+        127
+      ],
       "feedback": {
         "kind": "note",
         "channel": 8,
@@ -101,220 +523,15 @@
       "note": "observed press while LED 6 was flashing"
     },
     {
-      "name": "Button (LED 8)",
-      "kind": "note",
-      "channel": 8,
-      "number": 36,
-      "type": "Button",
-      "values": [],
-      "feedback": {
-        "kind": "note",
-        "channel": 8,
-        "number": 36,
-        "lower": 0,
-        "upper": 127
-      },
-      "note": "observed press while LED 8 was flashing"
-    },
-    {
-      "name": "Button (LED 10)",
-      "kind": "note",
-      "channel": 8,
-      "number": 13,
-      "type": "Button",
-      "values": [],
-      "feedback": {
-        "kind": "note",
-        "channel": 8,
-        "number": 13,
-        "lower": 0,
-        "upper": 127
-      },
-      "note": "observed press while LED 10 was flashing"
-    },
-    {
-      "name": "Button (LED 11)",
-      "kind": "note",
-      "channel": 8,
-      "number": 15,
-      "type": "Button",
-      "values": [],
-      "feedback": {
-        "kind": "note",
-        "channel": 8,
-        "number": 15,
-        "lower": 0,
-        "upper": 127
-      },
-      "note": "observed press while LED 11 was flashing"
-    },
-    {
-      "name": "Button (LED 12)",
-      "kind": "note",
-      "channel": 8,
-      "number": 17,
-      "type": "Button",
-      "values": [],
-      "feedback": {
-        "kind": "note",
-        "channel": 8,
-        "number": 17,
-        "lower": 0,
-        "upper": 127
-      },
-      "note": "observed press while LED 12 was flashing"
-    },
-    {
-      "name": "Button (LED 13)",
-      "kind": "note",
-      "channel": 8,
-      "number": 19,
-      "type": "Button",
-      "values": [],
-      "feedback": {
-        "kind": "note",
-        "channel": 8,
-        "number": 19,
-        "lower": 0,
-        "upper": 127
-      },
-      "note": "observed press while LED 13 was flashing"
-    },
-    {
-      "name": "Button (LED 14)",
-      "kind": "note",
-      "channel": 8,
-      "number": 21,
-      "type": "Button",
-      "values": [],
-      "feedback": {
-        "kind": "note",
-        "channel": 8,
-        "number": 21,
-        "lower": 0,
-        "upper": 127
-      },
-      "note": "observed press while LED 14 was flashing"
-    },
-    {
-      "name": "Button (LED 16)",
-      "kind": "note",
-      "channel": 8,
-      "number": 49,
-      "type": "Button",
-      "values": [],
-      "feedback": {
-        "kind": "note",
-        "channel": 8,
-        "number": 49,
-        "lower": 0,
-        "upper": 127
-      },
-      "note": "observed press while LED 16 was flashing"
-    },
-    {
-      "name": "Button (LED 18)",
-      "kind": "note",
-      "channel": 8,
-      "number": 26,
-      "type": "Button",
-      "values": [],
-      "feedback": {
-        "kind": "note",
-        "channel": 8,
-        "number": 26,
-        "lower": 0,
-        "upper": 127
-      },
-      "note": "observed press while LED 18 was flashing"
-    },
-    {
-      "name": "Button (LED 19)",
-      "kind": "note",
-      "channel": 8,
-      "number": 28,
-      "type": "Button",
-      "values": [],
-      "feedback": {
-        "kind": "note",
-        "channel": 8,
-        "number": 28,
-        "lower": 0,
-        "upper": 127
-      },
-      "note": "observed press while LED 19 was flashing"
-    },
-    {
-      "name": "Button (LED 20)",
-      "kind": "note",
-      "channel": 8,
-      "number": 30,
-      "type": "Button",
-      "values": [],
-      "feedback": {
-        "kind": "note",
-        "channel": 8,
-        "number": 30,
-        "lower": 0,
-        "upper": 127
-      },
-      "note": "observed press while LED 20 was flashing"
-    },
-    {
-      "name": "Button (LED 21)",
-      "kind": "note",
-      "channel": 8,
-      "number": 32,
-      "type": "Button",
-      "values": [],
-      "feedback": {
-        "kind": "note",
-        "channel": 8,
-        "number": 32,
-        "lower": 0,
-        "upper": 127
-      },
-      "note": "observed press while LED 21 was flashing"
-    },
-    {
-      "name": "Button (LED 22)",
-      "kind": "note",
-      "channel": 8,
-      "number": 34,
-      "type": "Button",
-      "values": [],
-      "feedback": {
-        "kind": "note",
-        "channel": 8,
-        "number": 34,
-        "lower": 0,
-        "upper": 127
-      },
-      "note": "observed press while LED 22 was flashing"
-    },
-    {
-      "name": "Button (LED 24)",
-      "kind": "note",
-      "channel": 8,
-      "number": 52,
-      "type": "Button",
-      "values": [],
-      "feedback": {
-        "kind": "note",
-        "channel": 8,
-        "number": 52,
-        "lower": 0,
-        "upper": 127
-      },
-      "note": "observed press while LED 24 was flashing"
-    },
-    {
       "name": "Button (LED 25)",
       "kind": "note",
       "channel": 8,
       "number": 11,
       "type": "Button",
-      "values": [],
+      "values": [
+        0,
+        127
+      ],
       "feedback": {
         "kind": "note",
         "channel": 8,
@@ -325,12 +542,438 @@
       "note": "observed press while LED 25 was flashing"
     },
     {
+      "name": "NOTE 12 ch9",
+      "kind": "note",
+      "channel": 8,
+      "number": 12,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button (LED 10)",
+      "kind": "note",
+      "channel": 8,
+      "number": 13,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 13,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 10 was flashing"
+    },
+    {
+      "name": "NOTE 14 ch9",
+      "kind": "note",
+      "channel": 8,
+      "number": 14,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button (LED 11)",
+      "kind": "note",
+      "channel": 8,
+      "number": 15,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 15,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 11 was flashing"
+    },
+    {
+      "name": "NOTE 16 ch9",
+      "kind": "note",
+      "channel": 8,
+      "number": 16,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button (LED 12)",
+      "kind": "note",
+      "channel": 8,
+      "number": 17,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 17,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 12 was flashing"
+    },
+    {
+      "name": "NOTE 18 ch9",
+      "kind": "note",
+      "channel": 8,
+      "number": 18,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button (LED 13)",
+      "kind": "note",
+      "channel": 8,
+      "number": 19,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 19,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 13 was flashing"
+    },
+    {
+      "name": "NOTE 20 ch9",
+      "kind": "note",
+      "channel": 8,
+      "number": 20,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button (LED 14)",
+      "kind": "note",
+      "channel": 8,
+      "number": 21,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 21,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 14 was flashing"
+    },
+    {
+      "name": "NOTE 22 ch9",
+      "kind": "note",
+      "channel": 8,
+      "number": 22,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button (LED 0)",
+      "kind": "note",
+      "channel": 8,
+      "number": 23,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 23,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 0 was flashing"
+    },
+    {
+      "name": "NOTE 24 ch9",
+      "kind": "note",
+      "channel": 8,
+      "number": 24,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "NOTE 25 ch9",
+      "kind": "note",
+      "channel": 8,
+      "number": 25,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button (LED 18)",
+      "kind": "note",
+      "channel": 8,
+      "number": 26,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 26,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 18 was flashing"
+    },
+    {
+      "name": "NOTE 27 ch9",
+      "kind": "note",
+      "channel": 8,
+      "number": 27,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button (LED 19)",
+      "kind": "note",
+      "channel": 8,
+      "number": 28,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 28,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 19 was flashing"
+    },
+    {
+      "name": "NOTE 29 ch9",
+      "kind": "note",
+      "channel": 8,
+      "number": 29,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button (LED 20)",
+      "kind": "note",
+      "channel": 8,
+      "number": 30,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 30,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 20 was flashing"
+    },
+    {
+      "name": "NOTE 31 ch9",
+      "kind": "note",
+      "channel": 8,
+      "number": 31,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button (LED 21)",
+      "kind": "note",
+      "channel": 8,
+      "number": 32,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 32,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 21 was flashing"
+    },
+    {
+      "name": "NOTE 33 ch9",
+      "kind": "note",
+      "channel": 8,
+      "number": 33,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button (LED 22)",
+      "kind": "note",
+      "channel": 8,
+      "number": 34,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 34,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 22 was flashing"
+    },
+    {
+      "name": "NOTE 35 ch9",
+      "kind": "note",
+      "channel": 8,
+      "number": 35,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "Button (LED 8)",
+      "kind": "note",
+      "channel": 8,
+      "number": 36,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 36,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 8 was flashing"
+    },
+    {
+      "name": "NOTE 37 ch9",
+      "kind": "note",
+      "channel": 8,
+      "number": 37,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
+      "name": "NOTE 38 ch9",
+      "kind": "note",
+      "channel": 8,
+      "number": 38,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
       "name": "Button (LED 26)",
       "kind": "note",
       "channel": 8,
       "number": 39,
       "type": "Button",
-      "values": [],
+      "values": [
+        0,
+        127
+      ],
       "feedback": {
         "kind": "note",
         "channel": 8,
@@ -341,12 +984,28 @@
       "note": "observed press while LED 26 was flashing"
     },
     {
+      "name": "NOTE 40 ch9",
+      "kind": "note",
+      "channel": 8,
+      "number": 40,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
       "name": "Button (LED 27)",
       "kind": "note",
       "channel": 8,
       "number": 41,
       "type": "Button",
-      "values": [],
+      "values": [
+        0,
+        127
+      ],
       "feedback": {
         "kind": "note",
         "channel": 8,
@@ -357,12 +1016,28 @@
       "note": "observed press while LED 27 was flashing"
     },
     {
+      "name": "NOTE 42 ch9",
+      "kind": "note",
+      "channel": 8,
+      "number": 42,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
       "name": "Button (LED 28)",
       "kind": "note",
       "channel": 8,
       "number": 43,
       "type": "Button",
-      "values": [],
+      "values": [
+        0,
+        127
+      ],
       "feedback": {
         "kind": "note",
         "channel": 8,
@@ -373,12 +1048,28 @@
       "note": "observed press while LED 28 was flashing"
     },
     {
+      "name": "NOTE 44 ch9",
+      "kind": "note",
+      "channel": 8,
+      "number": 44,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
       "name": "Button (LED 29)",
       "kind": "note",
       "channel": 8,
       "number": 45,
       "type": "Button",
-      "values": [],
+      "values": [
+        0,
+        127
+      ],
       "feedback": {
         "kind": "note",
         "channel": 8,
@@ -389,12 +1080,28 @@
       "note": "observed press while LED 29 was flashing"
     },
     {
+      "name": "NOTE 46 ch9",
+      "kind": "note",
+      "channel": 8,
+      "number": 46,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": null,
+      "note": ""
+    },
+    {
       "name": "Button (LED 30)",
       "kind": "note",
       "channel": 8,
       "number": 47,
       "type": "Button",
-      "values": [],
+      "values": [
+        0,
+        127
+      ],
       "feedback": {
         "kind": "note",
         "channel": 8,
@@ -405,114 +1112,94 @@
       "note": "observed press while LED 30 was flashing"
     },
     {
-      "name": "Analog 1",
-      "kind": "cc",
+      "name": "NOTE 48 ch9",
+      "kind": "note",
       "channel": 8,
-      "number": 0,
-      "type": "Slider",
-      "values": [],
+      "number": 48,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
       "feedback": null,
-      "note": "from config dump, NOT yet confirmed by moving it"
+      "note": ""
     },
     {
-      "name": "Analog 2",
-      "kind": "cc",
+      "name": "Button (LED 16)",
+      "kind": "note",
       "channel": 8,
-      "number": 1,
-      "type": "Slider",
-      "values": [],
-      "feedback": null,
-      "note": "from config dump, NOT yet confirmed by moving it"
+      "number": 49,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 49,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 16 was flashing"
     },
     {
-      "name": "Analog 3",
-      "kind": "cc",
+      "name": "NOTE 50 ch9",
+      "kind": "note",
       "channel": 8,
-      "number": 2,
-      "type": "Slider",
-      "values": [],
+      "number": 50,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
       "feedback": null,
-      "note": "from config dump, NOT yet confirmed by moving it"
+      "note": ""
     },
     {
-      "name": "Analog 4",
-      "kind": "cc",
+      "name": "NOTE 51 ch9",
+      "kind": "note",
       "channel": 8,
-      "number": 3,
-      "type": "Slider",
-      "values": [],
+      "number": 51,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
       "feedback": null,
-      "note": "from config dump, NOT yet confirmed by moving it"
+      "note": ""
     },
     {
-      "name": "Analog 5",
-      "kind": "cc",
+      "name": "Button (LED 24)",
+      "kind": "note",
       "channel": 8,
-      "number": 4,
-      "type": "Slider",
-      "values": [],
-      "feedback": null,
-      "note": "from config dump, NOT yet confirmed by moving it"
+      "number": 52,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
+      "feedback": {
+        "kind": "note",
+        "channel": 8,
+        "number": 52,
+        "lower": 0,
+        "upper": 127
+      },
+      "note": "observed press while LED 24 was flashing"
     },
     {
-      "name": "Analog 6",
-      "kind": "cc",
+      "name": "NOTE 53 ch9",
+      "kind": "note",
       "channel": 8,
-      "number": 5,
-      "type": "Slider",
-      "values": [],
+      "number": 53,
+      "type": "Button",
+      "values": [
+        0,
+        127
+      ],
       "feedback": null,
-      "note": "from config dump, NOT yet confirmed by moving it"
-    },
-    {
-      "name": "Analog 7",
-      "kind": "cc",
-      "channel": 8,
-      "number": 6,
-      "type": "Slider",
-      "values": [],
-      "feedback": null,
-      "note": "from config dump, NOT yet confirmed by moving it"
-    },
-    {
-      "name": "Analog 8",
-      "kind": "cc",
-      "channel": 8,
-      "number": 7,
-      "type": "Slider",
-      "values": [],
-      "feedback": null,
-      "note": "from config dump, NOT yet confirmed by moving it"
-    },
-    {
-      "name": "Analog 9",
-      "kind": "cc",
-      "channel": 8,
-      "number": 8,
-      "type": "Slider",
-      "values": [],
-      "feedback": null,
-      "note": "from config dump, NOT yet confirmed by moving it"
-    },
-    {
-      "name": "Analog 10",
-      "kind": "cc",
-      "channel": 8,
-      "number": 9,
-      "type": "Slider",
-      "values": [],
-      "feedback": null,
-      "note": "from config dump, NOT yet confirmed by moving it"
-    },
-    {
-      "name": "Analog 11",
-      "kind": "cc",
-      "channel": 8,
-      "number": 10,
-      "type": "Slider",
-      "values": [],
-      "feedback": null,
-      "note": "from config dump, NOT yet confirmed by moving it"
+      "note": ""
     }
   ],
   "leds": [
@@ -710,7 +1397,11 @@
       "channel": 8,
       "control_type": 10,
       "midi_driven": false,
-      "button": null
+      "button": {
+        "kind": "note",
+        "channel": 8,
+        "number": 0
+      }
     },
     {
       "index": 18,
