@@ -5,7 +5,7 @@
   "output_port": "OpenDeck | PMJ_BLACK_1",
   "controls": [
     {
-      "name": "Analog 1",
+      "name": "Master",
       "kind": "cc",
       "channel": 8,
       "number": 0,
@@ -32,7 +32,7 @@
       "note": ""
     },
     {
-      "name": "Analog 2",
+      "name": "Ch 1",
       "kind": "cc",
       "channel": 8,
       "number": 1,
@@ -59,7 +59,7 @@
       "note": ""
     },
     {
-      "name": "Analog 3",
+      "name": "Ch 2",
       "kind": "cc",
       "channel": 8,
       "number": 2,
@@ -86,7 +86,7 @@
       "note": ""
     },
     {
-      "name": "Analog 4",
+      "name": "Ch 3",
       "kind": "cc",
       "channel": 8,
       "number": 3,
@@ -113,7 +113,7 @@
       "note": ""
     },
     {
-      "name": "Analog 5",
+      "name": "Ch 4",
       "kind": "cc",
       "channel": 8,
       "number": 4,
@@ -140,7 +140,7 @@
       "note": ""
     },
     {
-      "name": "Analog 6",
+      "name": "Ch 5",
       "kind": "cc",
       "channel": 8,
       "number": 5,
@@ -167,7 +167,7 @@
       "note": ""
     },
     {
-      "name": "Analog 7",
+      "name": "Ch 6",
       "kind": "cc",
       "channel": 8,
       "number": 6,
@@ -194,7 +194,7 @@
       "note": ""
     },
     {
-      "name": "Analog 8",
+      "name": "Ch 7",
       "kind": "cc",
       "channel": 8,
       "number": 7,
@@ -221,7 +221,7 @@
       "note": ""
     },
     {
-      "name": "Analog 9",
+      "name": "Ch 8",
       "kind": "cc",
       "channel": 8,
       "number": 8,
@@ -248,7 +248,7 @@
       "note": ""
     },
     {
-      "name": "Analog 10",
+      "name": "Ch 9",
       "kind": "cc",
       "channel": 8,
       "number": 9,
@@ -275,7 +275,7 @@
       "note": ""
     },
     {
-      "name": "Analog 11",
+      "name": "Ch 10",
       "kind": "cc",
       "channel": 8,
       "number": 10,
@@ -302,7 +302,7 @@
       "note": ""
     },
     {
-      "name": "CC 11 ch9",
+      "name": "Enc 1",
       "kind": "cc",
       "channel": 8,
       "number": 11,
@@ -314,7 +314,7 @@
       "note": ""
     },
     {
-      "name": "CC 12 ch9",
+      "name": "Enc 2",
       "kind": "cc",
       "channel": 8,
       "number": 12,
@@ -326,7 +326,7 @@
       "note": ""
     },
     {
-      "name": "CC 13 ch9",
+      "name": "Enc 3",
       "kind": "cc",
       "channel": 8,
       "number": 13,
@@ -338,7 +338,7 @@
       "note": ""
     },
     {
-      "name": "CC 14 ch9",
+      "name": "Enc 4",
       "kind": "cc",
       "channel": 8,
       "number": 14,
@@ -350,7 +350,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 0 ch9",
+      "name": "Go",
       "kind": "note",
       "channel": 8,
       "number": 0,
@@ -369,7 +369,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 1 ch9",
+      "name": "1-Down",
       "kind": "note",
       "channel": 8,
       "number": 1,
@@ -388,7 +388,7 @@
       "note": ""
     },
     {
-      "name": "Button (LED 2)",
+      "name": "2-Down",
       "kind": "note",
       "channel": 8,
       "number": 2,
@@ -407,7 +407,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 3 ch9",
+      "name": "3-Down",
       "kind": "note",
       "channel": 8,
       "number": 3,
@@ -426,7 +426,7 @@
       "note": ""
     },
     {
-      "name": "Button (LED 3)",
+      "name": "4-Down",
       "kind": "note",
       "channel": 8,
       "number": 4,
@@ -445,7 +445,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 5 ch9",
+      "name": "5-Down",
       "kind": "note",
       "channel": 8,
       "number": 5,
@@ -464,7 +464,7 @@
       "note": ""
     },
     {
-      "name": "Button (LED 4)",
+      "name": "6-Down",
       "kind": "note",
       "channel": 8,
       "number": 6,
@@ -483,7 +483,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 7 ch9",
+      "name": "7-Down",
       "kind": "note",
       "channel": 8,
       "number": 7,
@@ -502,7 +502,7 @@
       "note": ""
     },
     {
-      "name": "Button (LED 5)",
+      "name": "8-Down",
       "kind": "note",
       "channel": 8,
       "number": 8,
@@ -521,7 +521,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 9 ch9",
+      "name": "9-Down",
       "kind": "note",
       "channel": 8,
       "number": 9,
@@ -540,7 +540,7 @@
       "note": ""
     },
     {
-      "name": "Button (LED 6)",
+      "name": "10-Down",
       "kind": "note",
       "channel": 8,
       "number": 10,
@@ -559,7 +559,7 @@
       "note": ""
     },
     {
-      "name": "Button (LED 25)",
+      "name": "Back",
       "kind": "note",
       "channel": 8,
       "number": 11,
@@ -578,7 +578,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 12 ch9",
+      "name": "1-Up",
       "kind": "note",
       "channel": 8,
       "number": 12,
@@ -597,7 +597,7 @@
       "note": ""
     },
     {
-      "name": "Button (LED 10)",
+      "name": "2-Up",
       "kind": "note",
       "channel": 8,
       "number": 13,
@@ -616,7 +616,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 14 ch9",
+      "name": "3-Up",
       "kind": "note",
       "channel": 8,
       "number": 14,
@@ -635,7 +635,7 @@
       "note": ""
     },
     {
-      "name": "Button (LED 11)",
+      "name": "4-Up",
       "kind": "note",
       "channel": 8,
       "number": 15,
@@ -654,7 +654,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 16 ch9",
+      "name": "5-Up",
       "kind": "note",
       "channel": 8,
       "number": 16,
@@ -673,7 +673,7 @@
       "note": ""
     },
     {
-      "name": "Button (LED 12)",
+      "name": "6-Up",
       "kind": "note",
       "channel": 8,
       "number": 17,
@@ -692,7 +692,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 18 ch9",
+      "name": "7-Up",
       "kind": "note",
       "channel": 8,
       "number": 18,
@@ -711,7 +711,7 @@
       "note": ""
     },
     {
-      "name": "Button (LED 13)",
+      "name": "8-Up",
       "kind": "note",
       "channel": 8,
       "number": 19,
@@ -730,7 +730,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 20 ch9",
+      "name": "0-Up",
       "kind": "note",
       "channel": 8,
       "number": 20,
@@ -749,7 +749,7 @@
       "note": ""
     },
     {
-      "name": "Button (LED 14)",
+      "name": "10-Up",
       "kind": "note",
       "channel": 8,
       "number": 21,
@@ -768,7 +768,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 22 ch9",
+      "name": "O",
       "kind": "note",
       "channel": 8,
       "number": 22,
@@ -787,7 +787,7 @@
       "note": ""
     },
     {
-      "name": "Button (LED 0)",
+      "name": "Pre Page",
       "kind": "note",
       "channel": 8,
       "number": 23,
@@ -806,7 +806,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 24 ch9",
+      "name": "Next Page",
       "kind": "note",
       "channel": 8,
       "number": 24,
@@ -825,7 +825,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 25 ch9",
+      "name": "1-Load",
       "kind": "note",
       "channel": 8,
       "number": 25,
@@ -844,7 +844,7 @@
       "note": ""
     },
     {
-      "name": "Button (LED 18)",
+      "name": "2-Load",
       "kind": "note",
       "channel": 8,
       "number": 26,
@@ -863,7 +863,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 27 ch9",
+      "name": "3-Load",
       "kind": "note",
       "channel": 8,
       "number": 27,
@@ -882,7 +882,7 @@
       "note": ""
     },
     {
-      "name": "Button (LED 19)",
+      "name": "4-Load",
       "kind": "note",
       "channel": 8,
       "number": 28,
@@ -901,7 +901,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 29 ch9",
+      "name": "5-Load",
       "kind": "note",
       "channel": 8,
       "number": 29,
@@ -920,7 +920,7 @@
       "note": ""
     },
     {
-      "name": "Button (LED 20)",
+      "name": "6-Load",
       "kind": "note",
       "channel": 8,
       "number": 30,
@@ -939,7 +939,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 31 ch9",
+      "name": "7-Load",
       "kind": "note",
       "channel": 8,
       "number": 31,
@@ -958,7 +958,7 @@
       "note": ""
     },
     {
-      "name": "Button (LED 21)",
+      "name": "8-Load",
       "kind": "note",
       "channel": 8,
       "number": 32,
@@ -977,7 +977,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 33 ch9",
+      "name": "9-Load",
       "kind": "note",
       "channel": 8,
       "number": 33,
@@ -996,7 +996,7 @@
       "note": ""
     },
     {
-      "name": "Button (LED 22)",
+      "name": "10-Load",
       "kind": "note",
       "channel": 8,
       "number": 34,
@@ -1015,7 +1015,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 35 ch9",
+      "name": "Fix Cont",
       "kind": "note",
       "channel": 8,
       "number": 35,
@@ -1034,7 +1034,7 @@
       "note": ""
     },
     {
-      "name": "Button (LED 8)",
+      "name": "Left",
       "kind": "note",
       "channel": 8,
       "number": 36,
@@ -1053,7 +1053,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 37 ch9",
+      "name": "Right",
       "kind": "note",
       "channel": 8,
       "number": 37,
@@ -1072,7 +1072,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 38 ch9",
+      "name": "1",
       "kind": "note",
       "channel": 8,
       "number": 38,
@@ -1091,7 +1091,7 @@
       "note": ""
     },
     {
-      "name": "Button (LED 26)",
+      "name": "2",
       "kind": "note",
       "channel": 8,
       "number": 39,
@@ -1110,7 +1110,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 40 ch9",
+      "name": "3",
       "kind": "note",
       "channel": 8,
       "number": 40,
@@ -1129,7 +1129,7 @@
       "note": ""
     },
     {
-      "name": "Button (LED 27)",
+      "name": "4",
       "kind": "note",
       "channel": 8,
       "number": 41,
@@ -1148,7 +1148,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 42 ch9",
+      "name": "5",
       "kind": "note",
       "channel": 8,
       "number": 42,
@@ -1167,7 +1167,7 @@
       "note": ""
     },
     {
-      "name": "Button (LED 28)",
+      "name": "6",
       "kind": "note",
       "channel": 8,
       "number": 43,
@@ -1186,7 +1186,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 44 ch9",
+      "name": "7",
       "kind": "note",
       "channel": 8,
       "number": 44,
@@ -1205,7 +1205,7 @@
       "note": ""
     },
     {
-      "name": "Button (LED 29)",
+      "name": "8",
       "kind": "note",
       "channel": 8,
       "number": 45,
@@ -1224,7 +1224,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 46 ch9",
+      "name": "9",
       "kind": "note",
       "channel": 8,
       "number": 46,
@@ -1243,7 +1243,7 @@
       "note": ""
     },
     {
-      "name": "Button (LED 30)",
+      "name": "10",
       "kind": "note",
       "channel": 8,
       "number": 47,
@@ -1262,7 +1262,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 48 ch9",
+      "name": "Favorites",
       "kind": "note",
       "channel": 8,
       "number": 48,
@@ -1281,7 +1281,7 @@
       "note": ""
     },
     {
-      "name": "Button (LED 16)",
+      "name": "Set",
       "kind": "note",
       "channel": 8,
       "number": 49,
@@ -1300,7 +1300,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 50 ch9",
+      "name": "Effects",
       "kind": "note",
       "channel": 8,
       "number": 50,
@@ -1319,7 +1319,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 51 ch9",
+      "name": "Groups",
       "kind": "note",
       "channel": 8,
       "number": 51,
@@ -1338,7 +1338,7 @@
       "note": ""
     },
     {
-      "name": "Button (LED 24)",
+      "name": "Looks",
       "kind": "note",
       "channel": 8,
       "number": 52,
@@ -1357,7 +1357,7 @@
       "note": ""
     },
     {
-      "name": "NOTE 53 ch9",
+      "name": "Macros",
       "kind": "note",
       "channel": 8,
       "number": 53,
