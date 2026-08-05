@@ -101,6 +101,7 @@ def build_qxi(
             lines.append(f'  <Feedback {" ".join(attrs)}/>')
         lines.append(" </Channel>")
 
+    color_table = color_table or dmap.colors
     if color_table:
         lines.append(" <ColorTable>")
         for entry in color_table:
@@ -110,6 +111,14 @@ def build_qxi(
                 f'Label={_attr(entry["label"])} RGB={_attr(rgb)}/>'
             )
         lines.append(" </ColorTable>")
+
+    behaviour = dmap.midi_channel_table
+    if behaviour:
+        lines.append(" <MidiChannelTable>")
+        for entry in behaviour:
+            lines.append(f'  <Channel Value={_attr(entry["value"])} '
+                         f'Label={_attr(entry["label"])}/>')
+        lines.append(" </MidiChannelTable>")
 
     lines.append("</InputProfile>")
     return "\n".join(lines) + "\n"
@@ -159,6 +168,87 @@ def build_qxm(name: str, description: str, init_messages: list[str]) -> str:
         lines.append(f" <InitMessage>{escape(msg)}</InitMessage>")
     lines.append("</MidiTemplate>")
     return "\n".join(lines) + "\n"
+
+
+def parse_qxi(path: Path) -> DeviceMap:
+    """Read a QLC+ input profile back into a DeviceMap.
+
+    A stock profile is the fastest honest starting point for a device somebody
+    has already mapped: it carries the addresses, the names, the feedback
+    ranges and - for RGB pads - the colour table, none of which have to be
+    rediscovered by hand.  Confirm it against the hardware with `learn`; being
+    published does not make it right for a particular unit or firmware.
+    """
+    from xml.etree import ElementTree
+
+    from .events import decode_qlc_channel
+    from .learn import Control
+
+    root = ElementTree.parse(path).getroot()
+    ns = ""
+    if root.tag.startswith("{"):
+        ns = root.tag[: root.tag.index("}") + 1]
+
+    # OSC and HID profiles reuse the <Channel Number=> element, but the numbers
+    # are hashed paths or key codes, not MIDI addresses - decoding them as MIDI
+    # produces confident nonsense.
+    profile_type = (root.findtext(f"{ns}Type") or "MIDI").strip()
+    if profile_type != "MIDI":
+        raise ValueError(f"{path.name} is a {profile_type} profile, not MIDI")
+
+    dmap = DeviceMap(
+        manufacturer=(root.findtext(f"{ns}Manufacturer") or "Unknown").strip(),
+        model=(root.findtext(f"{ns}Model") or path.stem).strip(),
+    )
+
+    skipped = []
+    for element in root.findall(f"{ns}Channel"):
+        try:
+            number = int(element.get("Number", ""))
+        except ValueError:
+            continue
+        decoded = decode_qlc_channel(number)
+        if decoded is None:
+            skipped.append(number)
+            continue
+        kind, channel, index = decoded
+        ctl = Control(
+            name=(element.findtext(f"{ns}Name") or f"Channel {number}").strip(),
+            kind=kind, channel=channel, number=index,
+            type=(element.findtext(f"{ns}Type") or "Button").strip(),
+            note=f"imported from {path.name}",
+        )
+        feedback = element.find(f"{ns}Feedback")
+        if feedback is not None:
+            fb_channel = feedback.get("MidiChannel")
+            ctl.feedback = {
+                "kind": kind,
+                "channel": int(fb_channel) if fb_channel is not None else channel,
+                "number": index,
+                "lower": int(feedback.get("LowerValue", 0)),
+                "upper": int(feedback.get("UpperValue", 127)),
+            }
+        dmap.controls.append(ctl)
+
+    behaviour = root.find(f"{ns}MidiChannelTable")
+    if behaviour is not None:
+        for entry in behaviour.findall(f"{ns}Channel"):
+            dmap.midi_channel_table.append({
+                "value": int(entry.get("Value", 0)),
+                "label": entry.get("Label", ""),
+            })
+
+    table = root.find(f"{ns}ColorTable")
+    if table is not None:
+        for entry in table.findall(f"{ns}Color"):
+            dmap.colors.append({
+                "value": int(entry.get("Value", 0)),
+                "label": entry.get("Label", ""),
+                "rgb": entry.get("RGB", ""),
+            })
+
+    dmap.skipped_channels = skipped
+    return dmap
 
 
 def parse_qxm_init(path: Path) -> tuple[str, list[int]]:

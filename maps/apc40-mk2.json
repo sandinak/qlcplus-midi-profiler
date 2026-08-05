@@ -1,0 +1,2683 @@
+{
+  "manufacturer": "Akai",
+  "model": "APC40 mkII",
+  "input_port": "",
+  "output_port": "",
+  "controls": [
+    {
+      "name": "Slider 1",
+      "kind": "cc",
+      "channel": 0,
+      "number": 7,
+      "type": "Slider",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Tempo",
+      "kind": "cc",
+      "channel": 0,
+      "number": 13,
+      "type": "Encoder",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Master",
+      "kind": "cc",
+      "channel": 0,
+      "number": 14,
+      "type": "Slider",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Cross fader",
+      "kind": "cc",
+      "channel": 0,
+      "number": 15,
+      "type": "Slider",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Knob 9",
+      "kind": "cc",
+      "channel": 0,
+      "number": 16,
+      "type": "Knob",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Knob 10",
+      "kind": "cc",
+      "channel": 0,
+      "number": 17,
+      "type": "Knob",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Knob 11",
+      "kind": "cc",
+      "channel": 0,
+      "number": 18,
+      "type": "Knob",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Knob 12",
+      "kind": "cc",
+      "channel": 0,
+      "number": 19,
+      "type": "Knob",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Knob 13",
+      "kind": "cc",
+      "channel": 0,
+      "number": 20,
+      "type": "Knob",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Knob 14",
+      "kind": "cc",
+      "channel": 0,
+      "number": 21,
+      "type": "Knob",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Knob 15",
+      "kind": "cc",
+      "channel": 0,
+      "number": 22,
+      "type": "Knob",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Knob 16",
+      "kind": "cc",
+      "channel": 0,
+      "number": 23,
+      "type": "Knob",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Cue level",
+      "kind": "cc",
+      "channel": 0,
+      "number": 47,
+      "type": "Encoder",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Knob 1",
+      "kind": "cc",
+      "channel": 0,
+      "number": 48,
+      "type": "Knob",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Knob 2",
+      "kind": "cc",
+      "channel": 0,
+      "number": 49,
+      "type": "Knob",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Knob 3",
+      "kind": "cc",
+      "channel": 0,
+      "number": 50,
+      "type": "Knob",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Knob 4",
+      "kind": "cc",
+      "channel": 0,
+      "number": 51,
+      "type": "Knob",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Knob 5",
+      "kind": "cc",
+      "channel": 0,
+      "number": 52,
+      "type": "Knob",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Knob 6",
+      "kind": "cc",
+      "channel": 0,
+      "number": 53,
+      "type": "Knob",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Knob 7",
+      "kind": "cc",
+      "channel": 0,
+      "number": 54,
+      "type": "Knob",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Knob 8",
+      "kind": "cc",
+      "channel": 0,
+      "number": 55,
+      "type": "Knob",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 5-1",
+      "kind": "note",
+      "channel": 0,
+      "number": 0,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 0,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 5-2",
+      "kind": "note",
+      "channel": 0,
+      "number": 1,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 1,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 5-3",
+      "kind": "note",
+      "channel": 0,
+      "number": 2,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 2,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 5-4",
+      "kind": "note",
+      "channel": 0,
+      "number": 3,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 3,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 5-5",
+      "kind": "note",
+      "channel": 0,
+      "number": 4,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 4,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 5-6",
+      "kind": "note",
+      "channel": 0,
+      "number": 5,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 5,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 5-7",
+      "kind": "note",
+      "channel": 0,
+      "number": 6,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 6,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 5-8",
+      "kind": "note",
+      "channel": 0,
+      "number": 7,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 7,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 4-1",
+      "kind": "note",
+      "channel": 0,
+      "number": 8,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 8,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 4-2",
+      "kind": "note",
+      "channel": 0,
+      "number": 9,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 9,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 4-3",
+      "kind": "note",
+      "channel": 0,
+      "number": 10,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 10,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 4-4",
+      "kind": "note",
+      "channel": 0,
+      "number": 11,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 11,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 4-5",
+      "kind": "note",
+      "channel": 0,
+      "number": 12,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 12,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 4-6",
+      "kind": "note",
+      "channel": 0,
+      "number": 13,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 13,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 4-7",
+      "kind": "note",
+      "channel": 0,
+      "number": 14,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 14,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 4-8",
+      "kind": "note",
+      "channel": 0,
+      "number": 15,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 15,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 3-1",
+      "kind": "note",
+      "channel": 0,
+      "number": 16,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 16,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 3-2",
+      "kind": "note",
+      "channel": 0,
+      "number": 17,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 17,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 3-3",
+      "kind": "note",
+      "channel": 0,
+      "number": 18,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 18,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 3-4",
+      "kind": "note",
+      "channel": 0,
+      "number": 19,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 19,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 3-5",
+      "kind": "note",
+      "channel": 0,
+      "number": 20,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 20,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 3-6",
+      "kind": "note",
+      "channel": 0,
+      "number": 21,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 21,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 3-7",
+      "kind": "note",
+      "channel": 0,
+      "number": 22,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 22,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 3-8",
+      "kind": "note",
+      "channel": 0,
+      "number": 23,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 23,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 2-1",
+      "kind": "note",
+      "channel": 0,
+      "number": 24,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 24,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 2-2",
+      "kind": "note",
+      "channel": 0,
+      "number": 25,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 25,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 2-3",
+      "kind": "note",
+      "channel": 0,
+      "number": 26,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 26,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 2-4",
+      "kind": "note",
+      "channel": 0,
+      "number": 27,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 27,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 2-5",
+      "kind": "note",
+      "channel": 0,
+      "number": 28,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 28,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 2-6",
+      "kind": "note",
+      "channel": 0,
+      "number": 29,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 29,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 2-7",
+      "kind": "note",
+      "channel": 0,
+      "number": 30,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 30,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 2-8",
+      "kind": "note",
+      "channel": 0,
+      "number": 31,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 31,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 1-1",
+      "kind": "note",
+      "channel": 0,
+      "number": 32,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 32,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 1-2",
+      "kind": "note",
+      "channel": 0,
+      "number": 33,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 33,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 1-3",
+      "kind": "note",
+      "channel": 0,
+      "number": 34,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 34,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 1-4",
+      "kind": "note",
+      "channel": 0,
+      "number": 35,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 35,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 1-5",
+      "kind": "note",
+      "channel": 0,
+      "number": 36,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 36,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 1-6",
+      "kind": "note",
+      "channel": 0,
+      "number": 37,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 37,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 1-7",
+      "kind": "note",
+      "channel": 0,
+      "number": 38,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 38,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Button 1-8",
+      "kind": "note",
+      "channel": 0,
+      "number": 39,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 39,
+        "lower": 0,
+        "upper": 42
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "R 1",
+      "kind": "note",
+      "channel": 0,
+      "number": 48,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "S 1",
+      "kind": "note",
+      "channel": 0,
+      "number": 49,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "1",
+      "kind": "note",
+      "channel": 0,
+      "number": 50,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "None",
+      "kind": "note",
+      "channel": 0,
+      "number": 51,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Clip stop 1",
+      "kind": "note",
+      "channel": 0,
+      "number": 52,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Device 1",
+      "kind": "note",
+      "channel": 0,
+      "number": 58,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Device 2",
+      "kind": "note",
+      "channel": 0,
+      "number": 59,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Bank 3",
+      "kind": "note",
+      "channel": 0,
+      "number": 60,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Bank 4",
+      "kind": "note",
+      "channel": 0,
+      "number": 61,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Dev. On/Off",
+      "kind": "note",
+      "channel": 0,
+      "number": 62,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Dev. Lock",
+      "kind": "note",
+      "channel": 0,
+      "number": 63,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Clip/Dev. View",
+      "kind": "note",
+      "channel": 0,
+      "number": 64,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Detail view",
+      "kind": "note",
+      "channel": 0,
+      "number": 65,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "A/B 1",
+      "kind": "note",
+      "channel": 0,
+      "number": 66,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Master",
+      "kind": "note",
+      "channel": 0,
+      "number": 80,
+      "type": "Button",
+      "values": [],
+      "feedback": {
+        "kind": "note",
+        "channel": 0,
+        "number": 80,
+        "lower": 0,
+        "upper": 2
+      },
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Stop all clips",
+      "kind": "note",
+      "channel": 0,
+      "number": 81,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Scene launch 1",
+      "kind": "note",
+      "channel": 0,
+      "number": 82,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Scene launch 2",
+      "kind": "note",
+      "channel": 0,
+      "number": 83,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Scene launch 3",
+      "kind": "note",
+      "channel": 0,
+      "number": 84,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Scene launch 4",
+      "kind": "note",
+      "channel": 0,
+      "number": 85,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Scene launch 5",
+      "kind": "note",
+      "channel": 0,
+      "number": 86,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Pan",
+      "kind": "note",
+      "channel": 0,
+      "number": 87,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Sends",
+      "kind": "note",
+      "channel": 0,
+      "number": 88,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "User",
+      "kind": "note",
+      "channel": 0,
+      "number": 89,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Metronome",
+      "kind": "note",
+      "channel": 0,
+      "number": 90,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Play",
+      "kind": "note",
+      "channel": 0,
+      "number": 91,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Record",
+      "kind": "note",
+      "channel": 0,
+      "number": 93,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Bank select UP",
+      "kind": "note",
+      "channel": 0,
+      "number": 94,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Bank select DOWN",
+      "kind": "note",
+      "channel": 0,
+      "number": 95,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Bank select RIGHT",
+      "kind": "note",
+      "channel": 0,
+      "number": 96,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Bank select LEFT",
+      "kind": "note",
+      "channel": 0,
+      "number": 97,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Shift",
+      "kind": "note",
+      "channel": 0,
+      "number": 98,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Tap Tempo",
+      "kind": "note",
+      "channel": 0,
+      "number": 99,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Nudge -",
+      "kind": "note",
+      "channel": 0,
+      "number": 100,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Nudge +",
+      "kind": "note",
+      "channel": 0,
+      "number": 101,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Session",
+      "kind": "note",
+      "channel": 0,
+      "number": 102,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Bank",
+      "kind": "note",
+      "channel": 0,
+      "number": 103,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Slider 2",
+      "kind": "cc",
+      "channel": 1,
+      "number": 7,
+      "type": "Slider",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "8 Bars",
+      "kind": "cc",
+      "channel": 1,
+      "number": 21,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "8 Bars",
+      "kind": "cc",
+      "channel": 1,
+      "number": 22,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "R 2",
+      "kind": "note",
+      "channel": 1,
+      "number": 48,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "S 2",
+      "kind": "note",
+      "channel": 1,
+      "number": 49,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "2",
+      "kind": "note",
+      "channel": 1,
+      "number": 50,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "8 Bars",
+      "kind": "note",
+      "channel": 1,
+      "number": 51,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Clip stop 2",
+      "kind": "note",
+      "channel": 1,
+      "number": 52,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "A/B 2",
+      "kind": "note",
+      "channel": 1,
+      "number": 66,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Slider 3",
+      "kind": "cc",
+      "channel": 2,
+      "number": 7,
+      "type": "Slider",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "4 Bars",
+      "kind": "cc",
+      "channel": 2,
+      "number": 21,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "R 3",
+      "kind": "note",
+      "channel": 2,
+      "number": 48,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "S 3",
+      "kind": "note",
+      "channel": 2,
+      "number": 49,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "3",
+      "kind": "note",
+      "channel": 2,
+      "number": 50,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "4 Bars",
+      "kind": "note",
+      "channel": 2,
+      "number": 51,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Clip stop 3",
+      "kind": "note",
+      "channel": 2,
+      "number": 52,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "A/B 3",
+      "kind": "note",
+      "channel": 2,
+      "number": 66,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Slider 4",
+      "kind": "cc",
+      "channel": 3,
+      "number": 7,
+      "type": "Slider",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "2 Bars",
+      "kind": "cc",
+      "channel": 3,
+      "number": 20,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "2 Bars",
+      "kind": "cc",
+      "channel": 3,
+      "number": 21,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "R 4",
+      "kind": "note",
+      "channel": 3,
+      "number": 48,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "S 4",
+      "kind": "note",
+      "channel": 3,
+      "number": 49,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "4",
+      "kind": "note",
+      "channel": 3,
+      "number": 50,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "2 Bars",
+      "kind": "note",
+      "channel": 3,
+      "number": 51,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Clip stop 4",
+      "kind": "note",
+      "channel": 3,
+      "number": 52,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "A/B 4",
+      "kind": "note",
+      "channel": 3,
+      "number": 66,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Slider 5",
+      "kind": "cc",
+      "channel": 4,
+      "number": 7,
+      "type": "Slider",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "1 Bars",
+      "kind": "cc",
+      "channel": 4,
+      "number": 22,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "R 5",
+      "kind": "note",
+      "channel": 4,
+      "number": 48,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "S 5",
+      "kind": "note",
+      "channel": 4,
+      "number": 49,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "5",
+      "kind": "note",
+      "channel": 4,
+      "number": 50,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "1 Bars",
+      "kind": "note",
+      "channel": 4,
+      "number": 51,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Clip stop 5",
+      "kind": "note",
+      "channel": 4,
+      "number": 52,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "A/B 5",
+      "kind": "note",
+      "channel": 4,
+      "number": 66,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Slider 6",
+      "kind": "cc",
+      "channel": 5,
+      "number": 7,
+      "type": "Slider",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "1/4",
+      "kind": "cc",
+      "channel": 5,
+      "number": 23,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "R 6",
+      "kind": "note",
+      "channel": 5,
+      "number": 48,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "S 6",
+      "kind": "note",
+      "channel": 5,
+      "number": 49,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "6",
+      "kind": "note",
+      "channel": 5,
+      "number": 50,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "1/4",
+      "kind": "note",
+      "channel": 5,
+      "number": 51,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Clip stop 6",
+      "kind": "note",
+      "channel": 5,
+      "number": 52,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "A/B 6",
+      "kind": "note",
+      "channel": 5,
+      "number": 66,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Slider 7",
+      "kind": "cc",
+      "channel": 6,
+      "number": 7,
+      "type": "Slider",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "1/8",
+      "kind": "cc",
+      "channel": 6,
+      "number": 20,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "R 7",
+      "kind": "note",
+      "channel": 6,
+      "number": 48,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "S 7",
+      "kind": "note",
+      "channel": 6,
+      "number": 49,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "7",
+      "kind": "note",
+      "channel": 6,
+      "number": 50,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "1/8",
+      "kind": "note",
+      "channel": 6,
+      "number": 51,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Clip stop 7",
+      "kind": "note",
+      "channel": 6,
+      "number": 52,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "A/B 7",
+      "kind": "note",
+      "channel": 6,
+      "number": 66,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Slider 8",
+      "kind": "cc",
+      "channel": 7,
+      "number": 7,
+      "type": "Slider",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "1/16",
+      "kind": "cc",
+      "channel": 7,
+      "number": 21,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "R 8",
+      "kind": "note",
+      "channel": 7,
+      "number": 48,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "S 8",
+      "kind": "note",
+      "channel": 7,
+      "number": 49,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "8",
+      "kind": "note",
+      "channel": 7,
+      "number": 50,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "1/16",
+      "kind": "note",
+      "channel": 7,
+      "number": 51,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Clip stop 8",
+      "kind": "note",
+      "channel": 7,
+      "number": 52,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "A/B 8",
+      "kind": "note",
+      "channel": 7,
+      "number": 66,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Knob 9",
+      "kind": "cc",
+      "channel": 8,
+      "number": 16,
+      "type": "Knob",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Knob 10",
+      "kind": "cc",
+      "channel": 8,
+      "number": 17,
+      "type": "Knob",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Knob 11",
+      "kind": "cc",
+      "channel": 8,
+      "number": 18,
+      "type": "Knob",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Knob 12",
+      "kind": "cc",
+      "channel": 8,
+      "number": 19,
+      "type": "Knob",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Knob 13",
+      "kind": "cc",
+      "channel": 8,
+      "number": 20,
+      "type": "Knob",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Knob 14",
+      "kind": "cc",
+      "channel": 8,
+      "number": 21,
+      "type": "Knob",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Knob 15",
+      "kind": "cc",
+      "channel": 8,
+      "number": 22,
+      "type": "Knob",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Knob 16",
+      "kind": "cc",
+      "channel": 8,
+      "number": 23,
+      "type": "Knob",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Device 1",
+      "kind": "note",
+      "channel": 8,
+      "number": 58,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Device 2",
+      "kind": "note",
+      "channel": 8,
+      "number": 59,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Bank 3",
+      "kind": "note",
+      "channel": 8,
+      "number": 60,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Bank 4",
+      "kind": "note",
+      "channel": 8,
+      "number": 61,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Dev. ON/OFF",
+      "kind": "note",
+      "channel": 8,
+      "number": 62,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Dev. Lock",
+      "kind": "note",
+      "channel": 8,
+      "number": 63,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Clip",
+      "kind": "note",
+      "channel": 8,
+      "number": 64,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    },
+    {
+      "name": "Detail",
+      "kind": "note",
+      "channel": 8,
+      "number": 65,
+      "type": "Button",
+      "values": [],
+      "feedback": null,
+      "note": "imported from Akai-APC40-mkII.qxi"
+    }
+  ],
+  "leds": [],
+  "colors": [
+    {
+      "value": 0,
+      "label": "Off",
+      "rgb": "#000000"
+    },
+    {
+      "value": 2,
+      "label": "Dark Gray",
+      "rgb": "#1e1e1e"
+    },
+    {
+      "value": 4,
+      "label": "Light Gray",
+      "rgb": "#7f7f7f"
+    },
+    {
+      "value": 6,
+      "label": "White",
+      "rgb": "#ffffff"
+    },
+    {
+      "value": 8,
+      "label": "Light red",
+      "rgb": "#ff4c4c"
+    },
+    {
+      "value": 10,
+      "label": "Red",
+      "rgb": "#ff0000"
+    },
+    {
+      "value": 12,
+      "label": "Medium red",
+      "rgb": "#590000"
+    },
+    {
+      "value": 14,
+      "label": "Dark red",
+      "rgb": "#190000"
+    },
+    {
+      "value": 16,
+      "label": "Peach",
+      "rgb": "#ffbd6c"
+    },
+    {
+      "value": 18,
+      "label": "Orange",
+      "rgb": "#ff5400"
+    },
+    {
+      "value": 20,
+      "label": "Medium orange",
+      "rgb": "#591d00"
+    },
+    {
+      "value": 22,
+      "label": "Dark orange",
+      "rgb": "#271b00"
+    },
+    {
+      "value": 24,
+      "label": "Yellow",
+      "rgb": "#ffff4c"
+    },
+    {
+      "value": 26,
+      "label": "Yellow 2",
+      "rgb": "#ffff00"
+    },
+    {
+      "value": 28,
+      "label": "Medium yellow",
+      "rgb": "#595900"
+    },
+    {
+      "value": 30,
+      "label": "Dark yellow",
+      "rgb": "#191900"
+    },
+    {
+      "value": 32,
+      "label": "Light green 2",
+      "rgb": "#88ff4c"
+    },
+    {
+      "value": 34,
+      "label": "Green 2",
+      "rgb": "#54ff00"
+    },
+    {
+      "value": 36,
+      "label": "Medium green 2",
+      "rgb": "#1d5900"
+    },
+    {
+      "value": 38,
+      "label": "Dark green 2",
+      "rgb": "#142b00"
+    },
+    {
+      "value": 40,
+      "label": "Light green",
+      "rgb": "#4cff4c"
+    },
+    {
+      "value": 42,
+      "label": "Green",
+      "rgb": "#00ff00"
+    },
+    {
+      "value": 44,
+      "label": "Medium green",
+      "rgb": "#005900"
+    },
+    {
+      "value": 46,
+      "label": "Dark green",
+      "rgb": "#001900"
+    },
+    {
+      "value": 48,
+      "label": "Light green 3",
+      "rgb": "#4cff5e"
+    },
+    {
+      "value": 50,
+      "label": "Green 3",
+      "rgb": "#00ff19"
+    },
+    {
+      "value": 52,
+      "label": "Medium green 3",
+      "rgb": "#00590d"
+    },
+    {
+      "value": 54,
+      "label": "Dark green 3",
+      "rgb": "#001902"
+    },
+    {
+      "value": 56,
+      "label": "Light green 4",
+      "rgb": "#4cff88"
+    },
+    {
+      "value": 58,
+      "label": "Green 4",
+      "rgb": "#00ff55"
+    },
+    {
+      "value": 60,
+      "label": "Medium green 4",
+      "rgb": "#00591d"
+    },
+    {
+      "value": 62,
+      "label": "Dark green 4",
+      "rgb": "#001f12"
+    },
+    {
+      "value": 64,
+      "label": "Light green 5",
+      "rgb": "#4cffb7"
+    },
+    {
+      "value": 66,
+      "label": "Green 5",
+      "rgb": "#00ff99"
+    },
+    {
+      "value": 68,
+      "label": "Medium green 5",
+      "rgb": "#005935"
+    },
+    {
+      "value": 70,
+      "label": "Dark green 5",
+      "rgb": "#001912"
+    },
+    {
+      "value": 72,
+      "label": "Light blue 1",
+      "rgb": "#4cc3ff"
+    },
+    {
+      "value": 74,
+      "label": "Blue 1",
+      "rgb": "#00a9ff"
+    },
+    {
+      "value": 76,
+      "label": "Medium blue 1",
+      "rgb": "#004152"
+    },
+    {
+      "value": 78,
+      "label": "Dark blue 1",
+      "rgb": "#001019"
+    },
+    {
+      "value": 80,
+      "label": "Light blue 2",
+      "rgb": "#4c88ff"
+    },
+    {
+      "value": 82,
+      "label": "Blue 2",
+      "rgb": "#0055ff"
+    },
+    {
+      "value": 84,
+      "label": "Medium blue 2",
+      "rgb": "#001d59"
+    },
+    {
+      "value": 86,
+      "label": "Dark blue 2",
+      "rgb": "#000819"
+    },
+    {
+      "value": 88,
+      "label": "Light blue 3",
+      "rgb": "#4c4cff"
+    },
+    {
+      "value": 90,
+      "label": "Blue 3",
+      "rgb": "#0000ff"
+    },
+    {
+      "value": 92,
+      "label": "Medium blue 3",
+      "rgb": "#000059"
+    },
+    {
+      "value": 94,
+      "label": "Dark blue 3",
+      "rgb": "#000019"
+    },
+    {
+      "value": 96,
+      "label": "Light blue 4",
+      "rgb": "#874cff"
+    },
+    {
+      "value": 98,
+      "label": "Blue 4",
+      "rgb": "#5400ff"
+    },
+    {
+      "value": 100,
+      "label": "Medium blue 4",
+      "rgb": "#190064"
+    },
+    {
+      "value": 102,
+      "label": "Dark blue 4",
+      "rgb": "#0f0030"
+    },
+    {
+      "value": 104,
+      "label": "Light magenta 1",
+      "rgb": "#ff4cff"
+    },
+    {
+      "value": 106,
+      "label": "Magenta 1",
+      "rgb": "#ff00ff"
+    },
+    {
+      "value": 108,
+      "label": "Medium magenta 1",
+      "rgb": "#590059"
+    },
+    {
+      "value": 110,
+      "label": "Dark magenta 1",
+      "rgb": "#190019"
+    },
+    {
+      "value": 112,
+      "label": "Light pink",
+      "rgb": "#ff4c87"
+    },
+    {
+      "value": 114,
+      "label": "Red 2",
+      "rgb": "#ff0054"
+    },
+    {
+      "value": 116,
+      "label": "Medium red 2",
+      "rgb": "#59001d"
+    },
+    {
+      "value": 118,
+      "label": "Dark red 2",
+      "rgb": "#220013"
+    },
+    {
+      "value": 120,
+      "label": "Light red 3",
+      "rgb": "#ff1500"
+    },
+    {
+      "value": 122,
+      "label": "Brown 1",
+      "rgb": "#993500"
+    },
+    {
+      "value": 124,
+      "label": "Brown 2",
+      "rgb": "#795100"
+    },
+    {
+      "value": 126,
+      "label": "Green 6",
+      "rgb": "#436400"
+    },
+    {
+      "value": 128,
+      "label": "Medium green 6",
+      "rgb": "#033900"
+    },
+    {
+      "value": 130,
+      "label": "Green 7",
+      "rgb": "#005735"
+    },
+    {
+      "value": 132,
+      "label": "Blue 5",
+      "rgb": "#00547f"
+    },
+    {
+      "value": 134,
+      "label": "Blue 6",
+      "rgb": "#0000ff"
+    },
+    {
+      "value": 136,
+      "label": "Medium blue 6",
+      "rgb": "#00454f"
+    },
+    {
+      "value": 138,
+      "label": "Blue 7",
+      "rgb": "#2500cc"
+    },
+    {
+      "value": 140,
+      "label": "White 50%",
+      "rgb": "#7f7f7f"
+    },
+    {
+      "value": 142,
+      "label": "White 10%",
+      "rgb": "#202020"
+    },
+    {
+      "value": 144,
+      "label": "Red",
+      "rgb": "#ff0000"
+    },
+    {
+      "value": 146,
+      "label": "Lime",
+      "rgb": "#bdff2d"
+    },
+    {
+      "value": 148,
+      "label": "Medium lime",
+      "rgb": "#afed06"
+    },
+    {
+      "value": 150,
+      "label": "Green 8",
+      "rgb": "#64ff09"
+    },
+    {
+      "value": 152,
+      "label": "Medium green 8",
+      "rgb": "#108b00"
+    },
+    {
+      "value": 154,
+      "label": "Light green 9",
+      "rgb": "#00ff87"
+    },
+    {
+      "value": 156,
+      "label": "Light blue 8",
+      "rgb": "#00a9ff"
+    },
+    {
+      "value": 158,
+      "label": "Blue 8",
+      "rgb": "#002aff"
+    },
+    {
+      "value": 160,
+      "label": "Blue 9",
+      "rgb": "#3f00ff"
+    },
+    {
+      "value": 162,
+      "label": "Purple",
+      "rgb": "#7a00ff"
+    },
+    {
+      "value": 164,
+      "label": "Red 3",
+      "rgb": "#b21a7d"
+    },
+    {
+      "value": 166,
+      "label": "Dark red 3",
+      "rgb": "#402100"
+    },
+    {
+      "value": 168,
+      "label": "Orange",
+      "rgb": "#ff4a00"
+    },
+    {
+      "value": 170,
+      "label": "Lime 2",
+      "rgb": "#88e106"
+    },
+    {
+      "value": 172,
+      "label": "Green 9",
+      "rgb": "#72ff15"
+    },
+    {
+      "value": 174,
+      "label": "Green",
+      "rgb": "#00ff00"
+    },
+    {
+      "value": 176,
+      "label": "Green 10",
+      "rgb": "#3bff26"
+    },
+    {
+      "value": 178,
+      "label": "Light green 10",
+      "rgb": "#59ff71"
+    },
+    {
+      "value": 180,
+      "label": "Cyan 2",
+      "rgb": "#38ffcc"
+    },
+    {
+      "value": 182,
+      "label": "Light blue 10",
+      "rgb": "#5b8aff"
+    },
+    {
+      "value": 184,
+      "label": "Blue 10",
+      "rgb": "#3151c6"
+    },
+    {
+      "value": 186,
+      "label": "Light blue 11",
+      "rgb": "#877fe9"
+    },
+    {
+      "value": 188,
+      "label": "Magenta 2",
+      "rgb": "#d31dff"
+    },
+    {
+      "value": 190,
+      "label": "Red 4",
+      "rgb": "#ff005d"
+    },
+    {
+      "value": 192,
+      "label": "Orange 2",
+      "rgb": "#ff7f00"
+    },
+    {
+      "value": 194,
+      "label": "Dark yellow",
+      "rgb": "#b9b000"
+    },
+    {
+      "value": 196,
+      "label": "Lime 3",
+      "rgb": "#90ff00"
+    },
+    {
+      "value": 198,
+      "label": "Brown",
+      "rgb": "#835d07"
+    },
+    {
+      "value": 200,
+      "label": "Dark brown",
+      "rgb": "#392b00"
+    },
+    {
+      "value": 202,
+      "label": "Dark green 11",
+      "rgb": "#144c10"
+    },
+    {
+      "value": 204,
+      "label": "Dark green 12",
+      "rgb": "#0d5038"
+    },
+    {
+      "value": 206,
+      "label": "Dark blue 11",
+      "rgb": "#15152a"
+    },
+    {
+      "value": 208,
+      "label": "Dark blue 12",
+      "rgb": "#16205a"
+    },
+    {
+      "value": 210,
+      "label": "Dark orange",
+      "rgb": "#693c1c"
+    },
+    {
+      "value": 212,
+      "label": "Red 5",
+      "rgb": "#a8000a"
+    },
+    {
+      "value": 214,
+      "label": "Light red 5",
+      "rgb": "#de513d"
+    },
+    {
+      "value": 216,
+      "label": "Orange 3",
+      "rgb": "#d86a1c"
+    },
+    {
+      "value": 218,
+      "label": "Light yellow 2",
+      "rgb": "#ffe126"
+    },
+    {
+      "value": 220,
+      "label": "Lime 4",
+      "rgb": "#9ee12f"
+    },
+    {
+      "value": 222,
+      "label": "Green 11",
+      "rgb": "#67b50f"
+    },
+    {
+      "value": 224,
+      "label": "Dark blue 13",
+      "rgb": "#1e1e30"
+    },
+    {
+      "value": 226,
+      "label": "Light yellow 3",
+      "rgb": "#dcff6b"
+    },
+    {
+      "value": 228,
+      "label": "Light green 13",
+      "rgb": "#80ffbd"
+    },
+    {
+      "value": 230,
+      "label": "Light blue 13",
+      "rgb": "#9a99ff"
+    },
+    {
+      "value": 232,
+      "label": "Blue 13",
+      "rgb": "#8e66ff"
+    },
+    {
+      "value": 234,
+      "label": "White 25%",
+      "rgb": "#404040"
+    },
+    {
+      "value": 236,
+      "label": "White 40%",
+      "rgb": "#757575"
+    },
+    {
+      "value": 238,
+      "label": "Cold white",
+      "rgb": "#e0ffff"
+    },
+    {
+      "value": 240,
+      "label": "Red 6",
+      "rgb": "#a00000"
+    },
+    {
+      "value": 242,
+      "label": "Dark red 6",
+      "rgb": "#350000"
+    },
+    {
+      "value": 244,
+      "label": "Green 14",
+      "rgb": "#1ad000"
+    },
+    {
+      "value": 246,
+      "label": "Dark green 14",
+      "rgb": "#074200"
+    },
+    {
+      "value": 248,
+      "label": "Yellow 4",
+      "rgb": "#b9b000"
+    },
+    {
+      "value": 250,
+      "label": "Dark orange 2",
+      "rgb": "#3f3100"
+    },
+    {
+      "value": 252,
+      "label": "Orange 4",
+      "rgb": "#b35f00"
+    },
+    {
+      "value": 255,
+      "label": "Dark red 7",
+      "rgb": "#4b1502"
+    }
+  ],
+  "midi_channel_table": [
+    {
+      "value": 0,
+      "label": "On 10% brightness"
+    },
+    {
+      "value": 1,
+      "label": "On 25% brightness"
+    },
+    {
+      "value": 2,
+      "label": "On 50% brightness"
+    },
+    {
+      "value": 3,
+      "label": "On 65% brightness"
+    },
+    {
+      "value": 4,
+      "label": "On 75% brightness"
+    },
+    {
+      "value": 5,
+      "label": "On 90% brightness"
+    },
+    {
+      "value": 6,
+      "label": "On 100% brightness"
+    },
+    {
+      "value": 7,
+      "label": "Pulsing 1/16"
+    },
+    {
+      "value": 8,
+      "label": "Pulsing 1/8"
+    },
+    {
+      "value": 9,
+      "label": "Pulsing 1/4"
+    },
+    {
+      "value": 10,
+      "label": "Pulsing 1/2"
+    },
+    {
+      "value": 11,
+      "label": "Blinking 1/24"
+    },
+    {
+      "value": 12,
+      "label": "Blinking 1/16"
+    },
+    {
+      "value": 13,
+      "label": "Blinking 1/8"
+    },
+    {
+      "value": 14,
+      "label": "Blinking 1/4"
+    },
+    {
+      "value": 15,
+      "label": "Blinking 1/2"
+    }
+  ]
+}

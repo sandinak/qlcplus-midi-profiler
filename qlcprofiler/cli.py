@@ -116,6 +116,111 @@ def _led_encoder(dmap: DeviceMap, raw: bool):
     return opendeck_value
 
 
+def cmd_import(args) -> int:
+    """Seed a map from an existing QLC+ input profile."""
+    from .profile import parse_qxi
+
+    src = Path(args.profile)
+    if not src.exists():
+        stock = Path("/Applications/QLC+.app/Contents/Resources/InputProfiles") / src.name
+        if stock.exists():
+            src = stock
+        else:
+            print(f"{args.profile} not found", file=sys.stderr)
+            return 2
+
+    try:
+        dmap = parse_qxi(src)
+    except ValueError as exc:
+        print(exc, file=sys.stderr)
+        return 2
+    skipped = getattr(dmap, "skipped_channels", [])
+    kinds = {}
+    for c in dmap.controls:
+        kinds[c.type] = kinds.get(c.type, 0) + 1
+
+    print(f"{src.name}\n  {dmap.manufacturer} {dmap.model}")
+    print(f"  {len(dmap.controls)} controls  ("
+          + ", ".join(f"{n} {k}" for k, n in sorted(kinds.items())) + ")")
+    print(f"  {sum(1 for c in dmap.controls if c.feedback)} with feedback, "
+          f"{len(dmap.colors)} colours")
+    if skipped:
+        print(f"  skipped {len(skipped)} non-MIDI channel number(s): {skipped[:8]}")
+
+    channels = dmap.midi_channels()
+    if channels == {0}:
+        print("\n  Every channel decoded to MIDI channel 1.  A profile written for a\n"
+              "  fixed MIDI channel records no channel, so confirm against hardware.")
+
+    out_path = Path(args.map)
+    if out_path.exists() and not args.overwrite:
+        print(f"\n{out_path} exists; pass --overwrite to replace it.", file=sys.stderr)
+        return 2
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    dmap.save(out_path)
+    print(f"\nSaved to {out_path}")
+    print("Confirm it against the hardware:  qlc-midi learn <port> -m "
+          + str(out_path) + " --relabel")
+    return 0
+
+
+def cmd_colors(args) -> int:
+    """Show a device's colour table - as a list, or painted onto its pads."""
+    from .flash import set_level
+
+    map_path = Path(args.map)
+    if not map_path.exists():
+        print(f"{map_path} not found; run `import` or `learn` first.", file=sys.stderr)
+        return 2
+    dmap = DeviceMap.load(map_path)
+    if not dmap.colors:
+        print(f"{map_path} has no colour table.\n"
+              "Import one from a stock profile, or build one with\n"
+              "  qlc-midi feedback --mode colors --control <name>", file=sys.stderr)
+        return 2
+
+    if args.list:
+        print(f"{len(dmap.colors)} colours in {dmap.manufacturer} {dmap.model}:")
+        for entry in dmap.colors:
+            print(f"  {entry['value']:>3}  {entry.get('rgb',''):<9} {entry.get('label','')}")
+        if dmap.midi_channel_table:
+            print(f"\n{len(dmap.midi_channel_table)} LED behaviours, selected by the "
+                  "MIDI channel the feedback is sent on:")
+            for entry in dmap.midi_channel_table:
+                print(f"  channel {entry['value'] + 1:>2}  {entry['label']}")
+        return 0
+
+    out_name = args.out or dmap.output_port or ports.guess_output_for(args.port or "")
+    if not out_name:
+        print("No output port; pass --out.", file=sys.stderr)
+        return 2
+    out = ports.open_output(out_name)
+
+    pads = [c for c in dmap.controls if c.feedback and c.kind == "note"]
+    if not pads:
+        print("No LED-backed note controls in the map.", file=sys.stderr)
+        return 2
+
+    # Paint the table across the pads, a screenful at a time, so the palette can
+    # be compared against the labels instead of stepped through one value at a
+    # time.
+    colors = dmap.colors[args.start:]
+    page = colors[:len(pads)]
+    print(f"Painting {len(page)} colours onto {len(pads)} pads "
+          f"(values {page[0]['value']}-{page[-1]['value']}):\n")
+    from .events import dmx_to_midi
+
+    for pad, entry in zip(pads, page):
+        velocity = dmx_to_midi(entry["value"])
+        set_level(out, pad, velocity)
+        print(f"  {pad.name:<16} value {entry['value']:>3} -> vel {velocity:>3}  "
+              f"{entry.get('rgb',''):<9} {entry.get('label','')}")
+    remaining = len(colors) - len(page)
+    if remaining > 0:
+        print(f"\n{remaining} more; next page:  --start {args.start + len(page)}")
+    return 0
+
+
 def cmd_probe(args) -> int:
     from .probe import describe, probe
 
@@ -712,6 +817,20 @@ def build_parser() -> argparse.ArgumentParser:
     sp.add_argument("--model", default="")
     sp.add_argument("--overwrite", action="store_true", help="start a fresh map")
     sp.set_defaults(func=cmd_learn)
+
+    sp = sub.add_parser("import", help="seed a map from an existing QLC+ .qxi profile")
+    sp.add_argument("profile", help="path to a .qxi (or a bare name QLC+ ships)")
+    sp.add_argument("-m", "--map", default="maps/device.json")
+    sp.add_argument("--overwrite", action="store_true")
+    sp.set_defaults(func=cmd_import)
+
+    sp = sub.add_parser("colors", help="list a colour table, or paint it onto the pads")
+    sp.add_argument("-m", "--map", default="maps/device.json")
+    sp.add_argument("-p", "--port", default="", help="input port, used to guess output")
+    sp.add_argument("-o", "--out", default="", help="output port name or substring")
+    sp.add_argument("--list", action="store_true", help="print the table, send nothing")
+    sp.add_argument("--start", type=int, default=0, help="first colour index to paint")
+    sp.set_defaults(func=cmd_colors)
 
     sp = sub.add_parser("probe", help="identify a device and its discovery options")
     sp.add_argument("port", help="input port name or substring")

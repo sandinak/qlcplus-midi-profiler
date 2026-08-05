@@ -47,6 +47,12 @@ class DeviceMap:
     # Device-reported LED records, when the device can be interrogated
     # (see opendeck.py).  Empty for controllers learned by ear.
     leds: list[dict] = field(default_factory=list)
+    # value -> colour, for RGB pads.  Feeds the profile's <ColorTable>.
+    colors: list[dict] = field(default_factory=list)
+    # MIDI channel -> LED behaviour.  Some devices (APC40 mkII) select
+    # brightness and blink rate by the channel a feedback note is sent on,
+    # while velocity picks the colour.  Feeds <MidiChannelTable>.
+    midi_channel_table: list[dict] = field(default_factory=list)
 
     def by_key(self) -> dict:
         return {c.key: c for c in self.controls}
@@ -56,6 +62,7 @@ class DeviceMap:
 
     def save(self, path: Path) -> None:
         data = asdict(self)
+        data.pop("skipped_channels", None)
         path.write_text(json.dumps(data, indent=2) + "\n")
 
     @classmethod

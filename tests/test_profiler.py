@@ -376,13 +376,76 @@ def test_qxm_roundtrip(tmp=[None]):
     check("idle level applied", msgs[0].velocity, 15)
 
 
+def test_decode_is_inverse_of_encode():
+    from qlcprofiler.events import decode_qlc_channel, dmx_to_midi
+
+    cases = [("cc", 0, 0), ("cc", 127, 15), ("note", 36, 8), ("note", 127, 15),
+             ("at", 60, 3), ("pc", 5, 1), ("cat", 0, 9), ("pb", 0, 8)]
+    bad = []
+    for kind, number, channel in cases:
+        encoded = qlc_channel(kind, number, channel, True)
+        if decode_qlc_channel(encoded) != (kind, channel, number):
+            bad.append((kind, number, channel, decode_qlc_channel(encoded)))
+    check("decode inverts encode", bad, [])
+
+    # Fixed-channel profiles carry no channel, so everything decodes to ch 0.
+    check("bare cc", decode_qlc_channel(48), ("cc", 0, 48))
+    check("bare note", decode_qlc_channel(164), ("note", 0, 36))
+    # MIDI beat clock pseudo-channels are not controls.
+    check("beat clock rejected", decode_qlc_channel(530), None)
+
+    check("dmx 255 -> 127", dmx_to_midi(255), 127)
+    check("dmx 0 -> 0", dmx_to_midi(0), 0)
+    check("dmx stays 7-bit", max(dmx_to_midi(v) for v in range(256)), 127)
+
+
+def test_import_stock_profiles():
+    """Round-trip every profile QLC+ ships, if it is installed."""
+    from qlcprofiler.profile import parse_qxi
+
+    root = Path("/Applications/QLC+.app/Contents/Resources/InputProfiles")
+    if not root.is_dir():
+        check("stock profiles (skipped, QLC+ not installed)", True, True)
+        return
+
+    midi = []
+    for path in sorted(root.glob("*.qxi")):
+        try:
+            dmap = parse_qxi(path)
+        except ValueError:
+            continue  # not a MIDI profile; correctly refused
+        except Exception as exc:  # noqa: BLE001 - report, do not abort the sweep
+            check(f"parse {path.name}", f"raised {exc}", "parsed")
+            continue
+        if dmap.controls:
+            midi.append((path, dmap))
+    check("parsed a profile set", len(midi) > 20, True)
+
+    # Channel numbers must survive import -> export unchanged.
+    ns = "{http://www.qlcplus.org/InputProfile}"
+    mismatched = []
+    for path, dmap in midi:
+        original = {c.get("Number")
+                    for c in ElementTree.parse(path).getroot().findall(f"{ns}Channel")}
+        try:
+            rebuilt = {c.get("Number") for c in
+                       ElementTree.fromstring(build_qxi(dmap, channel_mode="auto"))
+                       .findall(f"{ns}Channel")}
+        except ValueError:
+            continue  # genuine address collision in the source profile
+        if original != rebuilt:
+            mismatched.append(path.name)
+    check("channel numbers round-trip", mismatched, [])
+
+
 if __name__ == "__main__":
     for fn in (test_classify, test_encoding, test_channel_mode, test_qxi,
                test_collision_detected, test_dominant_key,
                test_read_write_roundtrip, test_restore_only_writes_differences,
                test_align_leds_plan, test_align_rejects_undrivable_kind,
                test_to_device_map_channel_base, test_paginated_read,
-               test_pair_by_address, test_opendeck_led_encoding, test_qxm_roundtrip):
+               test_pair_by_address, test_opendeck_led_encoding, test_qxm_roundtrip,
+               test_decode_is_inverse_of_encode, test_import_stock_profiles):
         print(f"\n-- {fn.__name__}")
         fn()
     print(f"\n{failures} failure(s)")

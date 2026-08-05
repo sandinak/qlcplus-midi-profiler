@@ -66,6 +66,10 @@ maps to, which is handy when a binding in QLC+ is not firing.
 | `opendeck restore` | Write a backup back to the device |
 | `opendeck identify` | Flash each LED, pair it with the button you press |
 | `opendeck align` | Point each LED at its own button's note |
+| `probe` | Identify a device and which discovery paths it supports |
+| `import` | Seed a map from an existing QLC+ `.qxi` profile |
+| `colors` | List a colour table, or paint it onto the pads |
+| `init` | Send a `.qxm` template's InitMessage to a device |
 | `lights` | Light the board so the keycaps can be read (`--progress`, `--off`) |
 | `feedback` | Probe LED feedback (`--mode echo\|scan\|flash\|colors`) |
 | `generate` | Write the `.qxi` (`--install` to drop it in QLC+'s profile dir) |
@@ -183,6 +187,41 @@ re-reads the device afterwards and updates the map, so `generate` then emits
 `--assume-index-order` skips `identify` and assumes LED *i* belongs to control
 *i*. Quick, and wrong on plenty of boards — verify with `identify` if the result
 looks scrambled.
+
+## Start from a stock profile when there is one
+
+`probe` reports any profile QLC+ already ships for the device, and `import`
+reads one back into a map — addresses, names, feedback ranges, colour table and
+all:
+
+```sh
+qlc-midi probe APC40
+qlc-midi import Akai-APC40-mkII.qxi -m maps/apc40.json
+qlc-midi learn APC40 -m maps/apc40.json --relabel      # confirm against hardware
+```
+
+Being published does not make a profile right for a particular unit or
+firmware, so confirm it by ear before relying on it. Import refuses OSC and HID
+profiles: they reuse the same `<Channel Number=>` element, but the numbers are
+hashed paths and key codes rather than MIDI addresses.
+
+## Two devices, two ways of encoding LED behaviour
+
+Neither device puts brightness where you would first assume, and they disagree
+with each other:
+
+| | OpenDeck | APC40 mkII |
+| --- | --- | --- |
+| Colour / brightness | value (with pulse packed in) | velocity, via a 128-entry colour table |
+| Blink / pulse | packed into the same value | the **MIDI channel** the note is sent on |
+
+On the APC40 the channel is the behaviour selector — channels 1–7 are
+brightness steps, 8–11 pulse, 12–16 blink — which is what `<MidiChannelTable>`
+in a profile records. Both tables survive import and regeneration.
+
+Colour table values are in QLC+'s 0–255 space and are scaled to 7-bit on the
+way to the device, so `colors` scales them too rather than sending a value a
+MIDI port would reject.
 
 ## OpenDeck LED values are not just brightness
 

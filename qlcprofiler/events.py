@@ -77,6 +77,38 @@ def from_mido(msg) -> Event | None:
     return None
 
 
+def dmx_to_midi(value: int) -> int:
+    """Scale a QLC+ 0-255 value to a 7-bit MIDI value.
+
+    Profile tables - colour tables especially - are written in QLC+'s 0-255
+    space, and the MIDI plugin scales them on the way out (DMX2MIDI in
+    midiprotocol.h).  Sending a table value straight at a device would exceed
+    7 bits and be rejected.
+    """
+    return max(0, min(127, value * 127 // 255))
+
+
+def decode_qlc_channel(channel: int) -> tuple[str, int, int] | None:
+    """Inverse of qlc_channel: a profile's number back to (kind, midi ch, number).
+
+    A profile written for a fixed MIDI channel carries no channel information,
+    so those decode to MIDI channel 0 - the number is all the file records.
+    Returns None for values outside the message ranges, such as the MIDI beat
+    clock pseudo-channels.
+    """
+    midi_channel = channel >> MIDI_CHANNEL_SHIFT
+    rest = channel & ((1 << MIDI_CHANNEL_SHIFT) - 1)
+    if rest == OFFSETS["pb"]:
+        return ("pb", midi_channel, 0)
+    if rest == OFFSETS["cat"]:
+        return ("cat", midi_channel, 0)
+    for kind in ("pc", "at", "note", "cc"):
+        base = OFFSETS[kind]
+        if base <= rest <= base + 127:
+            return (kind, midi_channel, rest - base)
+    return None
+
+
 def qlc_channel(kind: str, number: int, midi_channel: int, per_channel: bool) -> int:
     """Encode a control as a QLC+ input-profile channel number.
 
