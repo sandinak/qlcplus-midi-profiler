@@ -5,6 +5,8 @@ from __future__ import annotations
 from pathlib import Path
 from xml.sax.saxutils import escape, quoteattr
 
+import mido
+
 from .events import qlc_channel
 from .learn import DeviceMap
 
@@ -157,6 +159,34 @@ def build_qxm(name: str, description: str, init_messages: list[str]) -> str:
         lines.append(f" <InitMessage>{escape(msg)}</InitMessage>")
     lines.append("</MidiTemplate>")
     return "\n".join(lines) + "\n"
+
+
+def parse_qxm_init(path: Path) -> tuple[str, list[int]]:
+    """Pull the name and InitMessage bytes out of a QLC+ MIDI template.
+
+    Lets a template be tried against the hardware directly, rather than only
+    finding out whether it works after wiring everything up in QLC+.
+    """
+    from xml.etree import ElementTree
+
+    root = ElementTree.parse(path).getroot()
+    name = (root.findtext("Name") or path.stem).strip()
+    text = root.findtext("InitMessage") or ""
+    data = [int(token, 16) for token in text.split()]
+    if not data:
+        raise ValueError(f"{path} has no InitMessage bytes")
+    return name, data
+
+
+def split_midi_stream(data: list[int]) -> list:
+    """Split a flat byte stream into individual MIDI messages.
+
+    A QLC+ InitMessage is raw bytes, which may be one SysEx or a run of channel
+    messages, so it cannot be handed to a MIDI port as a single message.
+    """
+    parser = mido.Parser()
+    parser.feed(bytes(data))
+    return list(parser)
 
 
 def default_filename(dmap: DeviceMap) -> str:

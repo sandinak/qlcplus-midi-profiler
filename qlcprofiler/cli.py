@@ -116,6 +116,40 @@ def _led_encoder(dmap: DeviceMap, raw: bool):
     return opendeck_value
 
 
+def cmd_probe(args) -> int:
+    from .probe import describe, probe
+
+    inp = ports.open_input(args.port)
+    out_name = args.out or ports.guess_output_for(args.port)
+    if not out_name:
+        print("No matching output port; pass --out.", file=sys.stderr)
+        return 2
+    print(describe(probe(inp, ports.open_output(out_name))))
+    return 0
+
+
+def cmd_init(args) -> int:
+    """Send a QLC+ MIDI template's InitMessage straight at the device."""
+    from .profile import parse_qxm_init, split_midi_stream
+
+    out_name = args.out or ports.guess_output_for(args.port or "")
+    if not out_name:
+        print("No output port; pass --out.", file=sys.stderr)
+        return 2
+    out = ports.open_output(out_name)
+
+    name, data = parse_qxm_init(Path(args.template))
+    messages = split_midi_stream(data)
+    if not messages:
+        print(f"Could not parse any MIDI out of {args.template}", file=sys.stderr)
+        return 1
+    print(f"{name}\n  {len(data)} bytes -> {len(messages)} message(s) to {out.name}")
+    for msg in messages:
+        out.send(msg)
+        print(f"    {msg}")
+    return 0
+
+
 def cmd_lights(args) -> int:
     """Light the board so the keycaps can be read."""
     from .flash import light_all
@@ -678,6 +712,17 @@ def build_parser() -> argparse.ArgumentParser:
     sp.add_argument("--model", default="")
     sp.add_argument("--overwrite", action="store_true", help="start a fresh map")
     sp.set_defaults(func=cmd_learn)
+
+    sp = sub.add_parser("probe", help="identify a device and its discovery options")
+    sp.add_argument("port", help="input port name or substring")
+    sp.add_argument("-o", "--out", default="", help="output port name or substring")
+    sp.set_defaults(func=cmd_probe)
+
+    sp = sub.add_parser("init", help="send a QLC+ .qxm template's InitMessage to a device")
+    sp.add_argument("template", help="path to a .qxm MIDI template")
+    sp.add_argument("-p", "--port", default="", help="input port, used to guess output")
+    sp.add_argument("-o", "--out", default="", help="output port name or substring")
+    sp.set_defaults(func=cmd_init)
 
     sp = sub.add_parser("lights", help="light the board's LEDs so keycaps are readable")
     sp.add_argument("-m", "--map", default="maps/device.json")

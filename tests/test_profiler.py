@@ -331,13 +331,58 @@ def test_opendeck_led_encoding():
     check("distinct brightness steps", len(set(ladder)), 5)
 
 
+def test_qxm_roundtrip(tmp=[None]):
+    import tempfile
+
+    from qlcprofiler.profile import (
+        build_qxm, idle_init_message, parse_qxm_init, split_midi_stream,
+    )
+
+    root = Path(tempfile.mkdtemp())
+
+    # A run of channel messages must survive as separate MIDI messages: this is
+    # what the idle-lights template is, and QLC+ writes those bytes raw.
+    path = root / "notes.qxm"
+    path.write_text(build_qxm("t", "d", ["90 24 7F 90 25 40 B0 07 64"]))
+    name, data = parse_qxm_init(path)
+    msgs = split_midi_stream(data)
+    check("template name", name, "t")
+    check("three messages", [m.type for m in msgs],
+          ["note_on", "note_on", "control_change"])
+    check("first note", (msgs[0].note, msgs[0].velocity), (36, 127))
+
+    # A vendor mode-change template is one SysEx and must stay one.
+    path = root / "sysex.qxm"
+    path.write_text(build_qxm("s", "d", ["F0 47 7F 29 60 00 04 41 09 00 05 F7"]))
+    _, data = parse_qxm_init(path)
+    msgs = split_midi_stream(data)
+    check("single sysex", [m.type for m in msgs], ["sysex"])
+
+    # Our own generated idle template has to be valid MIDI, not just valid hex.
+    dmap = DeviceMap("OpenDeck", "X", controls=[
+        Control("a", "note", 8, 53, "Button",
+                feedback={"kind": "note", "channel": 8, "number": 53,
+                          "lower": 0, "upper": 127}),
+        Control("b", "cc", 0, 7, "Slider",
+                feedback={"kind": "cc", "channel": 0, "number": 7,
+                          "lower": 0, "upper": 127}),
+    ])
+    path = root / "idle.qxm"
+    path.write_text(build_qxm("i", "d", [idle_init_message(dmap, 15)]))
+    _, data = parse_qxm_init(path)
+    msgs = split_midi_stream(data)
+    check("idle template parses", [m.type for m in msgs], ["note_on", "control_change"])
+    check("idle note channel", msgs[0].channel, 8)
+    check("idle level applied", msgs[0].velocity, 15)
+
+
 if __name__ == "__main__":
     for fn in (test_classify, test_encoding, test_channel_mode, test_qxi,
                test_collision_detected, test_dominant_key,
                test_read_write_roundtrip, test_restore_only_writes_differences,
                test_align_leds_plan, test_align_rejects_undrivable_kind,
                test_to_device_map_channel_base, test_paginated_read,
-               test_pair_by_address, test_opendeck_led_encoding):
+               test_pair_by_address, test_opendeck_led_encoding, test_qxm_roundtrip):
         print(f"\n-- {fn.__name__}")
         fn()
     print(f"\n{failures} failure(s)")
