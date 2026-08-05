@@ -221,6 +221,76 @@ def cmd_colors(args) -> int:
     return 0
 
 
+def cmd_coverage(args) -> int:
+    """Press everything; report which mapped controls never spoke."""
+    from .events import from_mido
+    from .flash import set_level
+
+    map_path = Path(args.map)
+    if not map_path.exists():
+        print(f"{map_path} not found; run `import` or `learn` first.", file=sys.stderr)
+        return 2
+    dmap = DeviceMap.load(map_path)
+    port = ports.open_input(args.port)
+
+    out = None
+    if not args.no_lights:
+        out_name = args.out or dmap.output_port or ports.guess_output_for(args.port)
+        if out_name:
+            out = ports.open_output(out_name)
+
+    known = dmap.by_key()
+    seen: set = set()
+    extra: dict = {}
+
+    if out:
+        # Everything starts lit; a control goes dark once it has been heard, so
+        # what is left glowing is exactly what still needs pressing.
+        for ctl in dmap.controls:
+            set_level(out, ctl, args.level)
+
+    print(f"\n{len(dmap.controls)} controls in {map_path.name}.")
+    print("Operate every control.  Ctrl-C when done.\n")
+    try:
+        while True:
+            for msg in port.iter_pending():
+                ev = from_mido(msg)
+                if ev is None or ev.value == 0:
+                    continue
+                if ev.key in known:
+                    if ev.key not in seen:
+                        seen.add(ev.key)
+                        ctl = known[ev.key]
+                        if out:
+                            set_level(out, ctl, 0)
+                        print(f"  [{len(seen)}/{len(known)}] {ctl.name}")
+                elif ev.key not in extra:
+                    extra[ev.key] = ev
+                    print(f"  ?  unmapped: {ev.describe()}")
+            time.sleep(0.002)
+    except KeyboardInterrupt:
+        print()
+
+    missing = [c for c in dmap.controls if c.key not in seen]
+    print(f"\nHeard {len(seen)} of {len(known)} mapped controls.")
+    if extra:
+        print(f"\n{len(extra)} address(es) the map does not know about:")
+        for ev in extra.values():
+            print(f"  {ev.describe()}")
+    if missing:
+        print(f"\n{len(missing)} never fired:")
+        by_type: dict = {}
+        for ctl in missing:
+            by_type.setdefault(ctl.type, []).append(ctl)
+        for ctype, controls in sorted(by_type.items()):
+            print(f"  {ctype}:")
+            for ctl in controls:
+                print(f"    {ctl.name:<20} {ctl.describe()}")
+    else:
+        print("Everything in the map fired.")
+    return 0
+
+
 def cmd_probe(args) -> int:
     from .probe import describe, probe
 
@@ -831,6 +901,15 @@ def build_parser() -> argparse.ArgumentParser:
     sp.add_argument("--list", action="store_true", help="print the table, send nothing")
     sp.add_argument("--start", type=int, default=0, help="first colour index to paint")
     sp.set_defaults(func=cmd_colors)
+
+    sp = sub.add_parser("coverage",
+                        help="press everything; report which mapped controls never fired")
+    sp.add_argument("port", help="input port name or substring")
+    sp.add_argument("-m", "--map", default="maps/device.json")
+    sp.add_argument("-o", "--out", default="", help="output port, to light what is left")
+    sp.add_argument("--level", type=int, default=127, help="brightness for unheard")
+    sp.add_argument("--no-lights", action="store_true", help="do not drive LEDs")
+    sp.set_defaults(func=cmd_coverage)
 
     sp = sub.add_parser("probe", help="identify a device and its discovery options")
     sp.add_argument("port", help="input port name or substring")

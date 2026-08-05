@@ -1,0 +1,9 @@
+<!DOCTYPE MidiTemplate>
+<MidiTemplate>
+ <Creator>
+  <Author>qlcplus-midi-profiler</Author>
+ </Creator>
+ <Description>Mode 0x42: alternate Ableton mode; host drives all LEDs.</Description>
+ <Name>APC40 Mk2 alternate Ableton mode</Name>
+ <InitMessage>F0 47 7F 29 60 00 04 42 09 00 05 F7</InitMessage>
+</MidiTemplate>

@@ -1,8 +1,8 @@
 {
   "manufacturer": "Akai",
   "model": "APC40 mkII",
-  "input_port": "",
-  "output_port": "",
+  "input_port": "APC40 mkII",
+  "output_port": "APC40 mkII",
   "controls": [
     {
       "name": "Slider 1",

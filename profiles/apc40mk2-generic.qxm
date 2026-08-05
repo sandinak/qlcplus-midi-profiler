@@ -1,0 +1,9 @@
+<!DOCTYPE MidiTemplate>
+<MidiTemplate>
+ <Creator>
+  <Author>qlcplus-midi-profiler</Author>
+ </Creator>
+ <Description>Mode 0x40: device drives its own LEDs locally.</Description>
+ <Name>APC40 Mk2 generic mode</Name>
+ <InitMessage>F0 47 7F 29 60 00 04 40 09 00 05 F7</InitMessage>
+</MidiTemplate>
