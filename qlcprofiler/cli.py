@@ -109,7 +109,11 @@ def _led_encoder(dmap: DeviceMap, raw: bool):
     chosen purely for its brightness can set the LED blinking.  Other devices
     treat the byte as plain velocity and must be left alone.
     """
-    if raw or not dmap.manufacturer.lower().startswith("opendeck"):
+    if raw:
+        return None
+    is_opendeck = (dmap.protocol == "opendeck"
+                   or dmap.manufacturer.lower().startswith("opendeck"))
+    if not is_opendeck:
         return None
     from .flash import opendeck_value
 
@@ -500,6 +504,7 @@ def cmd_od_dump(args) -> int:
     dmap = DeviceMap(
         manufacturer=args.manufacturer or "OpenDeck",
         model=args.model or inp.name.split("|")[-1].strip(),
+        protocol="opendeck",
         input_port=inp.name,
         output_port=out.name,
     )

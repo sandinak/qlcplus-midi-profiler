@@ -1,6 +1,7 @@
 {
-  "manufacturer": "OpenDeck",
-  "model": "PMJ_BLACK_1",
+  "manufacturer": "PMJ",
+  "model": "Black 1",
+  "protocol": "opendeck",
   "input_port": "OpenDeck | PMJ_BLACK_1",
   "output_port": "OpenDeck | PMJ_BLACK_1",
   "controls": [
@@ -2671,5 +2672,7 @@
       "midi_driven": true,
       "button": null
     }
-  ]
+  ],
+  "colors": [],
+  "midi_channel_table": []
 }

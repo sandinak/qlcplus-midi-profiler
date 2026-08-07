@@ -41,6 +41,9 @@ class Control:
 class DeviceMap:
     manufacturer: str = "Unknown"
     model: str = "Unknown"
+    # Firmware protocol, when known ("opendeck").  Distinct from manufacturer:
+    # LED value encoding follows the firmware, not the brand on the case.
+    protocol: str = ""
     input_port: str = ""
     output_port: str = ""
     controls: list[Control] = field(default_factory=list)
