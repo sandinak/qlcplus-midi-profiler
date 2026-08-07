@@ -394,9 +394,36 @@ def test_decode_is_inverse_of_encode():
     # MIDI beat clock pseudo-channels are not controls.
     check("beat clock rejected", decode_qlc_channel(530), None)
 
+    # QLC+ scales with bit shifts (midiprotocol.h), not a 127/255 ratio.
+    from qlcprofiler.events import midi_to_dmx
+
     check("dmx 255 -> 127", dmx_to_midi(255), 127)
+    check("dmx 254 -> 127", dmx_to_midi(254), 127)
+    check("dmx 2 -> 1", dmx_to_midi(2), 1)
     check("dmx 0 -> 0", dmx_to_midi(0), 0)
     check("dmx stays 7-bit", max(dmx_to_midi(v) for v in range(256)), 127)
+    check("midi 127 -> 255", midi_to_dmx(127), 255)
+    check("midi 1 -> 2", midi_to_dmx(1), 2)
+    # Every velocity must survive a round trip, or a colour table built from an
+    # observed walk would land on a neighbouring colour once QLC+ sends it.
+    check("velocity round-trips",
+          [v for v in range(128) if dmx_to_midi(midi_to_dmx(v)) != v], [])
+
+
+def test_stock_color_table_covers_every_velocity():
+    """The APC40 mkII table should address all 128 velocities exactly once."""
+    from qlcprofiler.events import dmx_to_midi
+    from qlcprofiler.profile import parse_qxi
+
+    path = Path("/Applications/QLC+.app/Contents/Resources/InputProfiles/"
+                "Akai-APC40-mkII.qxi")
+    if not path.exists():
+        check("colour table (skipped, QLC+ not installed)", True, True)
+        return
+    colors = parse_qxi(path).colors
+    velocities = [dmx_to_midi(c["value"]) for c in colors]
+    check("128 colours", len(colors), 128)
+    check("every velocity once", sorted(velocities), list(range(128)))
 
 
 def test_import_stock_profiles():
@@ -445,7 +472,8 @@ if __name__ == "__main__":
                test_align_leds_plan, test_align_rejects_undrivable_kind,
                test_to_device_map_channel_base, test_paginated_read,
                test_pair_by_address, test_opendeck_led_encoding, test_qxm_roundtrip,
-               test_decode_is_inverse_of_encode, test_import_stock_profiles):
+               test_decode_is_inverse_of_encode, test_import_stock_profiles,
+               test_stock_color_table_covers_every_velocity):
         print(f"\n-- {fn.__name__}")
         fn()
     print(f"\n{failures} failure(s)")

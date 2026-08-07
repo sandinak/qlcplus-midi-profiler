@@ -279,6 +279,56 @@ def split_midi_stream(data: list[int]) -> list:
     return list(parser)
 
 
+def build_color_chart(dmap: DeviceMap) -> str:
+    """A swatch chart of a colour table, for comparing against the hardware.
+
+    128 colours is too many to hold in your head while painting them onto pads
+    a page at a time; a chart lets the device and the table be compared at a
+    glance, and doubles as the reference for picking feedback values in QLC+.
+    """
+    from .events import dmx_to_midi
+
+    swatches = []
+    for entry in dmap.colors:
+        value = entry["value"]
+        rgb = entry.get("rgb") or "#000000"
+        label = escape(entry.get("label", ""))
+        # Pick readable text for the swatch from its own luminance.
+        try:
+            r, g, b = (int(rgb[i:i + 2], 16) for i in (1, 3, 5))
+            light = (0.299 * r + 0.587 * g + 0.114 * b) > 128
+        except (ValueError, IndexError):
+            light = False
+        swatches.append(
+            f'<div class="s" style="background:{escape(rgb)};'
+            f'color:{"#000" if light else "#fff"}">'
+            f'<b>{dmx_to_midi(value)}</b><span>{label}</span>'
+            f'<em>qlc {value}</em></div>'
+        )
+
+    return f"""<!doctype html>
+<html><head><meta charset="utf-8">
+<title>{escape(dmap.manufacturer)} {escape(dmap.model)} colours</title>
+<style>
+ body{{font:14px system-ui,sans-serif;margin:2rem;background:#111;color:#eee}}
+ h1{{font-size:1.1rem;font-weight:600}}
+ p{{color:#aaa;max-width:46rem}}
+ .grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(7rem,1fr));gap:.4rem}}
+ .s{{padding:.5rem;border-radius:.3rem;min-height:3.6rem;
+     display:flex;flex-direction:column;gap:.1rem;border:1px solid #0004}}
+ .s b{{font-size:1.05rem}}
+ .s span{{font-size:.78rem;opacity:.85}}
+ .s em{{font-size:.68rem;opacity:.6;font-style:normal;margin-top:auto}}
+</style></head><body>
+<h1>{escape(dmap.manufacturer)} {escape(dmap.model)} &mdash; {len(dmap.colors)} colours</h1>
+<p>Large number is the MIDI velocity to send. <em>qlc</em> is the 0&ndash;255 value
+QLC+ stores in the profile's ColorTable; the plugin halves it on the way out.
+Compare against the hardware with <code>qlc-midi colors -o &lt;port&gt;</code>.</p>
+<div class="grid">{"".join(swatches)}</div>
+</body></html>
+"""
+
+
 def default_filename(dmap: DeviceMap) -> str:
     def slug(s: str) -> str:
         return "".join(ch if ch.isalnum() else "-" for ch in s).strip("-")

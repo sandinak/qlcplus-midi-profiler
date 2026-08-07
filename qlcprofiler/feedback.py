@@ -115,23 +115,32 @@ def scan(
 
 
 def color_table(out, ctl: Control, step: int = 1, hold: float = 0.35) -> list[dict]:
-    """Walk values on one control, recording what colour each produces.
+    """Walk velocities on one control, recording what colour each produces.
 
     Enter a label at each stop (blank = skip, 'q' = finish).  The result feeds
-    the <ColorTable> block of the QLC+ profile.
+    the <ColorTable> block of the QLC+ profile, so the recorded value is the
+    QLC+ 0-255 one rather than the velocity actually sent - the plugin scales
+    on the way out and would otherwise land on a different colour.
     """
+    from .events import midi_to_dmx
+
     table: list[dict] = []
     print(
         f"\nColour walk on {ctl.name} ({ctl.describe()}).\n"
         "Type a label for each visible colour, blank to skip, q to stop.\n"
     )
-    for val in range(0, 128, step):
-        _send(out, ctl.kind, ctl.channel, ctl.number, val)
+    for velocity in range(0, 128, step):
+        _send(out, ctl.kind, ctl.channel, ctl.number, velocity)
         time.sleep(hold)
-        label = _ask(f"  value {val:>3}: ")
+        label = _ask(f"  velocity {velocity:>3}: ")
         if label == "q":
             break
         if label:
-            table.append({"value": val, "label": label, "rgb": ""})
+            table.append({
+                "value": midi_to_dmx(velocity),
+                "midi": velocity,
+                "label": label,
+                "rgb": "",
+            })
     _send(out, ctl.kind, ctl.channel, ctl.number, 0)
     return table

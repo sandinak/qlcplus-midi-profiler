@@ -78,14 +78,26 @@ def from_mido(msg) -> Event | None:
 
 
 def dmx_to_midi(value: int) -> int:
-    """Scale a QLC+ 0-255 value to a 7-bit MIDI value.
+    """QLC+ 0-255 value -> 7-bit MIDI value, exactly as the plugin does it.
 
-    Profile tables - colour tables especially - are written in QLC+'s 0-255
-    space, and the MIDI plugin scales them on the way out (DMX2MIDI in
-    midiprotocol.h).  Sending a table value straight at a device would exceed
-    7 bits and be rejected.
+    midiprotocol.h: `DMX2MIDI(x) (uchar(x >> 1) & 0x7F)` - a bit shift, not a
+    127/255 ratio.  The difference is not cosmetic: a colour table written as
+    0, 2, 4 ... 254, 255 covers velocities 0..127 one-for-one under the shift,
+    but collapses and skews under a ratio, so painting a palette with the wrong
+    scaling shows the wrong colours against the right labels.
     """
-    return max(0, min(127, value * 127 // 255))
+    return (max(0, min(255, value)) >> 1) & 0x7F
+
+
+def midi_to_dmx(value: int) -> int:
+    """7-bit MIDI value -> QLC+ 0-255 value.
+
+    midiprotocol.h: `MIDI2DMX(x) ((x == 127) ? 255 : x << 1)`.  The 127 special
+    case is what makes the round trip exact at the top of the range.  Use this
+    when turning an observed velocity into a value for a profile table.
+    """
+    value = max(0, min(127, value))
+    return 255 if value == 127 else value << 1
 
 
 def decode_qlc_channel(channel: int) -> tuple[str, int, int] | None:

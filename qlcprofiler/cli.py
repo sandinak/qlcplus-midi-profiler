@@ -179,6 +179,15 @@ def cmd_colors(args) -> int:
               "  qlc-midi feedback --mode colors --control <name>", file=sys.stderr)
         return 2
 
+    if args.chart:
+        from .profile import build_color_chart
+
+        chart_path = Path(args.chart)
+        chart_path.parent.mkdir(parents=True, exist_ok=True)
+        chart_path.write_text(build_color_chart(dmap))
+        print(f"Wrote {chart_path}  ({len(dmap.colors)} swatches)")
+        return 0
+
     if args.list:
         print(f"{len(dmap.colors)} colours in {dmap.manufacturer} {dmap.model}:")
         for entry in dmap.colors:
@@ -900,6 +909,8 @@ def build_parser() -> argparse.ArgumentParser:
     sp.add_argument("-o", "--out", default="", help="output port name or substring")
     sp.add_argument("--list", action="store_true", help="print the table, send nothing")
     sp.add_argument("--start", type=int, default=0, help="first colour index to paint")
+    sp.add_argument("--chart", default="", metavar="PATH",
+                    help="write an HTML swatch chart instead of sending anything")
     sp.set_defaults(func=cmd_colors)
 
     sp = sub.add_parser("coverage",
