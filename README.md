@@ -289,8 +289,36 @@ Guesses land in the JSON map; correct them there if a control is misread.
 ## Tests
 
 No hardware needed — the encodings are checked against channel numbers taken
-from QLC+'s own shipped profiles:
+from QLC+'s own shipped profiles, and every MIDI profile QLC+ ships is
+round-tripped through import and export:
 
 ```sh
 ./venv/bin/python tests/test_profiler.py
 ```
+
+## Things worth knowing, found the hard way
+
+Each of these cost a debugging session, and none is obvious from the outside:
+
+- **A device's config can be paginated.** OpenDeck returns sections in 32-value
+  "parts", and asking only for part 0 gives an answer that looks complete. A
+  203-switch board reads as a 32-switch board.
+- **Brand is not firmware.** A PMJ-branded board running OpenDeck follows
+  OpenDeck's wire format, so LED encoding has to key off the protocol, not the
+  name on the case.
+- **Value scaling is a bit shift, not a ratio.** QLC+ uses `x >> 1` and
+  `x << 1` (with 127 ↔ 255 special-cased). A 127/255 ratio looks close enough
+  and silently shifts every colour in a palette.
+- **Published profiles are a starting point, not truth.** Confirm addresses by
+  ear before relying on them; being shipped does not make one right for a
+  particular unit or firmware.
+- **QLC+'s input-profile XSD has been wrong since 2017.** It expects
+  `<Feedbacks>` where the engine reads and writes `<Feedback>`, and does not
+  know about `MidiChannel`, `ColorTable` or `MidiChannelTable`. QLC+'s own
+  `check` script therefore fails on QLC+'s own profiles. Files this tool emits
+  are correct per the engine; validate against a corrected schema.
+
+## License
+
+Apache-2.0. QLC+ and OpenDeck are separate projects under their own licenses;
+this tool only reads and writes their file formats.
