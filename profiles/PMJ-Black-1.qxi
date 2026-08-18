@@ -55,19 +55,23 @@
  </Channel>
  <Channel Number="32779">
   <Name>Enc 1</Name>
-  <Type>Button</Type>
+  <Type>Encoder</Type>
+  <Movement Sensitivity="1"/>
  </Channel>
  <Channel Number="32780">
   <Name>Enc 2</Name>
-  <Type>Button</Type>
+  <Type>Encoder</Type>
+  <Movement Sensitivity="1"/>
  </Channel>
  <Channel Number="32781">
   <Name>Enc 3</Name>
-  <Type>Button</Type>
+  <Type>Encoder</Type>
+  <Movement Sensitivity="1"/>
  </Channel>
  <Channel Number="32782">
   <Name>Enc 4</Name>
-  <Type>Button</Type>
+  <Type>Encoder</Type>
+  <Movement Sensitivity="1"/>
  </Channel>
  <Channel Number="32896">
   <Name>Go</Name>
@@ -157,7 +161,6 @@
  <Channel Number="32913">
   <Name>6-Up</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32914">
   <Name>7-Up</Name>
@@ -222,7 +225,6 @@
  <Channel Number="32926">
   <Name>6-Load</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32927">
   <Name>7-Load</Name>
@@ -252,7 +254,6 @@
  <Channel Number="32932">
   <Name>Left</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32933">
   <Name>Right</Name>
@@ -317,7 +318,6 @@
  <Channel Number="32945">
   <Name>Set</Name>
   <Type>Button</Type>
-  <Feedback LowerValue="15" UpperValue="127"/>
  </Channel>
  <Channel Number="32946">
   <Name>Effects</Name>

@@ -296,6 +296,67 @@ round-tripped through import and export:
 ./venv/bin/python tests/test_profiler.py
 ```
 
+## Mapping a new surface
+
+The order below front-loads whatever the device will tell you for free, then
+falls back to your hands only for what it will not.
+
+```sh
+# 1. What is it, and can it be asked about itself?
+qlc-midi probe "<port>"
+```
+
+`probe` reports the device identity, whether its configuration is readable, and
+whether QLC+ already ships a profile or a mode-change template for it.
+
+```sh
+# 2a. If QLC+ ships a profile, start there
+qlc-midi import <Vendor-Model>.qxi -m maps/<name>.json
+
+# 2b. If the config is readable (OpenDeck), read it
+qlc-midi opendeck dump "<port>" -m maps/<name>.json --raw
+
+# 2c. Otherwise, learn by ear
+qlc-midi learn "<port>" -m maps/<name>.json --auto
+```
+
+```sh
+# 3. Confirm against the hardware - always, whatever step 2 said
+qlc-midi coverage "<port>" -m maps/<name>.json -o "<port>"
+```
+
+Anything that never fires is either missing from the map, a local-only control
+like SHIFT, or on a MIDI channel you are not listening to. Fix the map before
+going further; everything downstream inherits its mistakes.
+
+```sh
+# 4. Name the controls, using the board as its own display
+qlc-midi learn "<port>" -m maps/<name>.json --relabel
+
+# 5. Feedback: does anything light, and on which address?
+qlc-midi init <template>.qxm -o "<port>"      # if it needs a mode change first
+qlc-midi feedback -m maps/<name>.json --mode echo
+qlc-midi colors -m maps/<name>.json --chart colors.html   # if it has a palette
+
+# 6. Emit and install
+qlc-midi generate -m maps/<name>.json --install
+```
+
+Then restart QLC+, select the profile on the input line, and set that line to
+**any** MIDI channel if the device spans more than one.
+
+### Rules of thumb for an unfamiliar device
+
+- **Trust writes with observable effects.** Reading a config value and guessing
+  its meaning from the shape of the numbers is how this tool twice "discovered"
+  things that were not there. If writing a field changes what the hardware
+  does, that is knowledge; anything else is a hypothesis.
+- **Believe the hardware over the file.** A shipped profile, a vendor document
+  and this tool's own inference have all been wrong on real boards. What the
+  device emits when you press it is the ground truth.
+- **An implausible result usually is.** "These two unrelated buttons are the
+  only colour ones" was a wrong interpretation, not a quirky board.
+
 ## Things worth knowing, found the hard way
 
 Each of these cost a debugging session, and none is obvious from the outside:
