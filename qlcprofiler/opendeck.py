@@ -64,14 +64,24 @@ BLOCK_ENCODER = 2
 BLOCK_ANALOG = 3
 BLOCK_LED = 4
 
-# Section numbers confirmed by reading a live board; a section that a given
-# firmware does not implement simply answers with an error and is skipped.
+# Section numbers vary between OpenDeck builds, and current master does not
+# match the board these were derived from - master's Section::Outputs runs
+# Global, ActivationId, ControlType, ActivationValue, Channel, while this board
+# answers on 0, 2..7.  So these are per-board observations, not a spec.
+#
+# Only the LED sections below marked "verified" have been confirmed the one way
+# that counts: writing them changed observable device behaviour.  The rest are
+# inference from value shape, and inference has been wrong here more than once.
 BUTTON_TYPE, BUTTON_MESSAGE, BUTTON_MIDI_ID, BUTTON_VALUE, BUTTON_CHANNEL = 0, 1, 2, 3, 4
 ENCODER_ENABLED, ENCODER_MIDI_ID, ENCODER_CHANNEL = 0, 3, 4
 ANALOG_ENABLED, ANALOG_INVERT, ANALOG_TYPE, ANALOG_MIDI_ID = 0, 1, 2, 3
 ANALOG_LOWER, ANALOG_UPPER, ANALOG_CHANNEL = 5, 7, 9
-LED_LEVEL, LED_ACTIVATION_ID, LED_RGB, LED_CONTROL_TYPE = 0, 3, 4, 5
-LED_ACTIVATION_VALUE, LED_CHANNEL = 6, 7
+
+LED_ACTIVATION_ID = 3     # verified: writing it changed which note lights an LED
+LED_CONTROL_TYPE = 5      # verified: writing it made Static LEDs obey MIDI
+LED_CHANNEL = 7           # verified: writing it moved LEDs to another MIDI channel
+LED_ACTIVATION_VALUE = 6  # inferred from values (0 / 127)
+LED_LEVEL = 0             # inferred; meaning unconfirmed
 
 # io/outputs/shared/common.h :: ControlType.  Only the MidiIn* variants react to
 # incoming MIDI; Local* mirror the board's own control, Static ignores MIDI.
@@ -220,7 +230,7 @@ class OpenDeck:
             }),
             "leds": self.read_block(BLOCK_LED, {
                 "level": LED_LEVEL, "activation_id": LED_ACTIVATION_ID,
-                "rgb": LED_RGB, "control_type": LED_CONTROL_TYPE,
+                "control_type": LED_CONTROL_TYPE,
                 "activation_value": LED_ACTIVATION_VALUE, "channel": LED_CHANNEL,
             }),
         }
