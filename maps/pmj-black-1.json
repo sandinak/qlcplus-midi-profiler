@@ -307,7 +307,7 @@
       "kind": "cc",
       "channel": 8,
       "number": 11,
-      "type": "Button",
+      "type": "Encoder",
       "values": [
         127
       ],
@@ -319,7 +319,7 @@
       "kind": "cc",
       "channel": 8,
       "number": 12,
-      "type": "Button",
+      "type": "Encoder",
       "values": [
         127
       ],
@@ -331,7 +331,7 @@
       "kind": "cc",
       "channel": 8,
       "number": 13,
-      "type": "Button",
+      "type": "Encoder",
       "values": [
         127
       ],
@@ -343,7 +343,7 @@
       "kind": "cc",
       "channel": 8,
       "number": 14,
-      "type": "Button",
+      "type": "Encoder",
       "values": [
         127
       ],
@@ -683,13 +683,7 @@
         0,
         127
       ],
-      "feedback": {
-        "kind": "note",
-        "channel": 8,
-        "number": 17,
-        "lower": 0,
-        "upper": 127
-      },
+      "feedback": null,
       "note": ""
     },
     {
@@ -930,13 +924,7 @@
         0,
         127
       ],
-      "feedback": {
-        "kind": "note",
-        "channel": 8,
-        "number": 30,
-        "lower": 0,
-        "upper": 127
-      },
+      "feedback": null,
       "note": ""
     },
     {
@@ -1044,13 +1032,7 @@
         0,
         127
       ],
-      "feedback": {
-        "kind": "note",
-        "channel": 8,
-        "number": 36,
-        "lower": 0,
-        "upper": 127
-      },
+      "feedback": null,
       "note": ""
     },
     {
@@ -1291,13 +1273,7 @@
         0,
         127
       ],
-      "feedback": {
-        "kind": "note",
-        "channel": 8,
-        "number": 49,
-        "lower": 0,
-        "upper": 127
-      },
+      "feedback": null,
       "note": ""
     },
     {
@@ -1382,1295 +1358,1453 @@
       "index": 0,
       "activation_id": 23,
       "channel": 8,
+      "activation_value": 0,
       "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
       "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 23,
-        "name": "Button (LED 0)"
+        "name": "Pre Page"
       }
     },
     {
       "index": 1,
       "activation_id": 1,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 10,
-      "midi_driven": false,
-      "button": null
+      "control_type_name": "Static",
+      "midi_driven": false
     },
     {
       "index": 2,
       "activation_id": 2,
       "channel": 8,
+      "activation_value": 0,
       "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
       "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 2,
-        "name": "Button (LED 2)"
+        "name": "2-Down"
       }
     },
     {
       "index": 3,
       "activation_id": 4,
       "channel": 8,
+      "activation_value": 0,
       "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
       "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 4,
-        "name": "Button (LED 3)"
+        "name": "4-Down"
       }
     },
     {
       "index": 4,
       "activation_id": 6,
       "channel": 8,
+      "activation_value": 0,
       "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
       "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 6,
-        "name": "Button (LED 4)"
+        "name": "6-Down"
       }
     },
     {
       "index": 5,
       "activation_id": 8,
       "channel": 8,
+      "activation_value": 0,
       "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
       "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 8,
-        "name": "Button (LED 5)"
+        "name": "8-Down"
       }
     },
     {
       "index": 6,
       "activation_id": 10,
       "channel": 8,
+      "activation_value": 0,
       "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
       "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 10,
-        "name": "Button (LED 6)"
+        "name": "10-Down"
       }
     },
     {
       "index": 7,
       "activation_id": 7,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 8,
-      "activation_id": 36,
+      "activation_id": 23,
       "channel": 8,
+      "activation_value": 0,
       "control_type": 6,
-      "midi_driven": true,
-      "button": {
-        "kind": "note",
-        "channel": 8,
-        "number": 36,
-        "name": "Button (LED 8)"
-      }
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 9,
       "activation_id": 9,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 10,
       "activation_id": 13,
       "channel": 8,
+      "activation_value": 0,
       "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
       "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 13,
-        "name": "Button (LED 10)"
+        "name": "2-Up"
       }
     },
     {
       "index": 11,
       "activation_id": 15,
       "channel": 8,
+      "activation_value": 0,
       "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
       "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 15,
-        "name": "Button (LED 11)"
+        "name": "4-Up"
       }
     },
     {
       "index": 12,
-      "activation_id": 17,
+      "activation_id": 6,
       "channel": 8,
+      "activation_value": 0,
       "control_type": 6,
-      "midi_driven": true,
-      "button": {
-        "kind": "note",
-        "channel": 8,
-        "number": 17,
-        "name": "Button (LED 12)"
-      }
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 13,
       "activation_id": 19,
       "channel": 8,
+      "activation_value": 0,
       "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
       "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 19,
-        "name": "Button (LED 13)"
+        "name": "8-Up"
       }
     },
     {
       "index": 14,
       "activation_id": 21,
       "channel": 8,
+      "activation_value": 0,
       "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
       "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 21,
-        "name": "Button (LED 14)"
+        "name": "10-Up"
       }
     },
     {
       "index": 15,
       "activation_id": 15,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 16,
-      "activation_id": 49,
+      "activation_id": 23,
       "channel": 8,
+      "activation_value": 0,
       "control_type": 6,
-      "midi_driven": true,
-      "button": {
-        "kind": "note",
-        "channel": 8,
-        "number": 49,
-        "name": "Button (LED 16)"
-      }
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 17,
       "activation_id": 0,
       "channel": 8,
+      "activation_value": 0,
       "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
       "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 0,
-        "name": "NOTE 0 ch9"
+        "name": "Go"
       }
     },
     {
       "index": 18,
       "activation_id": 26,
       "channel": 8,
+      "activation_value": 0,
       "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
       "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 26,
-        "name": "Button (LED 18)"
+        "name": "2-Load"
       }
     },
     {
       "index": 19,
       "activation_id": 28,
       "channel": 8,
+      "activation_value": 0,
       "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
       "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 28,
-        "name": "Button (LED 19)"
+        "name": "4-Load"
       }
     },
     {
       "index": 20,
-      "activation_id": 30,
+      "activation_id": 6,
       "channel": 8,
+      "activation_value": 0,
       "control_type": 6,
-      "midi_driven": true,
-      "button": {
-        "kind": "note",
-        "channel": 8,
-        "number": 30,
-        "name": "Button (LED 20)"
-      }
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 21,
       "activation_id": 32,
       "channel": 8,
+      "activation_value": 0,
       "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
       "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 32,
-        "name": "Button (LED 21)"
+        "name": "8-Load"
       }
     },
     {
       "index": 22,
       "activation_id": 34,
       "channel": 8,
+      "activation_value": 0,
       "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
       "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 34,
-        "name": "Button (LED 22)"
+        "name": "10-Load"
       }
     },
     {
       "index": 23,
       "activation_id": 23,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 24,
       "activation_id": 52,
       "channel": 8,
+      "activation_value": 0,
       "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
       "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 52,
-        "name": "Button (LED 24)"
+        "name": "Looks"
       }
     },
     {
       "index": 25,
       "activation_id": 11,
       "channel": 8,
+      "activation_value": 0,
       "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
       "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 11,
-        "name": "Button (LED 25)"
+        "name": "Back"
       }
     },
     {
       "index": 26,
       "activation_id": 39,
       "channel": 8,
+      "activation_value": 0,
       "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
       "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 39,
-        "name": "Button (LED 26)"
+        "name": "2"
       }
     },
     {
       "index": 27,
       "activation_id": 41,
       "channel": 8,
+      "activation_value": 0,
       "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
       "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 41,
-        "name": "Button (LED 27)"
+        "name": "4"
       }
     },
     {
       "index": 28,
       "activation_id": 43,
       "channel": 8,
+      "activation_value": 0,
       "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
       "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 43,
-        "name": "Button (LED 28)"
+        "name": "6"
       }
     },
     {
       "index": 29,
       "activation_id": 45,
       "channel": 8,
+      "activation_value": 0,
       "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
       "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 45,
-        "name": "Button (LED 29)"
+        "name": "8"
       }
     },
     {
       "index": 30,
       "activation_id": 47,
       "channel": 8,
+      "activation_value": 0,
       "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
       "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 47,
-        "name": "Button (LED 30)"
+        "name": "10"
       }
     },
     {
       "index": 31,
       "activation_id": 31,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 32,
       "activation_id": 22,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 22,
-        "name": "NOTE 22 ch9"
+        "name": "O"
       }
     },
     {
       "index": 33,
       "activation_id": 24,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 24,
-        "name": "NOTE 24 ch9"
+        "name": "Next Page"
       }
     },
     {
       "index": 34,
       "activation_id": 1,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 1,
-        "name": "NOTE 1 ch9"
+        "name": "1-Down"
       }
     },
     {
       "index": 35,
       "activation_id": 3,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 3,
-        "name": "NOTE 3 ch9"
+        "name": "3-Down"
       }
     },
     {
       "index": 36,
       "activation_id": 5,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 5,
-        "name": "NOTE 5 ch9"
+        "name": "5-Down"
       }
     },
     {
       "index": 37,
       "activation_id": 7,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 7,
-        "name": "NOTE 7 ch9"
+        "name": "7-Down"
       }
     },
     {
       "index": 38,
       "activation_id": 9,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 9,
-        "name": "NOTE 9 ch9"
+        "name": "9-Down"
       }
     },
     {
       "index": 39,
       "activation_id": 39,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 40,
       "activation_id": 35,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 35,
-        "name": "NOTE 35 ch9"
+        "name": "Fix Cont"
       }
     },
     {
       "index": 41,
       "activation_id": 37,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 37,
-        "name": "NOTE 37 ch9"
+        "name": "Right"
       }
     },
     {
       "index": 42,
       "activation_id": 12,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 12,
-        "name": "NOTE 12 ch9"
+        "name": "1-Up"
       }
     },
     {
       "index": 43,
       "activation_id": 14,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 14,
-        "name": "NOTE 14 ch9"
+        "name": "3-Up"
       }
     },
     {
       "index": 44,
       "activation_id": 16,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 16,
-        "name": "NOTE 16 ch9"
+        "name": "5-Up"
       }
     },
     {
       "index": 45,
       "activation_id": 18,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 18,
-        "name": "NOTE 18 ch9"
+        "name": "7-Up"
       }
     },
     {
       "index": 46,
       "activation_id": 20,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 20,
-        "name": "NOTE 20 ch9"
+        "name": "9-Up"
       }
     },
     {
       "index": 47,
       "activation_id": 47,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 48,
       "activation_id": 48,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 48,
-        "name": "NOTE 48 ch9"
+        "name": "Favorites"
       }
     },
     {
       "index": 49,
       "activation_id": 50,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 50,
-        "name": "NOTE 50 ch9"
+        "name": "Effects"
       }
     },
     {
       "index": 50,
       "activation_id": 25,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 25,
-        "name": "NOTE 25 ch9"
+        "name": "1-Load"
       }
     },
     {
       "index": 51,
       "activation_id": 27,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 27,
-        "name": "NOTE 27 ch9"
+        "name": "3-Load"
       }
     },
     {
       "index": 52,
       "activation_id": 29,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 29,
-        "name": "NOTE 29 ch9"
+        "name": "5-Load"
       }
     },
     {
       "index": 53,
       "activation_id": 31,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 31,
-        "name": "NOTE 31 ch9"
+        "name": "7-Load"
       }
     },
     {
       "index": 54,
       "activation_id": 33,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 33,
-        "name": "NOTE 33 ch9"
+        "name": "9-Load"
       }
     },
     {
       "index": 55,
       "activation_id": 55,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 56,
       "activation_id": 51,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 51,
-        "name": "NOTE 51 ch9"
+        "name": "Groups"
       }
     },
     {
       "index": 57,
       "activation_id": 53,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 53,
-        "name": "NOTE 53 ch9"
+        "name": "Macros"
       }
     },
     {
       "index": 58,
       "activation_id": 38,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 38,
-        "name": "NOTE 38 ch9"
+        "name": "1"
       }
     },
     {
       "index": 59,
       "activation_id": 40,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 40,
-        "name": "NOTE 40 ch9"
+        "name": "3"
       }
     },
     {
       "index": 60,
       "activation_id": 42,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 42,
-        "name": "NOTE 42 ch9"
+        "name": "5"
       }
     },
     {
       "index": 61,
       "activation_id": 44,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 44,
-        "name": "NOTE 44 ch9"
+        "name": "7"
       }
     },
     {
       "index": 62,
       "activation_id": 46,
       "channel": 8,
-      "control_type": 10,
-      "midi_driven": false,
+      "activation_value": 0,
+      "control_type": 6,
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true,
       "button": {
         "kind": "note",
         "channel": 8,
         "number": 46,
-        "name": "NOTE 46 ch9"
+        "name": "9"
       }
     },
     {
       "index": 63,
       "activation_id": 63,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 64,
       "activation_id": 0,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 65,
       "activation_id": 1,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 66,
       "activation_id": 2,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 67,
       "activation_id": 3,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 68,
       "activation_id": 4,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 69,
       "activation_id": 5,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 70,
       "activation_id": 6,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 71,
       "activation_id": 7,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 72,
       "activation_id": 8,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 73,
       "activation_id": 9,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 74,
       "activation_id": 10,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 75,
       "activation_id": 11,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 76,
       "activation_id": 12,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 77,
       "activation_id": 13,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 78,
       "activation_id": 14,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 79,
       "activation_id": 15,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 80,
       "activation_id": 16,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 81,
       "activation_id": 17,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 82,
       "activation_id": 18,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 83,
       "activation_id": 19,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 84,
       "activation_id": 20,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 85,
       "activation_id": 21,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 86,
       "activation_id": 22,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 87,
       "activation_id": 23,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 88,
       "activation_id": 24,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 89,
       "activation_id": 25,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 90,
       "activation_id": 26,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 91,
       "activation_id": 27,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 92,
       "activation_id": 28,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 93,
       "activation_id": 29,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 94,
       "activation_id": 30,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 95,
       "activation_id": 31,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 96,
       "activation_id": 32,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 97,
       "activation_id": 33,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 98,
       "activation_id": 34,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 99,
       "activation_id": 35,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 100,
       "activation_id": 36,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 101,
       "activation_id": 37,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 102,
       "activation_id": 38,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 103,
       "activation_id": 39,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 104,
       "activation_id": 40,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 105,
       "activation_id": 41,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 106,
       "activation_id": 42,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 107,
       "activation_id": 43,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 108,
       "activation_id": 44,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 109,
       "activation_id": 45,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 110,
       "activation_id": 46,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 111,
       "activation_id": 47,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 112,
       "activation_id": 48,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 113,
       "activation_id": 49,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 114,
       "activation_id": 50,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 115,
       "activation_id": 51,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 116,
       "activation_id": 52,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 117,
       "activation_id": 53,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 118,
       "activation_id": 54,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 119,
       "activation_id": 55,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 120,
       "activation_id": 56,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 121,
       "activation_id": 57,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 122,
       "activation_id": 58,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 123,
       "activation_id": 59,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 124,
       "activation_id": 60,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 125,
       "activation_id": 61,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 126,
       "activation_id": 62,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     },
     {
       "index": 127,
       "activation_id": 63,
       "channel": 0,
+      "activation_value": 127,
       "control_type": 6,
-      "midi_driven": true,
-      "button": null
+      "control_type_name": "MidiInNoteMultiVal",
+      "midi_driven": true
     }
   ],
   "colors": [],

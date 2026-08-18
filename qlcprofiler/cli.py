@@ -497,21 +497,54 @@ def cmd_od_dump(args) -> int:
         return 1
 
     map_path = Path(args.map)
-    # Keep any pairing already discovered by `identify`.
-    prior_leds = DeviceMap.load(map_path).leds if map_path.exists() else []
-    prior_pairs = {r["index"]: r.get("button") for r in prior_leds if r.get("button")}
+    prior = DeviceMap.load(map_path) if map_path.exists() else None
 
     dmap = DeviceMap(
-        manufacturer=args.manufacturer or "OpenDeck",
-        model=args.model or inp.name.split("|")[-1].strip(),
+        manufacturer=args.manufacturer or (prior.manufacturer if prior else "OpenDeck"),
+        model=args.model or (prior.model if prior else inp.name.split("|")[-1].strip()),
         protocol="opendeck",
         input_port=inp.name,
         output_port=out.name,
     )
     to_device_map(dump, dmap, include_buttons=args.include_buttons)
-    for record in dmap.leds:
-        if record["index"] in prior_pairs:
-            record["button"] = prior_pairs[record["index"]]
+
+    if prior:
+        # A dump only knows what the config exposes; the map may also hold
+        # controls learned by ear and names typed by hand, and neither is
+        # recoverable from the device.  Merge onto what is already there rather
+        # than replacing it - re-reading a device must never lose work.
+        by_key = {c.key: c for c in dmap.controls}
+        merged = []
+        for ctl in prior.controls:
+            fresh = by_key.pop(ctl.key, None)
+            if fresh is not None:
+                ctl.type = fresh.type  # the device is authoritative about type
+            merged.append(ctl)
+        added = list(by_key.values())
+        dmap.controls = merged + added
+
+        # Feedback has to be recomputed: the LED block just came off the device
+        # and may pair differently than it did last time.
+        from .opendeck import pair_by_address
+
+        for ctl in dmap.controls:
+            ctl.feedback = None
+        for led_index, control_index in pair_by_address(dump, dmap).items():
+            ctl = dmap.controls[control_index]
+            ctl.feedback = {"kind": "note", "channel": ctl.channel,
+                            "number": ctl.number, "lower": 0, "upper": 127}
+            dmap.leds[led_index]["button"] = {
+                "kind": "note", "channel": ctl.channel,
+                "number": ctl.number, "name": ctl.name,
+            }
+
+        prior_pairs = {r["index"]: r.get("button")
+                       for r in prior.leds if r.get("button")}
+        for record in dmap.leds:
+            if record["index"] in prior_pairs:
+                record["button"] = prior_pairs[record["index"]]
+        if added:
+            print(f"({len(added)} control(s) new since the last dump)")
 
     map_path.parent.mkdir(parents=True, exist_ok=True)
     dmap.save(map_path)

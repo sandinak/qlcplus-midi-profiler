@@ -376,6 +376,45 @@ def test_qxm_roundtrip(tmp=[None]):
     check("idle level applied", msgs[0].velocity, 15)
 
 
+def test_dump_merge_preserves_learned_work():
+    """Re-reading a device must not discard names or learned controls.
+
+    A dump only sees what the config exposes.  Buttons learned by ear and names
+    typed by hand exist nowhere on the device, so replacing the map with a dump
+    silently destroys them.
+    """
+    from qlcprofiler.opendeck import to_device_map
+
+    prior = DeviceMap("PMJ", "Black 1", protocol="opendeck", controls=[
+        Control("Go", "note", 8, 0, "Button"),          # learned by ear
+        Control("Master", "cc", 8, 0, "Slider"),        # named by hand
+    ])
+    dump = {
+        "analog": {"enabled": [1], "midi_id": [0], "channel": [9]},
+        "leds": {"activation_id": [0], "channel": [9],
+                 "control_type": [6], "activation_value": [127]},
+    }
+    fresh = DeviceMap(protocol="opendeck")
+    to_device_map(dump, fresh)
+
+    # The merge the dump command performs.
+    by_key = {c.key: c for c in fresh.controls}
+    merged = []
+    for ctl in prior.controls:
+        replacement = by_key.pop(ctl.key, None)
+        if replacement is not None:
+            ctl.type = replacement.type
+        merged.append(ctl)
+    merged += list(by_key.values())
+
+    names = [c.name for c in merged]
+    check("hand-typed name kept", "Go" in names, True)
+    check("learned control kept", "Master" in names, True)
+    check("no duplicate addresses", len({c.key for c in merged}), len(merged))
+    # The analog control came from both sides; it must appear once, named.
+    check("merged, not duplicated", names.count("Master"), 1)
+
+
 def test_decode_is_inverse_of_encode():
     from qlcprofiler.events import decode_qlc_channel, dmx_to_midi
 
@@ -472,6 +511,7 @@ if __name__ == "__main__":
                test_align_leds_plan, test_align_rejects_undrivable_kind,
                test_to_device_map_channel_base, test_paginated_read,
                test_pair_by_address, test_opendeck_led_encoding, test_qxm_roundtrip,
+               test_dump_merge_preserves_learned_work,
                test_decode_is_inverse_of_encode, test_import_stock_profiles,
                test_stock_color_table_covers_every_velocity):
         print(f"\n-- {fn.__name__}")
